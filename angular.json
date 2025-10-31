@@ -1,37 +1,42 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "bun",
-    "analytics": "f9029187-7c2e-4af4-9c66-0d8b40fe299a"
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "shared": {
-      "projectType": "library",
-      "root": "projects/shared",
-      "sourceRoot": "projects/shared/src",
-      "prefix": "morgan",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/shared/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/shared/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/shared/tsconfig.spec.json"
-          }
-        }
-      }
-    }
-  }
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"cli": {
+		"packageManager": "bun",
+		"analytics": "f9029187-7c2e-4af4-9c66-0d8b40fe299a"
+	},
+	"newProjectRoot": "projects",
+	"schematics": {
+		"@schematics/angular:component": {
+			"ngHtml": true
+		}
+	},
+	"projects": {
+		"shared": {
+			"projectType": "library",
+			"root": "projects/shared",
+			"sourceRoot": "projects/shared/src",
+			"prefix": "morgan",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:ng-packagr",
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/shared/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/shared/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/shared/tsconfig.spec.json"
+					}
+				}
+			}
+		}
+	}
 }
