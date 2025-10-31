@@ -1,0 +1,32 @@
+{
+	"version": 2,
+	"public": true,
+	"name": "morganhairextensions",
+	"installCommand": "bun install && bun run build shared",
+	"buildCommand": "bun run build admin && bun run build web",
+	"framework": "angular",
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api"
+		},
+		{
+			"source": "/(.*)",
+			"has": [
+				{
+					"type": "host",
+					"value": "admin.morganhairextensions.com"
+				}
+			],
+			"destination": "/api/admin.js"
+		}
+	],
+	"functions": {
+		"api/index.js": {
+			"includeFiles": "dist/web/browser/**"
+		},
+		"api/admin.js": {
+			"includeFiles": "dist/admin/browser/**"
+		}
+	}
+}
