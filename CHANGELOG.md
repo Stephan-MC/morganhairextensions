@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.0.0...v1.1.0) (2025-11-01)
+
+
+### Features
+
+* Added the cart and the landing page ([dbda5eb](https://github.com/Stephan-MC/morganhairextensions/commit/dbda5ebaa06d96422f964f1b5ab90d628f309667))
+
 ## 1.0.0 (2025-11-01)
 
 
