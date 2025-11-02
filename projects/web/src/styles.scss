@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @use "tailwindcss";
+@plugin "@iconify/tailwind4";
+
+@layer base {
+  * {
+    border-color: var(--mat-sys-outline);
+  }
+
+  html, body {
+    color-scheme: light dark;
+  }
+}
