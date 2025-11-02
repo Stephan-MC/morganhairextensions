@@ -61,7 +61,10 @@
 								"input": "projects/web/public"
 							}
 						],
-						"styles": ["projects/web/src/styles.scss"],
+						"styles": [
+							"projects/web/src/material.scss",
+							"projects/web/src/styles.scss"
+						],
 						"server": "projects/web/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
