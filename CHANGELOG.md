@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Stephan-MC/morganhairextensions/compare/v1.1.0...v1.1.1) (2025-11-01)
+
+
+### Bug Fixes
+
+* Adjusted tailwindcss issue ([c23443d](https://github.com/Stephan-MC/morganhairextensions/commit/c23443d3d4dc2ec5b300450b4adc4189720f60b8))
+
 ## [1.1.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.0.0...v1.1.0) (2025-11-01)
 
 
