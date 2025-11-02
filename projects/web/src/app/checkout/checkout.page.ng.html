@@ -1,0 +1,83 @@
+<div class="container py-8 px-4 mx-auto max-w-2xl md:py-16">
+  <div class="flex flex-col items-center text-center">
+    <h1 class="text-3xl font-bold md:text-4xl font-display">Shipping Information</h1>
+    <p class="mt-2 text-base text-text-light/70 dark:text-text-dark/70">
+      Please enter your shipping address to proceed.
+    </p>
+    <div class="flex items-center mt-4 space-x-2 text-sm font-medium">
+      <span class="text-primary">Cart</span>
+      <span class="text-sm material-symbols-outlined text-text-light/50 dark:text-text-dark/50"
+        >chevron_right</span
+      >
+      <span class="font-bold text-primary">Information</span>
+      <span class="text-sm material-symbols-outlined text-text-light/50 dark:text-text-dark/50"
+        >chevron_right</span
+      >
+      <span class="text-text-light/50 dark:text-text-dark/50">Shipping</span>
+      <span class="text-sm material-symbols-outlined text-text-light/50 dark:text-text-dark/50"
+        >chevron_right</span
+      >
+      <span class="text-text-light/50 dark:text-text-dark/50">Payment</span>
+    </div>
+  </div>
+  <div class="mt-12 mb-6 w-full">
+    <div class="border border-border-light dark:border-border-dark">
+      <div class="flex">
+        <button
+          class="flex-1 py-3 px-4 text-sm font-bold text-center border-b-2 border-primary bg-black/5 text-primary dark:bg-white/5"
+        >
+          Continue as Guest
+        </button>
+        <a
+          class="flex-1 py-3 px-4 text-sm font-medium text-center border-b border-border-light text-text-light/70 dark:border-border-dark dark:text-text-dark/70 dark:hover:bg-white/5 hover:bg-black/5"
+          href="#"
+          >Log in / Register</a
+        >
+      </div>
+      <div class="p-6">
+        <p class="text-sm text-text-light/80 dark:text-text-dark/80">
+          Enter your shipping information below.
+        </p>
+      </div>
+    </div>
+  </div>
+  <form class="mt-6 space-y-6" [formGroup]="form" class="*:w-full">
+    <mat-form-field>
+      <mat-label>Full Name</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adress line 1</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adress line 2</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>State/Province</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <mat-form-field>
+        <mat-label>Postal code</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+    <div class="pt-6">
+      <button matButton="filled" type="submit" class="rounded-none!">
+        <span>Continue to Shipping Method</span>
+      </button>
+    </div>
+  </form>
+</div>
