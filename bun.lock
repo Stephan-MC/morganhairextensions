@@ -8,6 +8,8 @@
         "@angular/compiler": "^20.3.0",
         "@angular/core": "^20.3.0",
         "@angular/forms": "^20.3.0",
+        "@angular/language-service": "^20.3.9",
+        "@angular/material": "20.2.10",
         "@angular/platform-browser": "^20.3.0",
         "@angular/platform-server": "^20.3.0",
         "@angular/router": "^20.3.0",
@@ -89,6 +91,10 @@
     "@angular/core": ["@angular/core@20.3.9", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/compiler": "20.3.9", "rxjs": "^6.5.3 || ^7.4.0", "zone.js": "~0.15.0" }, "optionalPeers": ["@angular/compiler", "zone.js"] }, "sha512-zZb7wUexBIIUojr1helzXsL25ilAoASm8aPOjBNHPLYr4ndDjMD/wogmH/dA7EzuCdmZf30ZmZZpuX149WdrpA=="],
 
     "@angular/forms": ["@angular/forms@20.3.9", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "20.3.9", "@angular/core": "20.3.9", "@angular/platform-browser": "20.3.9", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-jSlhU1IyuxxSYNN5Gg3oBb0nAqIl5Mwf1hywtkbyMay+3sENYGvBRseWp00R308isKe+n8bKi6hF54A1lhozzg=="],
+
+    "@angular/language-service": ["@angular/language-service@20.3.9", "", {}, "sha512-aCsuzlFx8a/VMBNgXMfwai97j2QHZ8PhQwzwodDNb2X3eQsaUO+nCgs5kNIZmQ/rJESH+fY9ZdlZcrYbVp+nBA=="],
+
+    "@angular/material": ["@angular/material@20.2.10", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/cdk": "20.2.10", "@angular/common": "^20.0.0 || ^21.0.0", "@angular/core": "^20.0.0 || ^21.0.0", "@angular/forms": "^20.0.0 || ^21.0.0", "@angular/platform-browser": "^20.0.0 || ^21.0.0", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-WkJfUu7KiQY2lqHjMZtEKBG653sPmky0nytTMASsfQ/xUs56W3CAAEOuKhSyCNKsNeFJZS/NgJnvlpRzcE5k6g=="],
 
     "@angular/platform-browser": ["@angular/platform-browser@20.3.9", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/animations": "20.3.9", "@angular/common": "20.3.9", "@angular/core": "20.3.9" }, "optionalPeers": ["@angular/animations"] }, "sha512-q9uyNIKto3PmIh3q9/OX0HYN/SMYqCJ7MyQHBuF9Rel0vXi0gWyk2dgsWAl/tSTLlqHWtGZZ3rvJyxYQmxFo4w=="],
 
