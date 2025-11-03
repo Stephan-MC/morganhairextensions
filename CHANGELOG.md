@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.2.0...v1.3.0) (2025-11-03)
+
+
+### Features
+
+* Added models to the system ([b4e3eb8](https://github.com/Stephan-MC/morganhairextensions/commit/b4e3eb82846610463986247555c4455f7d4ccab0))
+* Added resolvers for wigs ([9b176cf](https://github.com/Stephan-MC/morganhairextensions/commit/9b176cff359a05c1f50c2f547774515f10cd3f96))
+* Created a wig services ([ef96862](https://github.com/Stephan-MC/morganhairextensions/commit/ef96862e73d525be2d5a8a80b6885ec1d5897f8c))
+* Enabled componentInputBinding to get resolved datas in to components as input ([f4b202c](https://github.com/Stephan-MC/morganhairextensions/commit/f4b202cd652e378061c0c6a987e685b908646ed1))
+* Revamped the shop page ([170a22b](https://github.com/Stephan-MC/morganhairextensions/commit/170a22bf8a956403b2d8399224ebeb11ce55e9d5))
+* **web:** Added environments ([2756673](https://github.com/Stephan-MC/morganhairextensions/commit/275667382fb1107357091771e5c307730f8f7959))
+
 ## [1.2.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.1.1...v1.2.0) (2025-11-02)
 
 
