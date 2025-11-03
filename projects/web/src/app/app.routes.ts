@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
+import { wigResolver, wigsResolver } from "shared";
 
 export const routes: Routes = [
 	{
@@ -13,7 +14,17 @@ export const routes: Routes = [
 	},
 	{
 		path: "shop",
+		resolve: {
+			wigs: wigsResolver,
+		},
 		loadComponent: () => import("./shop/shop.page").then((m) => m.ShopPage),
+	},
+	{
+		path: "wig/:wig",
+		resolve: {
+			wig: wigResolver,
+		},
+		loadComponent: () => import("./wig/wig.page").then((m) => m.WigPage),
 	},
 	{
 		path: "checkout",
