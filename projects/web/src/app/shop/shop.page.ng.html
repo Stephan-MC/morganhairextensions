@@ -1,298 +1,329 @@
-<div class="mb-8 text-center md:mb-12">
-  <h1 class="text-4xl font-bold md:text-5xl font-display">Our Collection</h1>
-  <p class="mt-2 text-text-light/80 dark:text-text-dark/80">
-    Find the perfect style that defines you.
-  </p>
-</div>
-<div class="flex flex-col gap-8 lg:flex-row lg:gap-12">
-  <aside class="w-full lg:w-1/4 bg-(--mat-sys-surface-container-high)">
-    <h2 class="mb-6 text-2xl font-bold font-display">Filters</h2>
-    <div class="space-y-6">
-      <div>
-        <h3 class="mb-3 text-lg font-bold">Hair Type</h3>
-        <div class="space-y-2">
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Human Hair</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Synthetic</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Heat-Friendly Synthetic</span>
-          </label>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70!">
+    <aside class="w-full">
+      <h2 class="mb-6 text-2xl font-bold font-display">Filters</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="mb-3 text-lg font-bold">Hair Type</h3>
+          <div class="space-y-2">
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Human Hair</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Synthetic</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Heat-Friendly Synthetic</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-3 text-lg font-bold">Length</h3>
+          <div class="space-y-2">
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Short</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Medium</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Long</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-3 text-lg font-bold">Color</h3>
+          <div class="flex flex-wrap gap-2">
+            <button
+              class="w-8 h-8 bg-black border focus:ring-2 focus:ring-offset-2 focus:outline-none border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+            <button
+              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#5C3A21] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+            <button
+              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#E6BF83] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+            <button
+              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#D1D1D1] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+            <button
+              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#B85B40] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+            <button
+              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#A0522D] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
+            ></button>
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-3 text-lg font-bold">Style</h3>
+          <div class="space-y-2">
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Straight</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Wavy</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Curly</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
+                type="checkbox"
+              />
+              <span class="ml-3 text-sm">Bob</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-3 text-lg font-bold">Price Range</h3>
+          <mat-slider min="50" max="600" step="10" class="w-full!">
+            <input value="50" matSliderStartThumb />
+            <input value="600" matSliderEndThumb />
+          </mat-slider>
         </div>
       </div>
-      <div>
-        <h3 class="mb-3 text-lg font-bold">Length</h3>
-        <div class="space-y-2">
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Short</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Medium</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Long</span>
-          </label>
-        </div>
-      </div>
-      <div>
-        <h3 class="mb-3 text-lg font-bold">Color</h3>
-        <div class="flex flex-wrap gap-2">
-          <button
-            class="w-8 h-8 bg-black border focus:ring-2 focus:ring-offset-2 focus:outline-none border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-          <button
-            class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#5C3A21] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-          <button
-            class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#E6BF83] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-          <button
-            class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#D1D1D1] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-          <button
-            class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#B85B40] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-          <button
-            class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#A0522D] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-          ></button>
-        </div>
-      </div>
-      <div>
-        <h3 class="mb-3 text-lg font-bold">Style</h3>
-        <div class="space-y-2">
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Straight</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Wavy</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Curly</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              class="w-4 h-4 border-gray-400 text-primary focus:ring-primary/50"
-              type="checkbox"
-            />
-            <span class="ml-3 text-sm">Bob</span>
-          </label>
-        </div>
-      </div>
-      <div>
-        <h3 class="mb-3 text-lg font-bold">Price Range</h3>
-        <mat-slider min="50" max="600" step="10" class="w-full!">
-          <input value="50" matSliderStartThumb />
-          <input value="600" matSliderEndThumb />
-        </mat-slider>
-      </div>
+    </aside>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="mb-8 text-center md:mb-12">
+      <h1 class="text-4xl font-bold md:text-5xl font-display" (click)="sidenav.toggle()">
+        Our Collection
+      </h1>
+      <p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+        Find the perfect style that defines you.
+      </p>
     </div>
-  </aside>
-  <div class="w-full lg:w-3/4">
-    <div class="flex justify-between items-center mb-6">
-      <p class="text-sm text-text-light/80 dark:text-text-dark/80">Showing 12 of 48 products</p>
-
-      <mat-select>
-        <mat-option>Sort by: Featured</mat-option>
-        <mat-option>Price: Low to High</mat-option>
-        <mat-option>Price: High to Low</mat-option>
-        <mat-option>Newest Arrivals</mat-option>
-      </mat-select>
+    <div class="flex flex-col gap-8 px-2 md:px-4 lg:gap-12 lg:px-8">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex gap-2 items-center md:gap-4">
+          <button matButton (click)="sidenav.toggle()">
+            <div class="flex gap-2 items-center">
+              <span>Filters</span>
+              <span class="icon-[octicon--settings]" role="img" aria-hidden="true"></span>
+            </div>
+          </button>
+          <p class="text-sm shrink-0">
+            Showing {{ wigs().meta.per_page }} of {{ wigs().meta.total }} wigs
+          </p>
+        </div>
+        <mat-form-field>
+          <mat-label>Hello</mat-label>
+          <mat-select>
+            <mat-option>Sort by: Featured</mat-option>
+            <mat-option>Price: Low to High</mat-option>
+            <mat-option>Price: High to Low</mat-option>
+            <mat-option>Newest Arrivals</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
+        @for (wig of wigs().data; track wig.id) {
+          <div class="flex flex-col gap-3">
+            <div class="relative w-full aspect-[3/4]">
+              <img
+                [ngSrc]="wig.thumbnail.url"
+                [alt]="wig.description"
+                [priority]="$index < 6"
+                class="object-cover object-center"
+                fill
+              />
+            </div>
+            <div>
+              <a [routerLink]="['/wig', wig.slug]" class="text-base font-medium">{{ wig.name }}</a>
+              <p class="text-sm font-normal text-primary">
+                {{ wig.length.price | currency: 'USD' }}
+              </p>
+            </div>
+          </div>
+        }
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A long wig with beachy waves in a honey blonde color on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDk-DcRVk6bbvgkfCr5WLtlQhwi3rOmS1zb_-1myi2Th6gB2_BOHdpY9d5ZE9HB5RAGB7D6wsjGRZfr5K9uMyB0AU_wQgM5zI6RAbD9-2DL1Oo0lULdBXLWeueqVwyWvVbCrRkjFi6imoaGkiVGqIr2GtmukrDBcNO_H8HII41F-bL-7L0_iuyd-7OwkFJPh6h3VCJfcA6IGCHdpuGqPeuIbqe8XBVnSNROsy2Kn690LbVxRFBS63fqziUzo3MogsRR7ETkA0nYY1s');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Long Beach Waves</p>
+            <p class="text-sm font-normal text-primary">$220</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A sleek and straight long black wig on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5YUWz3X1TGZH0ihl_gI1crozUDu0_0zimiTkM4z6MWnoHAFKW_tyhKzgIjvhKENsTnPdYeM5Ndfw-eZiw6jHPnNqNC9pXdbFLM9wNUz0ZWmxLOVbS21UVrZ5kKo_mJu1qwZ_3gLWYe_fCdY76UM1iXAFqj_m3vNPYRqFiWhFeWXdUbNDuaex7swRIdpr_D3i9DuHQvJwrgyHVa8G2525Pbj4iT29-defxb6GDXdXyBGjRi706Oq3i-Lc9nBFjuO7LTiW_vKxpXwY');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Sleek &amp; Straight</p>
+            <p class="text-sm font-normal text-primary">$190</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A wig with voluminous auburn curls on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzk4KLkXtPeR88SRmFHbtp56Ee0UX9nQ-OXWe8gnpDeXqOGecGfBbgZynPsX_kXRzSli1CiytQThuXA05BkFb-Pz02J8RAkD7K_CjLAId7LCHqRa82Kc8Riy95iau3_kbB-MIM4KndUMm-4g2mkYziTWlaVnMaMAjYq9F6VpoUXXJwmAg77QvA7xd3ULIDyJ0e_oDZg4EdHvrfDJR9IvW3jKaP23i8RNOMnw5PrEVHHoaSGu_GbTLj5sHTi6uJKqroIp89iaoCJds');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Voluminous Curls</p>
+            <p class="text-sm font-normal text-primary">$210</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A silver-grey long wig on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhhC7rAUoU1UlLQ9ewrR35ZM_lqhHasfWtmEW8w_xnlrk_MV5s36xJgzEyDcgahKIKwltbdJ02tifetYqYnkpkBzAiqPtzftkklbkqfTSk7u9J-dy0WiWV6Ce4h_EvcbnKBkT7PgKib2vrtMNfD37nlzEBoPAmIYPn6P2hJkGDrK2Bgy008iF8MBG_E2Su2JqE_vWAPlul5WF9gUWgM4nFoApUqw2zsKyqGZuk7y3KyfkxZP1SR1pndf9ODa4LLW_G4G13e3x3tWM');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Silver Siren</p>
+            <p class="text-sm font-normal text-primary">$250</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A shoulder-length wavy brown wig on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApmPswoAsOu2Iofr2bKFdJtAiqOpUTaVOeO72JSxp71elwQ4Oyu_ct2sck6DNUUNas1lUfIFgmSuQi9vveGw6xMyPMfRAQj_3hFEVdlyX322TvmIbQpnYynk4p7bq0CmGxaUutTqP41-q8psJ-QEgcc6dohOVvUPyHPiZ2gRDtSv1Xonnd-TgIDATXvfokxHCE7q9Z3pSOqgSnN5faYKYb0TPj7gosHocEyQpm6dVJBx1APQgviOIw_3UBEmpR57B3yjXjPWswsYw');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Espresso Waves</p>
+            <p class="text-sm font-normal text-primary">$200</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A vibrant red bob wig on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuWhf7AasFGJxL4tn2nNkb4e7zXcLl4RNZglHOnu-Fgtcdfna6xnnX_jLYTMpVf-Ly8-uDHvMp4nm2ZnOGlLOofjTGMSPLAKpVgpQ7udpmHFxqYaryBh4f5zxJu6pB8tBuo8l8t0ixa5yhpFVFQhAgFdWw1goRu3lX5D2M9DbE8A127JT_Jq6pq_7z7ye_o30OoAYJC92iAvfzBwL7PXxwEjjWGSWcwFmzGoN8rq-_OuKWuhOG6p3sYHAXOiSUoHJaSwG6eZB8zHw');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Ruby Red Bob</p>
+            <p class="text-sm font-normal text-primary">$175</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A platinum blonde pixie cut wig on a mannequin"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB89B5qGXOsFdkPAQawyGd5ggqTXdpLAxLr6VEdkzm5Al2DIc6Rz_fgGYIL6QEN-xjwJlAJ_4kv-VSspqfNfUcpnDc6KbM5oQzjakb4fii34LmBDbLpdB9Zqj2VuP9bTBLGr4932jsCFHH0AcQtPJIHULEBGlm-sgKUP9UMvyUKjQfP02x6zZhMpOu0ufenMbItohkc0kK2ZmvF28yP-qlXikLXp0eScqm2x1Lvlz9z72W4rwCrkIkAJBVmmWEx-1efgeZcOSh5_XM');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Platinum Pixie</p>
+            <p class="text-sm font-normal text-primary">$160</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A long, straight honey blonde wig on a mannequin head."
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArcglT6k3VXPV_m6GZ1O5-fMR8eNuNpdbBz4B7UX8A7YpJWG3MpNJYVfvBtiVUSXmvtqmWQkmcdSCoC3zCoI9eKwDq_PoWdsAcKk64GhVzvxS51eWYuCfLUvUvoLW_RS0-FYvPzf9u-Udy4ewjqaI2Ff_c0qDIb6C2WS7Xd86UptAFFqItylYcge0semvEEYUNhK-p48HAkAGmuZkJhmOyH2t4HM7Be7ogXt95K2-r2Wt10PcKIZNWOIYgbFU6OAidHm7BbKKyAuk');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Honey Blonde Straight</p>
+            <p class="text-sm font-normal text-primary">$230</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A curly brunette wig displayed on a mannequin head."
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgxPMSXOhkUbLRGgTq0Ah-yarJwwSQP0FypVmFq4P6Mjond0ub9TGWuyiGUXHyDNw5VhUoTsXA_eymtU13EL4wKqGe3ziN2Jr3wizIqn0LjOIHNXF4d5P8yoj_FXOdCNRSoXgyIycoxgpqujIe2QY6Od5K36rEJ8WEk4vYUt4ZghfIvwr4xbFxzlDJTprPXRfSR6BR-kY7RphPbhH4BoIYfbVeabRrWLmU09Oun34Pd3A4WtrncUi6XMVXuvIkNmQN-RrRBZi78oU');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Chocolate Curls</p>
+            <p class="text-sm font-normal text-primary">$215</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A short, pastel pink pixie cut wig."
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrXDTncP-rI6yXuWtSkqOyyqUB9dTHodVmTWy8hA60Jfncy-ZlMYEwPjxGKD6z2woIcNSJcczz1HoOQNx-75qoqRvyzeoz2gQ_Rn5N0PltevnJDUxNNpYten_YUqaPiet6OKoha3kmm98zf_-HnomfE9_5z6cqrr8ass0Xy_gk-3q1IPPGmVL6Z4ixcV8WFXvk88goiwzLaaosrq8m5Ae-5xIf7YSdeJWAn_QMIEBXIrhQhnRWVJUCCX2I0t_OWZ909BDelJdUFME');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Pastel Pink Pixie</p>
+            <p class="text-sm font-normal text-primary">$180</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div
+            class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
+            data-alt="A long, wavy jet black wig on a mannequin."
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOnTWpETd5wb-Xsei6P5_Hexq0x51WWED8JtzA1tnEabD4N4Xqu9rELHc8A2qWazwqedVxaPmj4fB48-e0swzc8gZeuAAfx8-SRy_3v-nCE-4qYJ2Coob1js8LS2-mVAx0S7MvqsFUwkWDoyDiZ4owXNsnyLxOlZXMZGtRTsln3iC9ICjRYtXojr5qLFMJqvKVcY92eimwF5QwNxxMtJcqxHjIA0RhTEQxvwkAIcew-XuJIfB7bgLfUOBAYB_j-VZJ6MMLc6Ojqjg');
+            "
+          ></div>
+          <div>
+            <p class="text-base font-medium">Jet Black Waves</p>
+            <p class="text-sm font-normal text-primary">$225</p>
+          </div>
+        </div>
+      </div>
+      <mat-paginator
+        class="mt-8"
+        [pageIndex]="wigs().meta.current_page - 1"
+        [pageSize]="wigs().meta.per_page"
+        [length]="wigs().meta.total"
+        [pageSizeOptions]="[10, 20, 30, 40, 50]"
+      ></mat-paginator>
     </div>
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A classic bob-style wig in a dark brown color on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5FOQjXz_JgvUS5Qyf0-hnEV8dzFS4wMn55KaEJ8Vyg62g6vGo6grzjLeivZnaQXmT49hKVKPLxADDg1pkX1-4AHkW8hZMuUKoBIIxoGDdrbLBhyCHmXdvAEYVYxr4905-Dn9YzJnvezLCM2pErb1GnXbG5MsI3QTtlw_iesOHAdYR2R4L7O45VHL3x5LkRQog-e198NKhrKVTbljHa4mebYzFPKkHUR96z-bKhundofyKXmGnJ1hWwd-01ZjxGhRWvga4YkqwrDM');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">The Classic Bob</p>
-          <p class="text-sm font-normal text-primary">$150</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A long wig with beachy waves in a honey blonde color on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDk-DcRVk6bbvgkfCr5WLtlQhwi3rOmS1zb_-1myi2Th6gB2_BOHdpY9d5ZE9HB5RAGB7D6wsjGRZfr5K9uMyB0AU_wQgM5zI6RAbD9-2DL1Oo0lULdBXLWeueqVwyWvVbCrRkjFi6imoaGkiVGqIr2GtmukrDBcNO_H8HII41F-bL-7L0_iuyd-7OwkFJPh6h3VCJfcA6IGCHdpuGqPeuIbqe8XBVnSNROsy2Kn690LbVxRFBS63fqziUzo3MogsRR7ETkA0nYY1s');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Long Beach Waves</p>
-          <p class="text-sm font-normal text-primary">$220</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A sleek and straight long black wig on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5YUWz3X1TGZH0ihl_gI1crozUDu0_0zimiTkM4z6MWnoHAFKW_tyhKzgIjvhKENsTnPdYeM5Ndfw-eZiw6jHPnNqNC9pXdbFLM9wNUz0ZWmxLOVbS21UVrZ5kKo_mJu1qwZ_3gLWYe_fCdY76UM1iXAFqj_m3vNPYRqFiWhFeWXdUbNDuaex7swRIdpr_D3i9DuHQvJwrgyHVa8G2525Pbj4iT29-defxb6GDXdXyBGjRi706Oq3i-Lc9nBFjuO7LTiW_vKxpXwY');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Sleek &amp; Straight</p>
-          <p class="text-sm font-normal text-primary">$190</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A wig with voluminous auburn curls on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzk4KLkXtPeR88SRmFHbtp56Ee0UX9nQ-OXWe8gnpDeXqOGecGfBbgZynPsX_kXRzSli1CiytQThuXA05BkFb-Pz02J8RAkD7K_CjLAId7LCHqRa82Kc8Riy95iau3_kbB-MIM4KndUMm-4g2mkYziTWlaVnMaMAjYq9F6VpoUXXJwmAg77QvA7xd3ULIDyJ0e_oDZg4EdHvrfDJR9IvW3jKaP23i8RNOMnw5PrEVHHoaSGu_GbTLj5sHTi6uJKqroIp89iaoCJds');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Voluminous Curls</p>
-          <p class="text-sm font-normal text-primary">$210</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A silver-grey long wig on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhhC7rAUoU1UlLQ9ewrR35ZM_lqhHasfWtmEW8w_xnlrk_MV5s36xJgzEyDcgahKIKwltbdJ02tifetYqYnkpkBzAiqPtzftkklbkqfTSk7u9J-dy0WiWV6Ce4h_EvcbnKBkT7PgKib2vrtMNfD37nlzEBoPAmIYPn6P2hJkGDrK2Bgy008iF8MBG_E2Su2JqE_vWAPlul5WF9gUWgM4nFoApUqw2zsKyqGZuk7y3KyfkxZP1SR1pndf9ODa4LLW_G4G13e3x3tWM');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Silver Siren</p>
-          <p class="text-sm font-normal text-primary">$250</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A shoulder-length wavy brown wig on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApmPswoAsOu2Iofr2bKFdJtAiqOpUTaVOeO72JSxp71elwQ4Oyu_ct2sck6DNUUNas1lUfIFgmSuQi9vveGw6xMyPMfRAQj_3hFEVdlyX322TvmIbQpnYynk4p7bq0CmGxaUutTqP41-q8psJ-QEgcc6dohOVvUPyHPiZ2gRDtSv1Xonnd-TgIDATXvfokxHCE7q9Z3pSOqgSnN5faYKYb0TPj7gosHocEyQpm6dVJBx1APQgviOIw_3UBEmpR57B3yjXjPWswsYw');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Espresso Waves</p>
-          <p class="text-sm font-normal text-primary">$200</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A vibrant red bob wig on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuWhf7AasFGJxL4tn2nNkb4e7zXcLl4RNZglHOnu-Fgtcdfna6xnnX_jLYTMpVf-Ly8-uDHvMp4nm2ZnOGlLOofjTGMSPLAKpVgpQ7udpmHFxqYaryBh4f5zxJu6pB8tBuo8l8t0ixa5yhpFVFQhAgFdWw1goRu3lX5D2M9DbE8A127JT_Jq6pq_7z7ye_o30OoAYJC92iAvfzBwL7PXxwEjjWGSWcwFmzGoN8rq-_OuKWuhOG6p3sYHAXOiSUoHJaSwG6eZB8zHw');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Ruby Red Bob</p>
-          <p class="text-sm font-normal text-primary">$175</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A platinum blonde pixie cut wig on a mannequin"
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB89B5qGXOsFdkPAQawyGd5ggqTXdpLAxLr6VEdkzm5Al2DIc6Rz_fgGYIL6QEN-xjwJlAJ_4kv-VSspqfNfUcpnDc6KbM5oQzjakb4fii34LmBDbLpdB9Zqj2VuP9bTBLGr4932jsCFHH0AcQtPJIHULEBGlm-sgKUP9UMvyUKjQfP02x6zZhMpOu0ufenMbItohkc0kK2ZmvF28yP-qlXikLXp0eScqm2x1Lvlz9z72W4rwCrkIkAJBVmmWEx-1efgeZcOSh5_XM');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Platinum Pixie</p>
-          <p class="text-sm font-normal text-primary">$160</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A long, straight honey blonde wig on a mannequin head."
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArcglT6k3VXPV_m6GZ1O5-fMR8eNuNpdbBz4B7UX8A7YpJWG3MpNJYVfvBtiVUSXmvtqmWQkmcdSCoC3zCoI9eKwDq_PoWdsAcKk64GhVzvxS51eWYuCfLUvUvoLW_RS0-FYvPzf9u-Udy4ewjqaI2Ff_c0qDIb6C2WS7Xd86UptAFFqItylYcge0semvEEYUNhK-p48HAkAGmuZkJhmOyH2t4HM7Be7ogXt95K2-r2Wt10PcKIZNWOIYgbFU6OAidHm7BbKKyAuk');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Honey Blonde Straight</p>
-          <p class="text-sm font-normal text-primary">$230</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A curly brunette wig displayed on a mannequin head."
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgxPMSXOhkUbLRGgTq0Ah-yarJwwSQP0FypVmFq4P6Mjond0ub9TGWuyiGUXHyDNw5VhUoTsXA_eymtU13EL4wKqGe3ziN2Jr3wizIqn0LjOIHNXF4d5P8yoj_FXOdCNRSoXgyIycoxgpqujIe2QY6Od5K36rEJ8WEk4vYUt4ZghfIvwr4xbFxzlDJTprPXRfSR6BR-kY7RphPbhH4BoIYfbVeabRrWLmU09Oun34Pd3A4WtrncUi6XMVXuvIkNmQN-RrRBZi78oU');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Chocolate Curls</p>
-          <p class="text-sm font-normal text-primary">$215</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A short, pastel pink pixie cut wig."
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrXDTncP-rI6yXuWtSkqOyyqUB9dTHodVmTWy8hA60Jfncy-ZlMYEwPjxGKD6z2woIcNSJcczz1HoOQNx-75qoqRvyzeoz2gQ_Rn5N0PltevnJDUxNNpYten_YUqaPiet6OKoha3kmm98zf_-HnomfE9_5z6cqrr8ass0Xy_gk-3q1IPPGmVL6Z4ixcV8WFXvk88goiwzLaaosrq8m5Ae-5xIf7YSdeJWAn_QMIEBXIrhQhnRWVJUCCX2I0t_OWZ909BDelJdUFME');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Pastel Pink Pixie</p>
-          <p class="text-sm font-normal text-primary">$180</p>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div
-          class="w-full bg-center bg-no-repeat bg-cover aspect-[3/4]"
-          data-alt="A long, wavy jet black wig on a mannequin."
-          style="
-            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOnTWpETd5wb-Xsei6P5_Hexq0x51WWED8JtzA1tnEabD4N4Xqu9rELHc8A2qWazwqedVxaPmj4fB48-e0swzc8gZeuAAfx8-SRy_3v-nCE-4qYJ2Coob1js8LS2-mVAx0S7MvqsFUwkWDoyDiZ4owXNsnyLxOlZXMZGtRTsln3iC9ICjRYtXojr5qLFMJqvKVcY92eimwF5QwNxxMtJcqxHjIA0RhTEQxvwkAIcew-XuJIfB7bgLfUOBAYB_j-VZJ6MMLc6Ojqjg');
-          "
-        ></div>
-        <div>
-          <p class="text-base font-medium">Jet Black Waves</p>
-          <p class="text-sm font-normal text-primary">$225</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
