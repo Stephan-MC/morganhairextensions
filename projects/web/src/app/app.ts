@@ -8,6 +8,7 @@ import {
 	ResolveEnd,
 	ResolveStart,
 	Router,
+	RouterLink,
 	RouterOutlet,
 } from "@angular/router";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
@@ -16,7 +17,7 @@ import { filter, map, of, switchMap, tap, timer } from "rxjs";
 
 @Component({
 	selector: "web-root",
-	imports: [RouterOutlet, MatIconModule, MatProgressBarModule],
+	imports: [RouterOutlet, RouterLink, MatIconModule, MatProgressBarModule],
 	templateUrl: "./app.html",
 	styleUrl: "./app.scss",
 })

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Shared } from './shared';
+import { WigPage } from './wig.page';
 
-describe('Shared', () => {
-  let component: Shared;
-  let fixture: ComponentFixture<Shared>;
+describe('WigPage', () => {
+  let component: WigPage;
+  let fixture: ComponentFixture<WigPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Shared]
+      imports: [WigPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Shared);
+    fixture = TestBed.createComponent(WigPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
