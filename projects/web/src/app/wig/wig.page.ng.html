@@ -1,4 +1,4 @@
-<div class="flex flex-col px-4 w-full max-w-7xl sm:px-10">
+<div class="flex flex-col px-4 mx-auto w-full max-w-7xl sm:px-10">
   <!-- Breadcrumbs -->
   <div class="flex flex-wrap gap-2 py-4">
     <a
@@ -14,7 +14,7 @@
     >
     <span class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-400">/</span>
     <span class="text-sm font-medium leading-normal text-gray-900 dark:text-white">
-      {{ wig().name }}
+      {{ wig()?.name }}
     </span>
   </div>
   <!-- Product Section -->
@@ -25,7 +25,7 @@
         class="w-full bg-center bg-no-repeat bg-cover aspect-square"
         data-alt="Main view of a long, wavy, blonde wig on a mannequin"
         style="
-          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFYlrPiFYOde_an_595vG4QuPB3-pvWi95jDc1z31G3y9X4D87wSVYQ-efMhxofKxkz-0SzxN-0BruMC4ShapDQJwa7W_m2zuPgaOK2g6BN3cYzKyEac_1uP4N9DdaoNNHOpOMb91_QZG59QU05UCKNcl9Tj-8d7xSsgrZxI3iNSOjoKoS59N-VEoh0IA1LtNNzMlbfwGtQqrYNBxq50M_CwKDtnzeNVdUfhVHTYsDqKSQMbRZv_KIpFAIPuyq_gaNA-xjRCYyj_c');
+        background-image: url({{ wig()?.thumbnail?.url }});
         "
       ></div>
       <div class="grid grid-cols-5 gap-4">
@@ -72,7 +72,7 @@
         <h1
           class="text-4xl font-black leading-tight text-gray-900 dark:text-white tracking-[-0.033em]"
         >
-          The Empress Silk Wig
+          {{ wig()?.name }}
         </h1>
         <div class="flex gap-2 items-center">
           <div class="flex text-accent">
@@ -84,7 +84,9 @@
           </div>
           <span class="text-sm text-gray-600 dark:text-gray-400">(121 reviews)</span>
         </div>
-        <p class="mt-2 text-2xl font-bold leading-normal text-primary">$350.00</p>
+        <p class="mt-2 text-2xl font-bold leading-normal text-primary">
+          {{ length().price | currency: 'USD' }}
+        </p>
       </div>
       <!-- Variant Selectors -->
       <div class="flex flex-col gap-4">
@@ -101,9 +103,9 @@
         </div>
         <mat-form-field>
           <mat-label>LENGTH</mat-label>
-          <mat-select>
+          <mat-select (selectionChange)="length.set($event.value)">
             @for (length of wig().lengths; track length.id) {
-              <mat-option>{{ length.value }} inches</mat-option>
+              <mat-option [value]="length">{{ length.value }} inches</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -117,16 +119,13 @@
         </mat-form-field>
       </div>
       <!-- Action Buttons -->
-      <div class="flex gap-4 mt-4">
-        <button
-          class="flex flex-1 justify-center items-center h-12 text-sm font-bold tracking-wider text-gray-900 uppercase hover:bg-opacity-90 bg-accent"
-        >
-          Add to Cart
-        </button>
+      <div class="flex gap-4 items-stretch mt-4">
+        <button matButton="filled" class="rounded-none! grow h-full!">Add to Cart</button>
         <button
           class="flex justify-center items-center w-12 h-12 text-gray-800 border border-gray-300 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
-          <span class="material-symbols-outlined">favorite_border</span>
+          <mat-icon>favorite_border</mat-icon>
+          <!-- <span class="material-symbols-outlined">favorite_border</span> -->
         </button>
       </div>
       <!-- Tabbed Information Section -->
@@ -139,7 +138,7 @@
       <mat-tab label="Description">
         <div class="py-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
           <p>
-            {{ wig().description }}
+            {{ wig()?.description }}
           </p>
           <ul class="pl-5 mt-4 space-y-1 list-disc">
             <li>100% Remy Human Hair</li>
