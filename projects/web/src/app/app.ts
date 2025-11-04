@@ -1,29 +1,27 @@
 import {
-	Component,
-	DOCUMENT,
-	effect,
-	Inject,
-	inject,
-	Renderer2,
-	signal,
+    Component,
+    DOCUMENT,
+    Inject,
+    inject,
+    Renderer2,
+    signal
 } from "@angular/core";
-import { MatIconModule } from "@angular/material/icon";
-import {
-	ActivatedRoute,
-	NavigationCancel,
-	NavigationEnd,
-	NavigationError,
-	NavigationStart,
-	ResolveEnd,
-	ResolveStart,
-	Router,
-	RouterLink,
-	RouterOutlet,
-} from "@angular/router";
-import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { filter, map, of, switchMap, tap, timer } from "rxjs";
+import { MatIconModule } from "@angular/material/icon";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { Meta } from "@angular/platform-browser";
+import {
+    NavigationCancel,
+    NavigationEnd,
+    NavigationError,
+    NavigationStart,
+    ResolveEnd,
+    ResolveStart,
+    Router,
+    RouterLink,
+    RouterOutlet
+} from "@angular/router";
+import { filter, map, of, switchMap, tap, timer } from "rxjs";
 import { environment } from "../environments/environment";
 
 @Component({
@@ -33,11 +31,7 @@ import { environment } from "../environments/environment";
 	styleUrl: "./app.scss",
 })
 export class App {
-	private _meta = inject(Meta);
-	private _renderer = inject(Renderer2);
-	private _document = inject(DOCUMENT);
 	private _router = inject(Router);
-	private _route = inject(ActivatedRoute);
 	protected readonly title = signal("web");
 
 	loading = toSignal(
@@ -64,7 +58,7 @@ export class App {
 		},
 	);
 
-	constructor() {
+	constructor(meta: Meta, renderer: Renderer2, @Inject(DOCUMENT) document: Document) {
 		this._router.events
 			.pipe(
 				filter((e) => e instanceof NavigationEnd),
@@ -72,21 +66,21 @@ export class App {
 
 				// Set canonical
 				tap((url) => {
-					const element = this._document.querySelector("link[rel='canonical']");
+					const element = document.querySelector("link[rel='canonical']");
 
 					if (element) {
-						this._renderer.removeChild(this._document.head, element);
+						renderer.removeChild(document.head, element);
 					}
 
-					const link: HTMLLinkElement = this._renderer.createElement("link");
-					this._renderer.setAttribute(link, "rel", "canonical");
-					this._renderer.setAttribute(link, "href", url);
-					this._renderer.appendChild(this._document.head, link);
+					const link: HTMLLinkElement = renderer.createElement("link");
+					renderer.setAttribute(link, "rel", "canonical");
+					renderer.setAttribute(link, "href", url);
+					renderer.appendChild(document.head, link);
 				}),
 
 				// Update meta tags
 				tap((url) => {
-					this._meta.updateTag({
+					meta.updateTag({
 						id: "og:url",
 						property: "og:url",
 						content: url,
@@ -94,5 +88,18 @@ export class App {
 				}),
 			)
 			.subscribe();
+
+    meta.addTags([
+      {
+      id: 'keywords',
+      name: 'keywords',
+      content: 'morgan hair, hair, wig, wigs, accessories, accessory, shop, shopping, buy, sell, seller, sellers, styling, stylist, stylists, style, styles, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, accessory, accessories, lace, frontal'
+    },
+      {
+        property: "og:image",
+        id: "og:image",
+        content: "/assets/images/morgan-hair-circular-flyer.jpeg",
+      },
+    ]);
 	}
 }
