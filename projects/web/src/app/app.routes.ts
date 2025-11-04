@@ -4,16 +4,20 @@ import { wigResolver, wigsResolver } from "shared";
 export const routes: Routes = [
 	{
 		path: "",
+		title: "Style without limits",
 		pathMatch: "full",
 		loadComponent: () =>
 			import("./landing/landing.page").then((m) => m.LandingPage),
 	},
 	{
 		path: "cart",
+		title: "Your cart, confirm order and checkout",
 		loadComponent: () => import("./cart/cart.page").then((m) => m.CartPage),
 	},
 	{
 		path: "shop",
+		title:
+			"Browse, Explore and discover wigs that fit your unique style from our large collection",
 		resolve: {
 			wigs: wigsResolver,
 		},
