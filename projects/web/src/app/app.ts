@@ -14,11 +14,12 @@ import {
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, of, switchMap, tap, timer } from "rxjs";
+import { Meta } from "@angular/platform-browser";
 
 @Component({
 	selector: "web-root",
 	imports: [RouterOutlet, RouterLink, MatIconModule, MatProgressBarModule],
-	templateUrl: "./app.html",
+	templateUrl: "./app.ng.html",
 	styleUrl: "./app.scss",
 })
 export class App {
@@ -48,4 +49,12 @@ export class App {
 			initialValue: false,
 		},
 	);
+
+	constructor(meta: Meta) {
+		meta.updateTag({
+			id: "og:url",
+			property: "og:url",
+			content: "https://morganhairextensions.com" + this._router.url,
+		});
+	}
 }
