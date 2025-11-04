@@ -32,4 +32,22 @@ export class Wig {
 				.pipe(),
 		),
 	);
+
+	featuredWigs(params: Record<string, number | string> = {}) {
+		return this._http.get<Array<Model.Wig>>(
+			`${this._environment.url.api}/wigs/featured`,
+			{
+				params: { limit: 4, new: "", ...params },
+			},
+		);
+	}
+
+	popularWigs(params: Record<string, string | number> = {}) {
+		return this._http.get<Array<Model.Wig>>(
+			`${this._environment.url.api}/wigs`,
+			{
+				params: { limit: 4, popular: "", ...params },
+			},
+		);
+	}
 }
