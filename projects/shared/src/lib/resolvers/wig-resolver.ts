@@ -44,9 +44,15 @@ export const wigsResolver: ResolveFn<Paginated<Model.Wig>> = (route, state) => {
 	wigService.params$.next(
 		Object.fromEntries(
 			Object.entries(route.queryParams).filter(([key]) =>
-				["color", "texture", "length", "source", "hair_type", "page"].includes(
-					key.toLowerCase(),
-				),
+				[
+					"color",
+					"texture",
+					"length",
+					"source",
+					"hair_type",
+					"page",
+					"lace",
+				].includes(key.toLowerCase()),
 			),
 		),
 	);
