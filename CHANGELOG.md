@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.4.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.3.0...v1.4.0) (2025-11-04)
+
+
+### Features
+
+* Added a hairType Service ([cf8894b](https://github.com/Stephan-MC/morganhairextensions/commit/cf8894b5bb4239ae6d27f37f6153d5c164863095))
+* Added an og:image for the site ([d35782c](https://github.com/Stephan-MC/morganhairextensions/commit/d35782c6166a7b57acf190bf7cca79e2c6f3fdbe))
+* Added another filter for `lace` in the wig resolver ([bd2ceff](https://github.com/Stephan-MC/morganhairextensions/commit/bd2ceffb5fee62ed145b67b7a3c36f6a0a63b77e))
+* The shop page now filters wig results based on route queryParams ([06e0b3b](https://github.com/Stephan-MC/morganhairextensions/commit/06e0b3bafc08eb9cff73504874328c1e0180595f))
+* The wig page is now partially dynamic ([567b964](https://github.com/Stephan-MC/morganhairextensions/commit/567b964e4128c28f6d488c02f91a61ce292ad104))
+* Wig service now fetches popular and featured wigs ([48adc57](https://github.com/Stephan-MC/morganhairextensions/commit/48adc57a77a0ea3647a715219b6074b9018e8152))
+
+
+### Bug Fixes
+
+* Added routes titles ([d15b667](https://github.com/Stephan-MC/morganhairextensions/commit/d15b66721fe2dec4058e672190d3830bdadfe89f))
+* Adjusted wrongly formed cannonical URLs ([38ad584](https://github.com/Stephan-MC/morganhairextensions/commit/38ad5846398abfb409ce6c3365f81a9e0fdc4dc3))
+* Fixed input labels not showing ([3364dac](https://github.com/Stephan-MC/morganhairextensions/commit/3364dacf05109e429dc21d32d2ae05ef02a36e38))
+* Fixed paginated data counts on the shop page ([3035f84](https://github.com/Stephan-MC/morganhairextensions/commit/3035f848f008b7fb9354267ebb3dbe344dda4ec7))
+* HairType models now has slugs ([6c13e09](https://github.com/Stephan-MC/morganhairextensions/commit/6c13e09407e9e07aacfc7f84f0df5598b32e0f85))
+
 ## [1.3.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.2.0...v1.3.0) (2025-11-03)
 
 
