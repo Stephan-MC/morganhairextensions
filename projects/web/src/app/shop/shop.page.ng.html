@@ -140,7 +140,8 @@
             </div>
           </button>
           <p class="text-sm shrink-0">
-            Showing {{ wigs().meta.per_page }} of {{ wigs().meta.total }} wigs
+            Showing {{ (wigs().meta.to || 0) - (wigs().meta.from || 0) }} of
+            {{ wigs().meta.total }} wigs
           </p>
         </div>
         <mat-form-field>
