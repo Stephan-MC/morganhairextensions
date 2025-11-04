@@ -146,17 +146,19 @@ $tertiary-palette: map.merge(map.get($_palettes, tertiary), $_rest);
 
 html {
   @include mat.theme((
+    theme-type: color-scheme,
     color-scheme: light dark,
     color: (
       primary: $primary-palette,
       tertiary: $tertiary-palette,
     ),
     typography: Roboto,
-    density: -2,
+    density: -1,
   ));
 }
 
 body {
-    background-color: var(--mat-sys-surface-container);
-    color: var(--mat-sys-on-surface-container);
+    background-color: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-body-medium);
   }

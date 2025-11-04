@@ -64,6 +64,7 @@ export namespace Model {
 		}
 		export interface HairType extends Model {
 			name: string;
+			slug: string;
 			thumbnail: Media;
 		}
 		export interface Parting extends Model {
