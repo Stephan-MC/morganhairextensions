@@ -35,4 +35,10 @@ export const routes: Routes = [
 		loadComponent: () =>
 			import("./checkout/checkout.page").then((m) => m.CheckoutPage),
 	},
+
+	{
+		path: "contact",
+		loadComponent: () =>
+			import("./contact/contact.page").then((m) => m.ContactPage),
+	},
 ];
