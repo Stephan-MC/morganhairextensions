@@ -2,8 +2,7 @@ import { CurrencyPipe } from "@angular/common";
 import { Component, effect, inject, input, linkedSignal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIcon } from "@angular/material/icon";
-import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
 import { Meta, Title } from "@angular/platform-browser";
@@ -17,7 +16,7 @@ import { Model } from "shared";
 		MatSelectModule,
 		MatButtonModule,
 		CurrencyPipe,
-		MatIcon,
+		MatIconModule,
 	],
 	templateUrl: "./wig.page.ng.html",
 	styleUrl: "./wig.page.scss",
