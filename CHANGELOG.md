@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.5.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.4.0...v1.5.0) (2025-11-15)
+
+
+### Features
+
+* Added about page ([2bc139b](https://github.com/Stephan-MC/morganhairextensions/commit/2bc139bc11d6d6f7e2f574c5e99efcd57425ecf9))
+* Added contact page ([bb0d389](https://github.com/Stephan-MC/morganhairextensions/commit/bb0d389ee6732b8db38cb4b7719c4dbf16ae2400))
+* Added contact page ([62ab713](https://github.com/Stephan-MC/morganhairextensions/commit/62ab713cf5dbea446b61a58498101223b8974973))
+* Added wig related services ([4ac47d8](https://github.com/Stephan-MC/morganhairextensions/commit/4ac47d8c8e2e89680ee1598654a3e65bddabfe8e))
+
+
+### Bug Fixes
+
+* ... ([afb7b73](https://github.com/Stephan-MC/morganhairextensions/commit/afb7b73943a204ae46a5f99850324d66f02d10ef))
+* Added yarn.lock for firebase app hosting ([f103ea3](https://github.com/Stephan-MC/morganhairextensions/commit/f103ea3ca6214c53a4569280b1c5303af964c32a))
+* enhanced filtering on the shop page ([298d857](https://github.com/Stephan-MC/morganhairextensions/commit/298d857d2655840154aafc78e9c2580abbd2d21b))
+* Fixed filters from shop page ([e5a0014](https://github.com/Stephan-MC/morganhairextensions/commit/e5a0014fb080e796b9405aae0bc5a6b61a2e0392))
+* Fixed issue with requireSync ([1ff1485](https://github.com/Stephan-MC/morganhairextensions/commit/1ff1485eb07e65ef71b06b04e3a507a1c3a13184))
+* Fixed issue with requireSync failing ([2bdc7d5](https://github.com/Stephan-MC/morganhairextensions/commit/2bdc7d5e3821e52b80d29cf03b2ebe3065e34075))
+* Fixed issue with sidenav when page shrinks or has no content ([d880711](https://github.com/Stephan-MC/morganhairextensions/commit/d8807112a38ca57c3253a04e57cbbc8562b2f46c))
+* Increased thumbnails sizes ([b28109b](https://github.com/Stephan-MC/morganhairextensions/commit/b28109ba713acb835462a8c6fae0a649343018e9))
+* Resover now works in SSR mode ([108edad](https://github.com/Stephan-MC/morganhairextensions/commit/108edadf04458a35b8202778194fa098cf7b5a57))
+* **web:** Home page now renders using SSR ([79961e2](https://github.com/Stephan-MC/morganhairextensions/commit/79961e20d2eafdb004383b1d00249994871210d7))
+
 ## [1.4.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.3.0...v1.4.0) (2025-11-04)
 
 
