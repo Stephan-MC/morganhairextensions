@@ -1,61 +1,64 @@
-<mat-sidenav-container class="min-h-screen">
+<mat-sidenav-container class="py-16 min-h-screen">
   <mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70!">
     <aside class="w-full">
       <h2 class="mb-6 text-2xl font-bold font-display">Filters</h2>
       <div class="space-y-6">
         <div>
-          <form [formGroup]="form" class="flex flex-col gap-5">
-            <div>
-              <h3 class="mb-3 text-lg font-bold">Hair Type</h3>
-              <mat-chip-listbox formControlName="hair_type">
-                @for (hairType of hairTypes(); track hairType.id) {
-                  <mat-chip-option>{{ hairType.name }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
-            </div>
-            <div>
-              <h3 class="mb-3 text-lg font-bold">Color</h3>
-              <mat-chip-listbox formControlName="color">
-                @for (color of colors(); track color.id) {
-                  <mat-chip-option>{{ color.name }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
-            </div>
-            <div>
-              <h3 class="mb-3 text-lg font-bold">Texture</h3>
-              <mat-chip-listbox formControlName="texture">
-                @for (texture of textures(); track texture.id) {
-                  <mat-chip-option>{{ texture.name }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
-            </div>
-            <div>
-              <h3 class="mb-3 text-lg font-bold">Source</h3>
-              <mat-chip-listbox formControlName="source">
-                @for (source of sources(); track source.id) {
-                  <mat-chip-option>{{ source.name }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
-            </div>
-            <div>
-              <h3 class="mb-3 text-lg font-bold">length</h3>
-              <mat-chip-listbox formControlName="length">
-                @for (length of lengths; track length) {
-                  <mat-chip-option>
-                    {{ length }}
-                  </mat-chip-option>
-                }
-              </mat-chip-listbox>
-            </div>
-            <div class="px-2" formGroupName="price">
-              <h3 class="mb-3 text-lg font-bold">
-                Price Range ( {{ form.controls.price.controls['min'].getRawValue() }} -
-                {{ form.controls.price.controls['max'].getRawValue() }})
-              </h3>
-              <mat-slider min="50" max="600" step="10">
-                <input formControlName="min" value="50" matSliderStartThumb />
-                <input formControlName="max" value="600" matSliderEndThumb />
-              </mat-slider>
+          <form [formGroup]="form">
+            <div class="flex flex-col gap-5" formGroupName="filters">
+              <div>
+                <h3 class="mb-3 text-lg font-bold">Hair Type</h3>
+                <mat-chip-listbox formControlName="hair_type">
+                  @for (hairType of hairTypes(); track hairType.id) {
+                    <mat-chip-option>{{ hairType.name }}</mat-chip-option>
+                  }
+                </mat-chip-listbox>
+              </div>
+              <div>
+                <h3 class="mb-3 text-lg font-bold">Color</h3>
+                <mat-chip-listbox formControlName="color">
+                  @for (color of colors(); track color.id) {
+                    <mat-chip-option>{{ color.name }}</mat-chip-option>
+                  }
+                </mat-chip-listbox>
+              </div>
+              <div>
+                <h3 class="mb-3 text-lg font-bold">Texture</h3>
+                <mat-chip-listbox formControlName="texture">
+                  @for (texture of textures(); track texture.id) {
+                    <mat-chip-option>{{ texture.name }}</mat-chip-option>
+                  }
+                </mat-chip-listbox>
+              </div>
+              <div>
+                <h3 class="mb-3 text-lg font-bold">Source</h3>
+                <mat-chip-listbox formControlName="source">
+                  @for (source of sources(); track source.id) {
+                    <mat-chip-option>{{ source.name }}</mat-chip-option>
+                  }
+                </mat-chip-listbox>
+              </div>
+              <div>
+                <h3 class="mb-3 text-lg font-bold">length</h3>
+                <mat-chip-listbox formControlName="length">
+                  @for (length of lengths; track length) {
+                    <mat-chip-option>
+                      {{ length }}
+                    </mat-chip-option>
+                  }
+                </mat-chip-listbox>
+              </div>
+              <div class="px-2" formGroupName="price">
+                <h3 class="mb-3 text-lg font-bold">
+                  Price Range (
+                  {{ form.controls.filters.controls.price.controls['min'].getRawValue() }} -
+                  {{ form.controls.filters.controls.price.controls['max'].getRawValue() }})
+                </h3>
+                <mat-slider min="50" max="600" step="10">
+                  <input formControlName="min" value="50" matSliderStartThumb />
+                  <input formControlName="max" value="600" matSliderEndThumb />
+                </mat-slider>
+              </div>
             </div>
           </form>
         </div>
@@ -95,6 +98,12 @@
       </p>
     </div>
     <div class="flex flex-col gap-8 px-2 md:px-4 lg:gap-12 lg:px-8">
+      <form [formGroup]="form" class="basis-full *:w-full">
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input formControlName="q" matInput placeholder="Search name, description, etc.." />
+        </mat-form-field>
+      </form>
       <div class="flex justify-between items-center mb-6">
         <div class="flex gap-2 justify-between items-center w-full md:gap-4">
           <p class="text-sm shrink-0">
@@ -136,7 +145,7 @@
         [pageSize]="wigs().meta.per_page"
         [length]="wigs().meta.total"
         [pageSizeOptions]="[10, 20, 30, 40, 50]"
-        (page)="form.patchValue({ page: $event.pageIndex + 1 })"
+        (page)="form.controls.filters?.patchValue({ page: $event.pageIndex + 1 })"
       ></mat-paginator>
     </div>
   </mat-sidenav-content>
