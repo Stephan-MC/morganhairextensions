@@ -1,5 +1,13 @@
-import { Injectable } from "@angular/core";
-import { from, mergeMap, Observable, Subject } from "rxjs";
+import { isPlatformBrowser, isPlatformServer } from "@angular/common";
+import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import {
+	BehaviorSubject,
+	filter,
+	from,
+	mergeMap,
+	Observable,
+	Subject,
+} from "rxjs";
 
 @Injectable({
 	providedIn: "root",
@@ -7,7 +15,9 @@ import { from, mergeMap, Observable, Subject } from "rxjs";
 export class DB {
 	private dbName = "wigs";
 	private version = 1;
-	private dbSubject = new Subject<IDBDatabase>();
+	#db = new BehaviorSubject<IDBDatabase | null>(null);
+	db$ = this.#db.asObservable();
+	#platformId = inject(PLATFORM_ID);
 
 	private schema: Array<
 		{
@@ -17,7 +27,7 @@ export class DB {
 	> = [
 		{
 			storeName: "cart",
-			keyPath: "id",
+			keyPath: ["id", "length.id"],
 		},
 		{
 			storeName: "favorites",
@@ -30,22 +40,27 @@ export class DB {
 	}
 
 	init() {
+		if (isPlatformServer(this.#platformId)) {
+			console.warn("indexedDB not supported in this environment");
+			return;
+		}
+
 		const request = indexedDB.open(this.dbName, this.version);
 
 		request.onerror = (event) => {
 			console.log("IDB error", event);
-			this.dbSubject.error(event);
+			this.#db.error(event);
 		};
 
-		request.onsuccess = (event: any) => {
-			const db = event.target.result;
-			this.dbSubject.next(db);
+		request.onsuccess = (event: Event) => {
+			console.log("Hellow World");
+			this.#db.next((event.target as IDBOpenDBRequest).result);
 		};
 
 		// This handles "Update Compatible" requirement.
 		// Runs when version number increases or DB is created.
 		request.onupgradeneeded = (event) => {
-			const db: IDBDatabase = (event.target as any)?.result;
+			const db = (event.target as IDBOpenDBRequest)?.result;
 
 			this.schema.forEach((storeConfig) => {
 				if (!db.objectStoreNames.contains(storeConfig.storeName)) {
@@ -65,20 +80,21 @@ export class DB {
 	/**
 	 * Helper to get the DB instance via RxJS
 	 */
-	private getDb(): Observable<IDBDatabase> {
-		return this.dbSubject.asObservable();
+	private getDb(): Observable<IDBDatabase | null> {
+		return this.#db.asObservable();
 	}
 
 	/**
 	 * Generic Add/Update method (put)
 	 */
-	put<T>(storeName: string, value: T): Observable<T> {
-		return this.getDb().pipe(
+	put<T>(storeName: string, value: T, key?: IDBValidKey): Observable<T> {
+		return this.db$.pipe(
+			filter((db) => db !== null),
 			mergeMap((db) => {
 				return new Observable<T>((observer) => {
 					const transaction = db.transaction([storeName], "readwrite");
 					const store = transaction.objectStore(storeName);
-					const request = store.put(value);
+					const request = store.put(value, key);
 
 					request.onsuccess = () => {
 						observer.next(value);
@@ -95,7 +111,8 @@ export class DB {
 	 * Generic Get All method
 	 */
 	getAll<T>(storeName: string): Observable<T[]> {
-		return this.getDb().pipe(
+		return this.db$.pipe(
+			filter((db) => db !== null),
 			mergeMap((db) => {
 				return new Observable<T[]>((observer) => {
 					const transaction = db.transaction([storeName], "readonly");
@@ -117,7 +134,8 @@ export class DB {
 	 * Generic Delete method
 	 */
 	delete(storeName: string, key: string): Observable<string> {
-		return this.getDb().pipe(
+		return this.db$.pipe(
+			filter((db) => db !== null),
 			mergeMap((db) => {
 				return new Observable<string>((observer) => {
 					const transaction = db.transaction([storeName], "readwrite");
@@ -139,7 +157,8 @@ export class DB {
 	 * Generic Clear Store
 	 */
 	clear(storeName: string): Observable<void> {
-		return this.getDb().pipe(
+		return this.db$.pipe(
+			filter((db) => db !== null),
 			mergeMap((db) => {
 				return new Observable<void>((observer) => {
 					const transaction = db.transaction([storeName], "readwrite");

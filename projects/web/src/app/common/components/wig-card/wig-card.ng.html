@@ -1,20 +1,23 @@
 <div class="flex flex-col gap-3">
   <div
     class="w-full bg-center bg-no-repeat bg-cover aspect-[3/5]"
-    data-alt="A classic bob-style wig in a dark brown color on a mannequin"
-    style="
-  background-image: url({{ wig().thumbnail.url }});
-    "
+    style=" background-image: url({{ wig().thumbnail.url }});"
   ></div>
   <div>
     <a [routerLink]="['/wig', wig().slug]" class="text-base font-medium">{{ wig().name }}</a>
     <div class="flex justify-between">
       <p class="text-sm font-normal text-primary">{{ wig().length.price | currency: 'USD' }}</p>
-      <span
-        class="text-lg icon-[solar--cart-large-2-line-duotone]"
-        role="button"
-        aria-hidden="true"
-      ></span>
+      @if (cart.has(wig(), wig().length) | async) {
+        <span class="icon-[solar--cart-check-bold]" animate.enter="enter" role="img" aria-hidden="true"></span>
+      } @else {
+        <span
+          class="text-lg cursor-pointer icon-[solar--cart-large-2-line-duotone]"
+          role="button"
+          aria-hidden="true"
+          animate.leave="leave"
+          (click)="addToCart()"
+        ></span>
+      }
     </div>
   </div>
 </div>

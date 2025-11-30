@@ -23,6 +23,7 @@ import {
 	withLatestFrom,
 } from "rxjs";
 import { Color, HairType, Source, Texture, Wig } from "shared";
+import { WigCard } from "../common/components/wig-card/wig-card";
 
 @Component({
 	selector: "web-shop",
@@ -39,6 +40,8 @@ import { Color, HairType, Source, Texture, Wig } from "shared";
 		NgOptimizedImage,
 		MatChipsModule,
 		ReactiveFormsModule,
+
+		WigCard,
 	],
 	templateUrl: "./shop.page.ng.html",
 	styleUrl: "./shop.page.scss",

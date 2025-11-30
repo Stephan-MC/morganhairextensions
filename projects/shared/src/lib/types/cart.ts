@@ -1,8 +1,7 @@
-import { Model } from "./models";
+import type { Model } from "./models";
 
-export interface CartItem {
+export interface CartItem extends Model.Wig {
 	id: string;
-	wig: Model.Wig;
 	length: Model.Wig.Length;
 	quantity: number;
 	added_at: string;

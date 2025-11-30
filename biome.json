@@ -1,0 +1,10 @@
+{
+	"formatter": {
+		"enabled": true
+	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		}
+	}
+}

@@ -28,7 +28,9 @@ export class WigCard {
 			.pipe(
 				takeUntilDestroyed(),
 				tap(() => console.log("Adding to cart")),
-				switchMap(() => this.cart.add(this.wig(), this.wig().length)),
+        switchMap(() =>
+          this.cart.add(this.wig(), this.wig().length)
+
 			)
 			.subscribe();
 	}

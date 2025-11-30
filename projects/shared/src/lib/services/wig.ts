@@ -18,7 +18,8 @@ export class Wig {
 			(params) =>
 				Object.fromEntries(
 					Object.entries(params).filter(
-						([_, value]) =>
+						([key, value]) =>
+							key === "new" ||
 							Boolean(value) ||
 							(typeof value === "string" && Boolean((value as string).trim())),
 					),

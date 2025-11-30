@@ -1,0 +1,43 @@
+			<div
+				class="flex flex-col gap-4 items-center pb-4 md:grid md:grid-cols-5 dark:border-gray-700"
+			>
+				<div class="flex col-span-2 gap-4 items-center w-full">
+					<div
+						class="bg-center bg-no-repeat bg-cover rounded aspect-square size-24 shrink-0"
+						data-alt="A blonde bob wig on a mannequin"
+						style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAxlZ_LXAxK5vg3nTEGKuDZ9O-v8-MsamMdYAKIojvQXKkuyCWiQ_i-gmq_SQ1tR--Z3CgQv2Y64lWBgBLcISthqjtml8a7o03a1tu68hWoSdWJA6soK0OIj2cP5MrichIo3Ahz1m1GE7UbQITohjW1rDFyWFY9ia9ALIGh8uK5JGdItgDXDwP7JhXC9BlvvktzDqpneIwLTi_D7iF5IFL0Vt7-TvopgCwmu8kf_ffxOL2gWI5AGHokMCw0q5orA8bMNZ2n64MMp0U');
+              "
+					></div>
+					<div class="flex-1">
+						<p class="text-base font-bold dark:text-gray-100 text-[#333333]">
+              {{item().name}}
+						</p>
+						<p class="text-sm text-gray-500 dark:text-gray-400">
+              Color: {{ item().color.name }}
+						</p>
+						<button class="mt-2 text-sm hover:underline text-primary" (click)="removeItem()">
+							Remove
+						</button>
+					</div>
+				</div>
+				<div class="w-full text-left md:text-left">
+          <span class="font-medium md:hidden">Price: </span>{{ item().length.price | currency }}
+				</div>
+				<div class="w-full">
+          <mat-form-field class="[&>.mat-mdc-form-field-flex]:px-2! [&_button]:cursor-pointer">
+            <button matPrefix class="ps-2" (click)="decrement()">
+              -
+            </button>
+            <input type="number" [value]="item().quantity" matInput class="[-moz-appearance:textfield] &::-webkit-outer-spin-button:[-webkit-appearance:none]  &::-webkit-inner-spin-button:[-webkit-appearance:none] text-center" />
+            <button matSuffix class="pe-2" (click)="increment()">
+              +
+            </button>
+          </mat-form-field>
+				</div>
+				<div
+					class="w-full font-bold text-left md:text-right dark:text-gray-100 text-[#333333]"
+				>
+          <span class="font-medium md:hidden">Total: </span>{{ item().length.price * item().quantity | currency }}
+				</div>
+			</div>

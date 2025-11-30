@@ -6,7 +6,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
 import { Meta, Title } from "@angular/platform-browser";
-import { Model } from "shared";
+import type { Model } from "shared";
+import { Cart } from "../common/services/cart";
 
 @Component({
 	selector: "web-wig",
@@ -26,6 +27,7 @@ export class WigPage {
 	wig = input.required<Model.Wig>();
 
 	length = linkedSignal(() => this.wig()?.length);
+	cart = inject(Cart);
 
 	constructor(title: Title) {
 		effect(() => {

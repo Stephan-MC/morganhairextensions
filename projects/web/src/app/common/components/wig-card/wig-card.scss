@@ -1,3 +1,12 @@
+@reference 'tailwindcss';
+
 :host {
   display: block;
+
+  .enter {
+    @apply transition-discrete starting:opacity-0 starting:text-5xl text-lg duration-300;
+  }
+
+  .leave {}
 }
+
