@@ -5,11 +5,11 @@ import {
 	inject,
 	input,
 } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
+import { Subject, switchMap, tap } from "rxjs";
 import type { Model } from "shared";
 import { Cart } from "../../services/cart";
-import { Subject, switchMap, tap } from "rxjs";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
 	selector: "web-wig-card",
@@ -28,7 +28,7 @@ export class WigCard {
 			.pipe(
 				takeUntilDestroyed(),
 				tap(() => console.log("Adding to cart")),
-				switchMap(() => this.cart.add(this.wig(), this.wig().length)),
+				switchMap(() => this.cart.add(this.wig())),
 			)
 			.subscribe();
 	}

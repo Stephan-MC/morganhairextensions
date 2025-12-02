@@ -6,7 +6,7 @@
     style="
       background-image:
         linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%),
-        url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNkM4F-GUEHmroa9c8q6IOXiNSJ-QFcODGMwD1NetAbGlB_qbZZP7WWEuLw-z8JVIufNEU5aHCcjrsiYp-I1RumxQLT9EO_zgbeiSBru0A80JFQVlhOdhw4sABw3ZHvL1-_co1qnRv9Gji5iYsZH2ZCC419RqwlpwIb1-IsUv28thScjHYicgXWiBwcFVPY2JXHYli8TGQv-8RpofyOiuOOsQGPSjtk0qFeE_LUXtff-la2YBIpsF6neppT-K3vcf8pURsICHkyu4');
+        url('/assets/images/hero.png');
     "
   >
     <div class="flex flex-col gap-4 max-w-lg text-left">
@@ -47,7 +47,7 @@
         class="flex relative items-end p-6 h-80 text-white bg-center bg-cover group"
         data-alt="A short, chic pixie-cut wig on a mannequin"
         routerLink="/shop"
-        [queryParams]="{ hairType: hairType.slug }"
+        [queryParams]="{ hair_type: hairType.slug }"
         style="
           background-image:
             linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),

@@ -1,6 +1,7 @@
 {
 	"formatter": {
-		"enabled": true
+		"enabled": true,
+		"formatWithErrors": true
 	},
 	"html": {
 		"formatter": {

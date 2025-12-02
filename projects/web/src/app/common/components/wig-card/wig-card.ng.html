@@ -7,7 +7,7 @@
     <a [routerLink]="['/wig', wig().slug]" class="text-base font-medium">{{ wig().name }}</a>
     <div class="flex justify-between">
       <p class="text-sm font-normal text-primary">{{ wig().length.price | currency: 'USD' }}</p>
-      @if (cart.has(wig(), wig().length) | async) {
+      @if (cart.has(wig().length.id) | async) {
         <span class="icon-[solar--cart-check-bold]" animate.enter="enter" role="img" aria-hidden="true"></span>
       } @else {
         <span

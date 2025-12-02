@@ -26,10 +26,10 @@
           class="w-full bg-center bg-no-repeat bg-cover aspect-square"
           data-alt="Main view of a long, wavy, blonde wig on a mannequin"
           style="
-          background-image: url({{ wig().thumbnail?.url }});
+          background-image: url({{ wig().thumbnail.url }});
           "
         ></div>
-        <div class="grid grid-cols-5 gap-4">
+        <div class="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           <div
             class="w-full bg-center bg-no-repeat bg-cover border-2 aspect-square border-primary"
             data-alt="Front view of the wig"
@@ -111,26 +111,32 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>LENGTH</mat-label>
+            <mat-label>CAP SIZE</mat-label>
             <mat-select>
               @for (cap of ['small', 'medium', 'larrge']; track $index) {
-                <mat-option>{{ cap }}</mat-option>
+                <mat-option [value]="cap">{{ cap }}</mat-option>
               }
             </mat-select>
           </mat-form-field>
         </div>
         <!-- Action Buttons -->
         <div class="flex gap-4 items-stretch mt-4">
-          <button matButton="filled" class="rounded-none! grow h-full!" (click)="cart.add(wig(), length())">Add to Cart</button>
+          <button matButton="filled" class="rounded-none! grow h-full!" (click)="addToCart()" [disabled]="inCart()">
+            @if (inCart()) {
+              Already in cart
+            }@else {
+              Add to Cart
+            }
+          </button>
           <button
-            class="flex justify-center items-center w-12 h-12 text-gray-800 border border-gray-300 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="rounded-none!"
+            matFab
           >
-            <mat-icon>favorite_border</mat-icon>
-            <!-- <span class="material-symbols-outlined">favorite_border</span> -->
+            <mat-icon>
+              <span class="text-xl icon-[material-symbols--favorite-outline]"></span>
+            </mat-icon>
           </button>
         </div>
-        <!-- Tabbed Information Section -->
-        <div class="mt-6"></div>
       </div>
     </div>
     <!-- Customer Reviews -->

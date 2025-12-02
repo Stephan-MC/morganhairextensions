@@ -1,7 +1,12 @@
 <mat-sidenav-container class="py-16 min-h-screen">
-  <mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70!">
+  <mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70! p-2">
     <aside class="w-full">
-      <h2 class="mb-6 text-2xl font-bold font-display">Filters</h2>
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold font-display">Filters</h2>
+        <button matFab class="size-8!" (click)="sidenav.close()">
+          <span class="icon-[material-symbols--close]" role="img" aria-hidden="true"></span>
+        </button>
+      </div>
       <div class="space-y-6">
         <div>
           <form [formGroup]="form">
@@ -48,15 +53,15 @@
                   }
                 </mat-chip-listbox>
               </div>
-              <div class="px-2" formGroupName="price">
+              <div class="px-2">
                 <h3 class="mb-3 text-lg font-bold">
                   Price Range (
-                  {{ form.controls.filters.controls.price.controls['min'].getRawValue() }} -
-                  {{ form.controls.filters.controls.price.controls['max'].getRawValue() }})
+                  {{ form.controls.filters.controls.min_price.getRawValue() }} -
+                  {{ form.controls.filters.controls.max_price.getRawValue() }})
                 </h3>
                 <mat-slider min="50" max="600" step="10">
-                  <input formControlName="min" value="50" matSliderStartThumb />
-                  <input formControlName="max" value="600" matSliderEndThumb />
+                  <input formControlName="min_price" value="50" matSliderStartThumb />
+                  <input formControlName="max_price" value="1000" matSliderEndThumb />
                 </mat-slider>
               </div>
             </div>
@@ -129,7 +134,7 @@
         [pageSize]="wigs().meta.per_page"
         [length]="wigs().meta.total"
         [pageSizeOptions]="[10, 20, 30, 40, 50]"
-        (page)="form.controls.filters?.patchValue({ page: $event.pageIndex + 1 })"
+        (page)="form.controls.filters.patchValue({ page: $event.pageIndex + 1 })"
       ></mat-paginator>
     </div>
   </mat-sidenav-content>

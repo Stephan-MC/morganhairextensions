@@ -1,0 +1,43 @@
+<div class="flex flex-col gap-2 size-full">
+  <h2 class="text-lg shrink-0">Your cart</h2>
+
+  <div class="overflow-y-scroll mt-4 space-y-2 grow">
+    @for (item of items(); track item.length.id) {
+      <div class="flex col-span-2 gap-4 items-center w-full">
+        <div class="relative aspect-square size-24 shrink-0">
+          <img [ngSrc]="item.thumbnail.url" [alt]="`${item.length.value} inches, ${item.name}`" fill class="object-cover object-center" [priority]="$first">
+        </div>
+        <div class="flex-1">
+          <p class="text-base font-bold dark:text-gray-100 text-[#333333]">
+            {{ item.name }}
+          </p>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            <span class="font-bold">
+              {{ item.length.value }}
+            </span>
+            inches, {{ item.color.name }}
+          </p>
+          <button class="mt-2 text-sm hover:underline text-primary" (click)="removeItem(item)">
+            Remove
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="flex flex-col gap-1 shrink-0">
+    <div class="flex gap-1">
+      <span class="basis-2/3">Subtotal</span>
+      <span>{{ subtotal() | currency }}</span>
+    </div>
+    <div class="flex gap-1">
+      <span class="text-lg basis-2/3">Total</span>
+      <span class="text-lg font-bold">{{ subtotal() | currency }}</span>
+    </div>
+  </div>
+
+  <a routerLink="/cart" matButton="filled" class="rounded-none! shrink-0" (click)="close.emit()">
+    View full cart
+  </a>
+</div>
+

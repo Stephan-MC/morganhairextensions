@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ENVIRONMENT } from "../types/environments";
-import { Model, Paginated } from "../types";
+import type { Model, Paginated } from "../types";
 import { BehaviorSubject, map, shareReplay, switchMap } from "rxjs";
 
 @Injectable({
