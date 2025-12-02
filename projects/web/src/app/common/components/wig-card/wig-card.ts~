@@ -1,0 +1,41 @@
+import { AsyncPipe, CurrencyPipe } from "@angular/common";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	input,
+} from "@angular/core";
+import { RouterLink } from "@angular/router";
+import type { Model } from "shared";
+import { Cart } from "../../services/cart";
+import { Subject, switchMap, tap } from "rxjs";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+
+@Component({
+	selector: "web-wig-card",
+	imports: [AsyncPipe, CurrencyPipe, RouterLink],
+	templateUrl: "./wig-card.ng.html",
+	styleUrl: "./wig-card.scss",
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class WigCard {
+	wig = input.required<Model.Wig>();
+	#toCart = new Subject<void>();
+	cart = inject(Cart);
+
+	constructor() {
+		this.#toCart
+			.pipe(
+				takeUntilDestroyed(),
+				tap(() => console.log("Adding to cart")),
+        switchMap(() =>
+          this.cart.add(this.wig(), this.wig().length)
+
+			)
+			.subscribe();
+	}
+
+	addToCart() {
+		this.#toCart.next();
+	}
+}

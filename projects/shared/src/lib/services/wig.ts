@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ENVIRONMENT } from "../types/environments";
-import { Model, Paginated } from "../types";
+import type { Model, Paginated } from "../types";
 import { BehaviorSubject, map, shareReplay, switchMap } from "rxjs";
 
 @Injectable({
@@ -18,7 +18,8 @@ export class Wig {
 			(params) =>
 				Object.fromEntries(
 					Object.entries(params).filter(
-						([_, value]) =>
+						([key, value]) =>
+							key === "new" ||
 							Boolean(value) ||
 							(typeof value === "string" && Boolean((value as string).trim())),
 					),

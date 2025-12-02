@@ -1,5 +1,6 @@
 export * from "./environments";
 export * from "./models";
+export * from "./cart";
 
 export interface Paginated<T = any> {
 	data: Array<T>;

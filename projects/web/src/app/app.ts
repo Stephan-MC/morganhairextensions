@@ -7,8 +7,10 @@ import {
     signal
 } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
+import {MatBadgeModule} from "@angular/material/badge";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatSidenavModule } from "@angular/material/sidenav";
 import { Meta } from "@angular/platform-browser";
 import {
     NavigationCancel,
@@ -20,19 +22,26 @@ import {
     Router,
     RouterLink,
     RouterOutlet
+  ,
 } from "@angular/router";
 import { filter, map, of, switchMap, tap, timer } from "rxjs";
 import { environment } from "../environments/environment";
+import { Cart as CartService } from "./common/services/cart";
+import { Cart } from "./common/components/cart/cart";
+
 
 @Component({
 	selector: "web-root",
-	imports: [RouterOutlet, RouterLink, MatIconModule, MatProgressBarModule],
+	imports: [RouterOutlet, RouterLink, MatIconModule, MatProgressBarModule, MatBadgeModule, MatSidenavModule, Cart],
 	templateUrl: "./app.ng.html",
 	styleUrl: "./app.scss",
 })
 export class App {
 	private _router = inject(Router);
 	protected readonly title = signal("web");
+  readonly cart = inject(CartService)
+
+  cartItems= toSignal(this.cart.count$.pipe())
 
 	loading = toSignal(
 		this._router.events.pipe(
@@ -58,7 +67,7 @@ export class App {
 		},
 	);
 
-	constructor(meta: Meta, renderer: Renderer2, @Inject(DOCUMENT) document: Document) {
+	constructor(meta: Meta, @Inject(Renderer2) renderer: Renderer2, @Inject(DOCUMENT) document: Document) {
 		this._router.events
 			.pipe(
 				filter((e) => e instanceof NavigationEnd),

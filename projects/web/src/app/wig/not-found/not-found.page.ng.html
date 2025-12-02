@@ -1,0 +1,52 @@
+<div class="flex flex-col px-4 w-full text-center sm:px-10">
+	<div
+		class="flex flex-col items-center p-8 border border-gray-200 sm:p-16 dark:border-gray-700 dark:bg-background-dark"
+	>
+		<div class="mb-6 size-16 text-(--mat-sys-primary-fixed)">
+			<svg fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M50.6667 50.6667L42.6667 42.6667M48 26.6667C48 31.6213 46.0508 36.3753 42.6274 39.7987C39.204 43.2221 34.45 45.1714 29.4953 45.1714C24.5407 45.1714 19.7867 43.2221 16.3633 39.7987C12.9399 36.3753 10.9907 31.6213 10.9907 26.6667C10.9907 21.712 12.9399 16.958 16.3633 13.5346C19.7867 10.1112 24.5407 8.16199 29.4953 8.16199C34.45 8.16199 39.204 10.1112 42.6274 13.5346C46.0508 16.958 48 21.712 48 26.6667Z"
+					stroke="currentColor"
+					stroke-linecap="square"
+					stroke-linejoin="round"
+					stroke-width="4"
+				></path>
+			</svg>
+		</div>
+		<h1
+			class="text-3xl font-black text-gray-900 sm:text-4xl dark:text-white tracking-[-0.033em]"
+		>
+			Product Not Found
+		</h1>
+		<p class="mx-auto mt-4 max-w-md text-(--mat-sys-on-surface-variant)">
+			Sorry, we couldn't find the wig you were looking for. It might have been
+			discontinued, or the link may be incorrect.
+		</p>
+		<div class="flex flex-col gap-4 mx-auto mt-8 w-full max-w-sm sm:flex-row">
+			<a class="rounded-none! sm:flex-1" matButton="filled" routerLink="/shop">
+				Go To Shop
+			</a>
+			<a
+				routerLink="/shop"
+				[queryParams]="{new: ''}"
+				matButton="outlined"
+				class="rounded-none! sm:flex-1"
+			>
+				New Arrivals
+			</a>
+		</div>
+		<div class="mx-auto mt-8 w-full max-w-sm">
+			<p class="mb-2 text-sm text-gray-600 dark:text-gray-400">
+				Or search for another wig:
+			</p>
+			<form [formGroup]="form" class="relative">
+				<mat-form-field>
+					<input type="text" matInput>
+					<mat-icon matSuffix appearance="outline" class="px-2">
+						<span class="text-2xl icon-[material-symbols--search]"></span>
+					</mat-icon>
+				</mat-form-field>
+			</form>
+		</div>
+	</div>
+</div>

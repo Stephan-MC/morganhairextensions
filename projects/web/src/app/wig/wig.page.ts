@@ -1,12 +1,19 @@
 import { CurrencyPipe } from "@angular/common";
 import { Component, effect, inject, input, linkedSignal } from "@angular/core";
+import {
+	takeUntilDestroyed,
+	toObservable,
+	toSignal,
+} from "@angular/core/rxjs-interop";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
 import { Meta, Title } from "@angular/platform-browser";
-import { Model } from "shared";
+import { Subject, switchMap } from "rxjs";
+import type { Model } from "shared";
+import { Cart } from "../common/services/cart";
 
 @Component({
 	selector: "web-wig",
@@ -26,8 +33,26 @@ export class WigPage {
 	wig = input.required<Model.Wig>();
 
 	length = linkedSignal(() => this.wig()?.length);
+	#cart = inject(Cart);
+	#toCart = new Subject<void>();
+	inCart = toSignal(
+		toObservable(this.length).pipe(
+			switchMap((length) => this.#cart.has(length.id)),
+		),
+		{ initialValue: false },
+	);
 
 	constructor(title: Title) {
+		this.#toCart
+			.asObservable()
+			.pipe(
+				takeUntilDestroyed(),
+				switchMap(() =>
+					this.#cart.add({ ...this.wig(), length: this.length() }),
+				),
+			)
+			.subscribe();
+
 		effect(() => {
 			title.setTitle(this.wig()?.name || "Morgan Hair Wig");
 		});
@@ -67,5 +92,7 @@ export class WigPage {
 		}
 	}
 
-	selectLength(length: Model.Wig.Length) {}
+	addToCart() {
+		this.#toCart.next();
+	}
 }

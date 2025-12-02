@@ -1,4 +1,3 @@
-import { CurrencyPipe, NgOptimizedImage } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
 import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
@@ -10,24 +9,14 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSliderModule } from "@angular/material/slider";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import {
-	debounceTime,
-	distinctUntilChanged,
-	map,
-	mergeMap,
-	mergeWith,
-	startWith,
-	switchMap,
-	tap,
-	withLatestFrom,
-} from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
+import { debounceTime, map, mergeWith, tap } from "rxjs";
 import { Color, HairType, Source, Texture, Wig } from "shared";
+import { WigCard } from "../common/components/wig-card/wig-card";
 
 @Component({
 	selector: "web-shop",
 	imports: [
-		RouterLink,
 		MatButtonModule,
 		MatInputModule,
 		MatFormFieldModule,
@@ -35,10 +24,9 @@ import { Color, HairType, Source, Texture, Wig } from "shared";
 		MatSelectModule,
 		MatPaginatorModule,
 		MatSidenavModule,
-		CurrencyPipe,
-		NgOptimizedImage,
 		MatChipsModule,
 		ReactiveFormsModule,
+		WigCard,
 	],
 	templateUrl: "./shop.page.ng.html",
 	styleUrl: "./shop.page.scss",
@@ -77,13 +65,12 @@ export class ShopPage {
 				this.#route.snapshot.queryParams["hair_type"],
 				{},
 			),
-			price: this.#fb.record({
-				min: this.#fb.control(
-					this.#route.snapshot.queryParams["price_min"] || 0,
-					{},
-				),
-				max: this.#fb.control(this.#route.snapshot.queryParams["price_max"]),
-			}),
+			min_price: this.#fb.control<number>(
+				this.#route.snapshot.queryParams["min_price"] || 0,
+			),
+			max_price: this.#fb.control<number>(
+				this.#route.snapshot.queryParams["max_price"] || 0,
+			),
 			page: this.#fb.control<number>(this.#route.snapshot.queryParams["page"], {
 				nonNullable: true,
 			}),
@@ -100,6 +87,7 @@ export class ShopPage {
 
 		this.form.controls.q.valueChanges
 			.pipe(
+				takeUntilDestroyed(),
 				debounceTime(500),
 				map((q) => ({ q })),
 				tap(() => this.form.controls.filters.reset()),
@@ -119,25 +107,5 @@ export class ShopPage {
 				}),
 			)
 			.subscribe();
-
-		// this.form
-		// 	.get("q")
-		// 	?.valueChanges.pipe(
-		// 		takeUntilDestroyed(),
-		// 		debounceTime(500),
-		// 		// distinctUntilChanged(),
-		// 		switchMap((q) =>
-		// 			this.form.controls.filters.valueChanges.pipe(
-		// 				map((value) => ({ q, ...value }), startWith({})),
-		// 			),
-		// 		),
-		// 		tap((filters) => console.log({ ...filters })),
-		// 		tap((queryParams) => {
-		// 			this.#router.navigate(this.#route.snapshot.url, {
-		// 				queryParams,
-		// 			});
-		// 		}),
-		// 	)
-		// 	.subscribe();
 	}
 }

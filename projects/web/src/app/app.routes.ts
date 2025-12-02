@@ -24,11 +24,22 @@ export const routes: Routes = [
 		loadComponent: () => import("./shop/shop.page").then((m) => m.ShopPage),
 	},
 	{
-		path: "wig/:wig",
-		resolve: {
-			wig: wigResolver,
-		},
-		loadComponent: () => import("./wig/wig.page").then((m) => m.WigPage),
+		path: "wig",
+		children: [
+			{
+				path: "not-found",
+				loadComponent: () =>
+					import("./wig/not-found/not-found.page").then((m) => m.NotFoundPage),
+			},
+			{
+				path: ":wig",
+				pathMatch: "full",
+				resolve: {
+					wig: wigResolver,
+				},
+				loadComponent: () => import("./wig/wig.page").then((m) => m.WigPage),
+			},
+		],
 	},
 	{
 		path: "checkout",
