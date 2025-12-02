@@ -1,7 +1,15 @@
 import { isPlatformServer } from "@angular/common";
 import { inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { BehaviorSubject, map, mapTo, type Observable, of, tap } from "rxjs";
+import {
+	BehaviorSubject,
+	filter,
+	map,
+	mapTo,
+	type Observable,
+	of,
+	tap,
+} from "rxjs";
 import { type CartItem, DB, type Model } from "shared";
 
 @Injectable({
@@ -44,14 +52,13 @@ export class Cart {
 			});
 	}
 
-	has(wig: Model.Wig, length: Model.Wig.Length): Observable<boolean> {
-		const compositeId = `${wig.id}_${length.id}`;
+	has(id: Model.Wig.Length["id"]) {
 		if (isPlatformServer(this.#platformId)) {
 			return of(false);
 		}
 
 		return this.cart$.pipe(
-			map((items) => items.some((item) => item.id === compositeId)),
+			map((items) => items.some((item) => item.length.id === id)),
 		);
 	}
 
@@ -59,58 +66,83 @@ export class Cart {
 	 * Adds a Wig with a specific length to the cart.
 	 * If the combination exists, it updates the quantity.
 	 */
-	add(wig: Model.Wig, length: Model.Wig.Length): Observable<CartItem> {
+	add(wig: Model.Wig): Observable<CartItem> {
 		// Create a composite ID: WigID_LengthID
-		let item: CartItem;
-		const compositeId = `${wig.id}_${length.id}`;
+		let item: CartItem | undefined;
 		const currentItems = this.#cart.getValue();
-		item = currentItems.find((item) => item.id === compositeId) || {
-			...wig,
-			id: compositeId,
-			length: length,
-			quantity: 0,
-			added_at: new Date().toISOString(),
-		};
+		item = currentItems.find(
+			(item) => item.id === wig.id && item.length.id === wig.length.id,
+		);
 
-		item.quantity += 1;
+		if (item === undefined) {
+			item = {
+				...wig,
+				length: wig.length,
+				quantity: 0,
+				added_at: new Date().toISOString(),
+			};
+
+			currentItems.push(item);
+		}
+
+		++(item as CartItem).quantity;
 
 		// Save to DB, then update State
-		return this.#db
-			.put<CartItem>(
-				this.STORE_NAME,
-				{ ...item, quantity: item.quantity + 1 },
-				[wig.id, length.id],
-			)
-			.pipe(
-				tap(() => {
-					// Update local state
-					this.#cart.next([...currentItems, item]);
-				}),
-			);
+		return this.#db.put<CartItem>(this.STORE_NAME, item).pipe(
+			tap(() => {
+				// Update local state
+				this.#cart.next(currentItems);
+			}),
+		);
 	}
 
-	reduce(id: CartItem["id"]) {
-		return this.cart$.pipe(
-			map((items) =>
-				items
-					.map((item) =>
-						item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-					)
-					.filter((item) => item.quantity > 0),
-			),
-		);
+	reduce(id: CartItem["length"]["id"]): Observable<CartItem[]> {
+		const currentItems = this.#cart.getValue();
+		const itemIndex = currentItems.findIndex((item) => item.length.id === id);
+
+		if (itemIndex === -1) {
+			return of([...currentItems]); // Item not found, return current cart
+		}
+
+		const itemToUpdate = { ...currentItems[itemIndex] };
+		itemToUpdate.quantity--;
+
+		if (itemToUpdate.quantity <= 0) {
+			// Remove item from cart and DB
+			currentItems.splice(itemIndex, 1);
+			return this.#db
+				.delete(this.STORE_NAME, [itemToUpdate.id, itemToUpdate.length.id])
+				.pipe(
+					tap(() => {
+						this.#cart.next([...currentItems]); // Notify subscribers of change
+					}),
+					map(() => currentItems),
+				);
+		} else {
+			// Update item quantity in cart and DB
+			currentItems[itemIndex] = itemToUpdate;
+			return this.#db.put<CartItem>(this.STORE_NAME, itemToUpdate).pipe(
+				tap(() => {
+					this.#cart.next([...currentItems]); // Notify subscribers of change
+				}),
+				map(() => currentItems),
+			);
+		}
 	}
 
 	/**
 	 * Remove specific item (Wig + Length combo)
 	 */
-	remove(cartItemId: string): Observable<string> {
-		return this.#db.delete(this.STORE_NAME, cartItemId).pipe(
-			tap(() => {
-				const filtered = this.#cart
-					.getValue()
-					.filter((i) => i.id !== cartItemId);
-				this.#cart.next(filtered);
+	remove(id: Model.Wig.Length["id"]) {
+		const currentItems = this.#cart.getValue();
+
+		const item = currentItems.find((i) => i.length.id === id);
+
+		const key = item !== undefined ? [item.id, item.length.id] : [];
+
+		return this.#db.delete(this.STORE_NAME, key).pipe(
+			tap((key) => {
+				this.#cart.next(currentItems.filter((i) => i.length.id === id));
 			}),
 		);
 	}
