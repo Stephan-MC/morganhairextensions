@@ -94,7 +94,8 @@ export class DB {
 				return new Observable<T>((observer) => {
 					const transaction = db.transaction([storeName], "readwrite");
 					const store = transaction.objectStore(storeName);
-					const request = store.put(value, key);
+					console.log("The key is ", key);
+					const request = key ? store.put(value, key) : store.put(value);
 
 					request.onsuccess = () => {
 						observer.next(value);
@@ -133,21 +134,21 @@ export class DB {
 	/**
 	 * Generic Delete method
 	 */
-	delete(storeName: string, key: string): Observable<string> {
+	delete(storeName: string, key: IDBValidKey) {
 		return this.db$.pipe(
 			filter((db) => db !== null),
 			mergeMap((db) => {
-				return new Observable<string>((observer) => {
+				return new Observable<IDBValidKey>((subscriber) => {
 					const transaction = db.transaction([storeName], "readwrite");
 					const store = transaction.objectStore(storeName);
 					const request = store.delete(key);
 
 					request.onsuccess = () => {
-						observer.next(key);
-						observer.complete();
+						subscriber.next(key);
+						subscriber.complete();
 					};
 
-					request.onerror = (err) => observer.error(err);
+					request.onerror = (err) => subscriber.error(err);
 				});
 			}),
 		);
