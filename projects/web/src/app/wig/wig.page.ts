@@ -1,4 +1,4 @@
-import { CurrencyPipe } from "@angular/common";
+import { CurrencyPipe, JsonPipe } from "@angular/common";
 import { Component, effect, inject, input, linkedSignal } from "@angular/core";
 import {
 	takeUntilDestroyed,
@@ -23,6 +23,7 @@ import { Cart } from "../common/services/cart";
 		MatSelectModule,
 		MatButtonModule,
 		CurrencyPipe,
+		JsonPipe,
 		MatIconModule,
 	],
 	templateUrl: "./wig.page.ng.html",
@@ -82,7 +83,7 @@ export class WigPage {
 					{
 						id: "og:image",
 						property: "og:image",
-						content: this.wig()?.thumbnail.url,
+						content: this.wig()?.length?.thumbnail.url,
 					},
 				],
 				false,

@@ -69,7 +69,7 @@ export class ShopPage {
 				this.#route.snapshot.queryParams["min_price"] || 0,
 			),
 			max_price: this.#fb.control<number>(
-				this.#route.snapshot.queryParams["max_price"] || 0,
+				this.#route.snapshot.queryParams["max_price"] || 600,
 			),
 			page: this.#fb.control<number>(this.#route.snapshot.queryParams["page"], {
 				nonNullable: true,
@@ -107,5 +107,9 @@ export class ShopPage {
 				}),
 			)
 			.subscribe();
+	}
+
+	priceLabel(value: number): string {
+		return String(`$${value}`);
 	}
 }

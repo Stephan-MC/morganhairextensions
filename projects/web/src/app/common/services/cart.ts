@@ -1,15 +1,7 @@
 import { isPlatformServer } from "@angular/common";
-import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { Injectable, inject, PLATFORM_ID } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import {
-	BehaviorSubject,
-	filter,
-	map,
-	mapTo,
-	type Observable,
-	of,
-	tap,
-} from "rxjs";
+import { BehaviorSubject, map, type Observable, of, tap } from "rxjs";
 import { type CartItem, DB, type Model } from "shared";
 
 @Injectable({
@@ -24,9 +16,7 @@ export class Cart {
 	#cart = new BehaviorSubject<CartItem[]>([]);
 	public cart$ = this.#cart.asObservable();
 
-	count$ = this.cart$.pipe(
-		map((items) => items.reduce((acc, item) => acc + item.quantity, 0)),
-	);
+	count$ = this.cart$.pipe(map((items) => items.length));
 	subtotal$ = this.cart$.pipe(
 		map((items) =>
 			items.reduce((acc, item) => {
@@ -58,7 +48,7 @@ export class Cart {
 		}
 
 		return this.cart$.pipe(
-			map((items) => items.some((item) => item.length.id === id)),
+			map((items) => items.some((item) => item.id === id)),
 		);
 	}
 
@@ -70,14 +60,12 @@ export class Cart {
 		// Create a composite ID: WigID_LengthID
 		let item: CartItem | undefined;
 		const currentItems = this.#cart.getValue();
-		item = currentItems.find(
-			(item) => item.id === wig.id && item.length.id === wig.length.id,
-		);
+		item = currentItems.find((item) => item.id === wig.length.id);
 
 		if (item === undefined) {
 			item = {
 				...wig,
-				length: wig.length,
+				id: wig.length.id,
 				quantity: 0,
 				added_at: new Date().toISOString(),
 			};
@@ -98,7 +86,7 @@ export class Cart {
 
 	reduce(id: CartItem["length"]["id"]): Observable<CartItem[]> {
 		const currentItems = this.#cart.getValue();
-		const itemIndex = currentItems.findIndex((item) => item.length.id === id);
+		const itemIndex = currentItems.findIndex((item) => item.id === id);
 
 		if (itemIndex === -1) {
 			return of([...currentItems]); // Item not found, return current cart
@@ -136,13 +124,14 @@ export class Cart {
 	remove(id: Model.Wig.Length["id"]) {
 		const currentItems = this.#cart.getValue();
 
-		const item = currentItems.find((i) => i.length.id === id);
+		const item = currentItems.find((item) => item.id === id);
 
-		const key = item !== undefined ? [item.id, item.length.id] : [];
+		const key = item !== undefined ? [id] : [];
 
 		return this.#db.delete(this.STORE_NAME, key).pipe(
 			tap((key) => {
-				this.#cart.next(currentItems.filter((i) => i.length.id === id));
+				console.log("Removal key is : ", key);
+				this.#cart.next(currentItems.filter((item) => item.id !== id));
 			}),
 		);
 	}
