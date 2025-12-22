@@ -51,7 +51,8 @@ export namespace Model {
 			value: number;
 			price: number;
 			stock: number;
-			default: boolean;
+			thumbnail: Media;
+			gallery: Array<Media>;
 		}
 		export interface Source extends Model {
 			name: string;
@@ -85,8 +86,6 @@ export namespace Model {
 		discount: Discount;
 		liked: boolean;
 		length: Wig.Length & { price: number; default: boolean };
-		thumbnail: Media;
-		gallery: Array<Media>;
 
 		lengths: Array<Wig.Length & { price: number; default: boolean }>;
 		reviews: Array<Review>;
@@ -139,5 +138,19 @@ export namespace Model {
 
 		/** Indicates whether only the featured products should be selected or not */
 		featured?: boolean;
+	}
+
+	export interface Order {
+		id: string;
+		notification_channel: string;
+		contact: string;
+		address: {
+			line1: string;
+			line2: string | null;
+			county: string;
+			city: string;
+			state: string;
+			zip: string;
+		};
 	}
 }
