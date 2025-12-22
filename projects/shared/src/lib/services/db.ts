@@ -1,13 +1,6 @@
-import { isPlatformBrowser, isPlatformServer } from "@angular/common";
-import { inject, Injectable, PLATFORM_ID } from "@angular/core";
-import {
-	BehaviorSubject,
-	filter,
-	from,
-	mergeMap,
-	Observable,
-	Subject,
-} from "rxjs";
+import { isPlatformServer } from "@angular/common";
+import { Injectable, inject, PLATFORM_ID } from "@angular/core";
+import { BehaviorSubject, filter, mergeMap, Observable } from "rxjs";
 
 @Injectable({
 	providedIn: "root",
@@ -27,7 +20,7 @@ export class DB {
 	> = [
 		{
 			storeName: "cart",
-			keyPath: ["id", "length.id"],
+			keyPath: ["id"],
 		},
 		{
 			storeName: "favorites",
