@@ -16,7 +16,7 @@ import {
 	withEventReplay,
 } from "@angular/platform-browser";
 import { routes } from "./app.routes";
-import { ENVIRONMENT } from "shared";
+import { ENVIRONMENT, morganInterceptor } from "shared";
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
 		provideZonelessChangeDetection(),
 		provideRouter(routes, withComponentInputBinding()),
 		provideClientHydration(withEventReplay()),
-		provideHttpClient(withFetch(), withInterceptors([])),
+		provideHttpClient(withFetch(), withInterceptors([morganInterceptor])),
 		{
 			provide: ENVIRONMENT,
 			useValue: environment,
