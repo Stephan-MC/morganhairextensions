@@ -26,92 +26,106 @@
 		</div>
 	</div>
 	<div class="mt-12 mb-6 w-full">
-		<div class="border border-border-light dark:border-border-dark">
-			<div class="flex">
-				<button
-					class="flex-1 py-3 px-4 text-sm font-bold text-center border-b-2 border-primary bg-black/5 text-primary dark:bg-white/5"
+		<mat-tab-group class="border *:p-2">
+			<mat-tab label="Continue as Guest">
+				<h2 class="mb-3 text-xl">Enter shipping information below</h2>
+				<form
+					class="mt-6 space-y-6"
+					(submit)="[$event.preventDefault(), this.formSubject.next()]"
+					class="*:w-full"
 				>
-					Continue as Guest
-				</button>
-				<a
-					class="flex-1 py-3 px-4 text-sm font-medium text-center border-b border-border-light text-text-light/70 dark:border-border-dark dark:text-text-dark/70 dark:hover:bg-white/5 hover:bg-black/5"
-					href="#"
-					>Log in / Register</a
-				>
-			</div>
-			<div class="p-6">
-				<p class="text-sm text-text-light/80 dark:text-text-dark/80">
-					Enter your shipping information below.
-				</p>
-			</div>
-		</div>
-	</div>
-	<form class="mt-6 space-y-6" [formGroup]="form" class="*:w-full">
-		<mat-form-field>
-			<mat-label>Full Name</mat-label>
-			<input matInput formControlName="name">
-		</mat-form-field>
-		<mat-form-field formGroupName="address">
-			<mat-label>Adress line 1</mat-label>
-			<input matInput formControlName="line1">
-		</mat-form-field>
-		<mat-form-field formGroupName="address">
-			<mat-label>Adress line 2</mat-label>
-			<input matInput formControlName="line2">
-		</mat-form-field>
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2" formGroupName="address">
-			<mat-form-field>
-				<mat-label>Country</mat-label>
-				<input matInput formControlName="country">
-			</mat-form-field>
-			<mat-form-field>
-				<mat-label>Postal code</mat-label>
-				<input matInput formControlName="zip">
-			</mat-form-field>
-		</div>
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2" formGroupName="address">
-			<mat-form-field>
-				<mat-label>City</mat-label>
-				<input matInput formControlName="city">
-			</mat-form-field>
-			<mat-form-field>
-				<mat-label>State/Province</mat-label>
-				<input matInput formControlName="state">
-			</mat-form-field>
-		</div>
-		<mat-form-field>
-			<mat-label>Notification Channel</mat-label>
-			<mat-select formControlName="notification_channel">
-				@for (channel of notification_channels; track channel.name) {
-				<mat-option [value]="channel.value">
-					<div class="flex gap-2">
-						<span
-							class="{{ channel.icon }}"
-							role="img"
-							aria-hidden="true"
-						></span>
-						<span>{{ channel.name }}</span>
+					<mat-form-field>
+						<mat-label>Full Name</mat-label>
+						<input matInput [field]="form.name">
+						@if (form.name().invalid()) { @for (error of form.name().errors();
+						track error.kind) {
+						<mat-error>
+                  {{error.message}}
+                </mat-error>
+						} }
+					</mat-form-field>
+					<!-- <mat-form-field> -->
+					<!-- 	<mat-label>Email</mat-label> -->
+					<!-- 	<input matInput [field]="email"> -->
+					<!-- </mat-form-field> -->
+					<mat-form-field>
+						<mat-label>Adress line 1</mat-label>
+						<input matInput [field]="form.address.line1">
+					</mat-form-field>
+					<mat-form-field>
+						<mat-label>Adress line 2</mat-label>
+						<input matInput [field]="form.address.line2">
+					</mat-form-field>
+					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+						<mat-form-field>
+							<mat-label>Country</mat-label>
+							<input matInput [field]="form.address.country">
+						</mat-form-field>
+						<mat-form-field>
+							<mat-label>Postal code</mat-label>
+							<input matInput [field]="form.address.zip">
+						</mat-form-field>
 					</div>
-				</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
-		<mat-form-field>
-			<mat-label>
-				@switch (form.controls.notification_channel.value) { @case ('whatsapp')
-				{ Contact } @case ('imessage') { Email or Phone } @default { Email } }
-			</mat-label>
-			<input matInput formControlName="notification_contact">
-		</mat-form-field>
-		<div class="pt-6">
-			<button
-				matButton="filled"
-				type="submit"
-				class="rounded-none!"
-				disabled="form.invalid"
-			>
-				<span>Continue to Shipping Method</span>
-			</button>
-		</div>
-	</form>
+					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+						<mat-form-field>
+							<mat-label>City</mat-label>
+							<input matInput [field]="form.address.city">
+						</mat-form-field>
+						<mat-form-field>
+							<mat-label>State/Province</mat-label>
+							<input matInput [field]="form.address.state">
+						</mat-form-field>
+					</div>
+					<mat-form-field>
+						<mat-label>Notification Channel</mat-label>
+						<mat-select [field]="form.notification_channel">
+							@for (channel of notification_channels; track channel.name) {
+							<mat-option [value]="channel.value">
+								<div class="flex gap-2">
+									<span
+										class="{{ channel.icon }}"
+										role="img"
+										aria-hidden="true"
+									></span>
+									<span>{{ channel.name }}</span>
+								</div>
+							</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field>
+						<mat-label>
+							@switch (form.notification_channel().value()) { @case ('whatsapp')
+							{ Contact } @case ('imessage') { Email or Phone } @default { Email
+							} }
+						</mat-label>
+						<input matInput [field]="form.contact">
+						@if (form.contact().invalid()) { @for (error of
+						form.contact().errors(); track error) {
+						<mat-error>{{error.message}}</mat-error>} }
+					</mat-form-field>
+					<div>{{form.contact().valid()}}</div>
+					<div class="pt-6">
+						<button
+							matButton="filled"
+							type="submit"
+							class="rounded-none!"
+							[disabled]="!form().touched() || loading() || form().invalid()"
+						>
+							<div class="flex gap-1 items-center">
+								@if (loading()) {
+								<span
+									class="icon-[eos-icons--three-dots-loading]"
+									role="img"
+									aria-hidden="true"
+								></span>
+								}<span>Continue to Shipping Method</span>
+							</div>
+						</button>
+					</div>
+				</form>
+			</mat-tab>
+			<mat-tab label="Log in / Register">Continue as Guest</mat-tab>
+		</mat-tab-group>
+	</div>
 </div>

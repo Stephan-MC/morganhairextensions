@@ -6,7 +6,7 @@
 		>
 			Your Shopping Cart
 		</h1>
-    <p class="text-lg text-gray-500 dark:text-gray-400">
+		<p class="text-lg text-gray-500 dark:text-gray-400">
       {{items().length}}
       <span [ngPlural]="items().length">
         <ng-template ngPluralCase="one">item</ng-template>
@@ -14,86 +14,126 @@
       </span>
     </p>
 	</div>
-	<div class="grid grid-cols-1 gap-8 lg:grid-cols-3 xl:gap-12">
-    <div class="overflow-x-auto" class="lg:col-span-2">
-      <mat-table [dataSource]="items()" matSort>
-        <!-- Product Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef class="basis-full! md:basis-4/8!"> Item </mat-header-cell>
-          <mat-cell *matCellDef="let element" class="basis-full! md:basis-4/8! max-md:border-none!">
-            <div class="flex col-span-2 gap-4 items-center w-full">
-              <div class="relative aspect-square size-24 shrink-0">
-                <img [ngSrc]="element.thumbnail.url" [alt]="`${element.length.value} inches, ${element.name}`" fill class="object-cover object-center">
-              </div>
-              <div class="flex-1">
-                <p class="text-base font-bold dark:text-gray-100 text-[#333333]">
+	<div class="grid grid-cols-1 gap-8 py-3 lg:grid-cols-3 xl:gap-12">
+		<div class="overflow-x-auto" class="lg:col-span-2">
+			<mat-table [dataSource]="items()" matSort>
+				<!-- Product Column -->
+				<ng-container matColumnDef="name">
+					<mat-header-cell *matHeaderCellDef class="basis-full! md:basis-4/8!">
+						Item
+					</mat-header-cell>
+					<mat-cell
+						*matCellDef="let element"
+						class="basis-full! md:basis-4/8! max-md:border-none!"
+					>
+						<div class="flex col-span-2 gap-4 items-center w-full">
+							<div class="relative aspect-square size-24 shrink-0">
+								<img
+									[ngSrc]="element.length.thumbnail.url"
+									[alt]="`${element.length.value} inches, ${element.name}`"
+									fill
+									class="object-cover object-center"
+								>
+							</div>
+							<div class="flex-1">
+								<p class="text-base font-bold dark:text-gray-100 text-[#333333]">
                   {{ element.name }}
                 </p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
+								<p class="text-sm text-gray-500 dark:text-gray-400">
                   <span class="font-bold">
                     {{ element.length.value }}
                   </span>
                   inches, {{ element.color.name }}
                 </p>
-                <button class="mt-2 text-sm hover:underline text-primary" (click)="removeItem(element)">
-                  Remove
-                </button>
-              </div>
-            </div>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef="let element">
-            <a
-              class="inline-block pt-4 text-sm font-medium leading-normal underline hover:no-underline text-primary"
-              matButton
-              routerLink="/shop"
-            >Continue Shopping</a
-            >
-          </mat-footer-cell>
-        </ng-container>
+								<button
+									class="mt-2 text-sm hover:underline text-primary"
+									(click)="removeItem(element)"
+								>
+									Remove
+								</button>
+							</div>
+						</div>
+					</mat-cell>
+					<mat-footer-cell *matFooterCellDef="let element">
+						<a
+							class="inline-block pt-4 text-sm font-medium leading-normal underline hover:no-underline text-primary"
+							matButton
+							routerLink="/shop"
+							>Continue Shopping</a
+						>
+					</mat-footer-cell>
+				</ng-container>
 
-        <!-- Price Column -->
-        <ng-container matColumnDef="length.price">
-          <mat-header-cell *matHeaderCellDef class="basis-1/8!"  mat-sort-header sortActionDescription="Sort by price"> Price </mat-header-cell>
-          <mat-cell *matCellDef="let element" class="basis-1/8! max-md:items-start! max-md:flex-col! max-md:justify-start!">
+				<!-- Price Column -->
+				<ng-container matColumnDef="length.price">
+					<mat-header-cell
+						*matHeaderCellDef
+						class="basis-1/8!"
+						mat-sort-header
+						sortActionDescription="Sort by price"
+					>
+						Price
+					</mat-header-cell>
+					<mat-cell *matCellDef="let element" class="basis-1/8! max-md:items-start! max-md:flex-col! max-md:justify-start!">
             <span class="md:hidden">Price</span>
             {{element.length.price | currency }}
           </mat-cell>
-          <mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
-        </ng-container>
+					<mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
+				</ng-container>
 
-        <!-- Quantity Column -->
-        <ng-container matColumnDef="quantity">
-          <mat-header-cell *matHeaderCellDef class="basis-2/8!"> Quantity </mat-header-cell>
-          <mat-cell *matCellDef="let element" class="basis-4/8! md:basis-2/8! items-center!">
-            <mat-form-field class="[&>.mat-mdc-form-field-flex]:px-2! [&_button]:cursor-pointer">
-              <button matPrefix class="ps-2" (click)="decrement(element)">
-                -
-              </button>
-              <input type="number" [value]="element.quantity" matInput class="[-moz-appearance:textfield] [&::-webkit-outer-spin-button]:[-webkit-appearance:none]  [&::-webkit-inner-spin-button]:[-webkit-appearance:none] text-center" />
-              <button matSuffix class="pe-2" (click)="increment(element)">
-                +
-              </button>
-            </mat-form-field>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
-        </ng-container>
+				<!-- Quantity Column -->
+				<ng-container matColumnDef="quantity">
+					<mat-header-cell *matHeaderCellDef class="basis-2/8!">
+						Quantity
+					</mat-header-cell>
+					<mat-cell
+						*matCellDef="let element"
+						class="basis-4/8! md:basis-2/8! items-center!"
+					>
+						<mat-form-field
+							class="[&>.mat-mdc-form-field-flex]:px-2! [&_button]:cursor-pointer"
+						>
+							<button matPrefix class="ps-2" (click)="decrement(element)">
+								-
+							</button>
+							<input
+								type="number"
+								[value]="element.quantity"
+								matInput
+								class="[-moz-appearance:textfield] [&::-webkit-outer-spin-button]:[-webkit-appearance:none]  [&::-webkit-inner-spin-button]:[-webkit-appearance:none] text-center"
+							>
+							<button matSuffix class="pe-2" (click)="increment(element)">
+								+
+							</button>
+						</mat-form-field>
+					</mat-cell>
+					<mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
+				</ng-container>
 
-        <!-- Total Column -->
-        <ng-container matColumnDef="total">
-          <mat-header-cell *matHeaderCellDef class="basis-1/8!">Total</mat-header-cell>
-          <mat-cell *matCellDef="let element" class="basis-1/8! max-md:items-start! max-md:flex-col! max-md:justify-start!">
+				<!-- Total Column -->
+				<ng-container matColumnDef="total">
+					<mat-header-cell *matHeaderCellDef class="basis-1/8!">
+						Total
+					</mat-header-cell>
+					<mat-cell *matCellDef="let element" class="basis-1/8! max-md:items-start! max-md:flex-col! max-md:justify-start!">
             <span class="md:hidden">Total</span>
             {{element.length.price * element.quantity | currency}} </mat-cell>
-          <mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
-        </ng-container>
+					<mat-footer-cell *matFooterCellDef="let element"></mat-footer-cell>
+				</ng-container>
 
-        <mat-header-row *matHeaderRowDef="columns" class="max-md:hidden"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columns;" class="*:py-2! sm:*:py-4! flex-wrap max-md:items-center"></mat-row>
-        <mat-footer-row *matFooterRowDef="columns"></mat-footer-row>
-      </mat-table>
-    </div>
+				<mat-header-row
+					*matHeaderRowDef="columns"
+					class="max-md:hidden"
+				></mat-header-row>
+				<mat-row
+					*matRowDef="let row; columns: columns;"
+					class="*:py-2! sm:*:py-4! flex-wrap max-md:items-center"
+				></mat-row>
+				<mat-footer-row *matFooterRowDef="columns"></mat-footer-row>
+			</mat-table>
+		</div>
 		<!-- Order Summary Card -->
-		<div class="lg:col-span-1">
+		<div class="lg:col-span-1 max-lg:order-first">
 			<div
 				class="p-6 space-y-4 rounded border border-(--mat-sys-outline) text-(--mat-sys-on-surface-container-low) bg-(--mat-sys-surface-container-low) dark:bg-background-dark"
 			>
@@ -121,7 +161,7 @@
 						class="flex justify-between text-lg font-bold dark:text-gray-100 text-[#333333]"
 					>
 						<span>Total</span>
-            <span>{{ total() + shippingFee() | currency }}</span>
+						<span>{{ total() + shippingFee() | currency }}</span>
 					</div>
 				</div>
 				<a

@@ -1,141 +1,150 @@
 <mat-sidenav-container class="py-16 min-h-screen">
-  <mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70! p-2">
-    <aside class="w-full">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold font-display">Filters</h2>
-        <button matFab class="size-8!" (click)="sidenav.close()">
-          <span class="icon-[material-symbols--close]" role="img" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="space-y-6">
-        <div>
-          <form [formGroup]="form">
-            <div class="flex flex-col gap-5" formGroupName="filters">
-              <div>
-                <h3 class="mb-3 text-lg font-bold">Hair Type</h3>
-                <mat-chip-listbox formControlName="hair_type">
-                  @for (hairType of hairTypes(); track hairType.id) {
-                    <mat-chip-option>{{ hairType.name }}</mat-chip-option>
-                  }
-                </mat-chip-listbox>
-              </div>
-              <div>
-                <h3 class="mb-3 text-lg font-bold">Color</h3>
-                <mat-chip-listbox formControlName="color">
-                  @for (color of colors(); track color.id) {
-                    <mat-chip-option>{{ color.name }}</mat-chip-option>
-                  }
-                </mat-chip-listbox>
-              </div>
-              <div>
-                <h3 class="mb-3 text-lg font-bold">Texture</h3>
-                <mat-chip-listbox formControlName="texture">
-                  @for (texture of textures(); track texture.id) {
-                    <mat-chip-option>{{ texture.name }}</mat-chip-option>
-                  }
-                </mat-chip-listbox>
-              </div>
-              <div>
-                <h3 class="mb-3 text-lg font-bold">Source</h3>
-                <mat-chip-listbox formControlName="source">
-                  @for (source of sources(); track source.id) {
-                    <mat-chip-option>{{ source.name }}</mat-chip-option>
-                  }
-                </mat-chip-listbox>
-              </div>
-              <div>
-                <h3 class="mb-3 text-lg font-bold">length</h3>
-                <mat-chip-listbox formControlName="length">
-                  @for (length of lengths; track length) {
-                    <mat-chip-option>
+	<mat-sidenav #sidenav class="bg-(--mat-sys-surface)/70! p-2">
+		<aside class="w-full">
+			<div class="flex justify-between items-center mb-6">
+				<h2 class="text-2xl font-bold font-display">Filters</h2>
+				<button matFab class="size-8!" (click)="sidenav.close()">
+					<span
+						class="icon-[material-symbols--close]"
+						role="img"
+						aria-hidden="true"
+					></span>
+				</button>
+			</div>
+			<div class="space-y-6">
+				<div>
+					<form [formGroup]="form">
+						<div class="flex flex-col gap-5" formGroupName="filters">
+							<div>
+								<h3 class="mb-3 text-lg font-bold">Hair Type</h3>
+								<mat-chip-listbox formControlName="hair_type">
+									@for (hairType of hairTypes(); track hairType.id) {
+									<mat-chip-option>{{ hairType.name }}</mat-chip-option>}
+								</mat-chip-listbox>
+							</div>
+							<div>
+								<h3 class="mb-3 text-lg font-bold">Color</h3>
+								<mat-chip-listbox formControlName="color">
+									@for (color of colors(); track color.id) {
+									<mat-chip-option
+                      class="color"
+                    [style.--background]="color.code"
+										[style.backgroundColor]="color.code"
+                      class="[&_.mat-mdc-chip-action-label]:hidden!"
+									>{{color.name}}</mat-chip-option>
+									}
+								</mat-chip-listbox>
+							</div>
+							<div>
+								<h3 class="mb-3 text-lg font-bold">Texture</h3>
+								<mat-chip-listbox formControlName="texture">
+									@for (texture of textures(); track texture.id) {
+									<mat-chip-option>{{ texture.name }}</mat-chip-option>}
+								</mat-chip-listbox>
+							</div>
+							<div>
+								<h3 class="mb-3 text-lg font-bold">Source</h3>
+								<mat-chip-listbox formControlName="source">
+									@for (source of sources(); track source.id) {
+									<mat-chip-option>{{ source.name }}</mat-chip-option>}
+								</mat-chip-listbox>
+							</div>
+							<div>
+								<h3 class="mb-3 text-lg font-bold">length</h3>
+								<mat-chip-listbox formControlName="length">
+									@for (length of lengths; track length) {
+									<mat-chip-option>
                       {{ length }}
                     </mat-chip-option>
-                  }
-                </mat-chip-listbox>
-              </div>
-              <div class="px-2">
-                <h3 class="mb-3 text-lg font-bold">
+									}
+								</mat-chip-listbox>
+							</div>
+							<div class="px-2">
+								<h3 class="mb-3 text-lg font-bold">
                   Price Range (
                   {{ form.controls.filters.controls.min_price.getRawValue() }} -
                   {{ form.controls.filters.controls.max_price.getRawValue() }})
                 </h3>
-                <mat-slider min="50" max="600" step="10">
-                  <input formControlName="min_price" value="50" matSliderStartThumb />
-                  <input formControlName="max_price" value="1000" matSliderEndThumb />
-                </mat-slider>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div>
-          <h3 class="mb-3 text-lg font-bold">Color</h3>
-          <div class="flex flex-wrap gap-2">
-            <button
-              class="w-8 h-8 bg-black border focus:ring-2 focus:ring-offset-2 focus:outline-none border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-            <button
-              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#5C3A21] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-            <button
-              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#E6BF83] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-            <button
-              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#D1D1D1] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-            <button
-              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#B85B40] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-            <button
-              class="w-8 h-8 border focus:ring-2 focus:ring-offset-2 focus:outline-none bg-[#A0522D] border-border-light dark:border-border-dark dark:focus:ring-offset-background-dark focus:ring-primary"
-            ></button>
-          </div>
-        </div>
-      </div>
-    </aside>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="mb-8 text-center md:mb-12">
-      <h1 class="text-4xl font-bold md:text-5xl font-display" (click)="sidenav.toggle()">
-        Our Collection
-      </h1>
-      <p class="mt-2 text-text-light/80 dark:text-text-dark/80">
-        Find the perfect style that defines you.
-      </p>
-    </div>
-    <div class="flex flex-col gap-8 px-2 md:px-4 lg:gap-12 lg:px-8">
-      <form [formGroup]="form" class="basis-full *:w-full">
-        <mat-form-field>
-          <mat-label>Search</mat-label>
-          <input formControlName="q" matInput placeholder="Search name, description, etc.." />
-        </mat-form-field>
-      </form>
-      <div class="flex justify-between items-center mb-6">
-        <div class="flex gap-2 justify-between items-center w-full md:gap-4">
-          <p class="text-sm shrink-0">
+								<mat-slider
+									min="50"
+									max="600"
+									step="10"
+									[displayWith]="priceLabel"
+									class="w-[90%]!"
+								>
+									<input
+										formControlName="min_price"
+										value="50"
+										matSliderStartThumb
+									>
+									<input
+										formControlName="max_price"
+										value="1000"
+										matSliderEndThumb
+									>
+								</mat-slider>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</aside>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<div class="mb-8 text-center md:mb-12">
+			<h1
+				class="text-4xl font-bold md:text-5xl font-display"
+				(click)="sidenav.toggle()"
+			>
+				Our Collection
+			</h1>
+			<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+				Find the perfect style that defines you.
+			</p>
+		</div>
+		<div class="flex flex-col gap-8 px-2 md:px-4 lg:gap-12 lg:px-8">
+			<form [formGroup]="form" class="basis-full *:w-full">
+				<mat-form-field>
+					<mat-label>Search</mat-label>
+					<input
+						formControlName="q"
+						matInput
+						placeholder="Search name, description, etc.."
+					>
+				</mat-form-field>
+			</form>
+			<div class="flex justify-between items-center mb-6">
+				<div class="flex gap-2 justify-between items-center w-full md:gap-4">
+					<p class="text-sm shrink-0">
             Showing {{ (wigs().meta.to || 0) - (wigs().meta.from || 0) }} of
             {{ wigs().meta.total }} wigs
           </p>
-          <button matButton (click)="sidenav.toggle()">
-            <div class="flex gap-2 items-center">
-              <span>Filters</span>
-              <span class="icon-[octicon--settings]" role="img" aria-hidden="true"></span>
-            </div>
-          </button>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
-        @for (wig of wigs().data; track wig.id) {
-          <web-wig-card [wig]="wig" />
-        }
-      </div>
-      <mat-paginator
-        class="mt-8"
-        [pageIndex]="wigs().meta.current_page - 1"
-        [pageSize]="wigs().meta.per_page"
-        [length]="wigs().meta.total"
-        [pageSizeOptions]="[10, 20, 30, 40, 50]"
-        (page)="form.controls.filters.patchValue({ page: $event.pageIndex + 1 })"
-      ></mat-paginator>
-    </div>
-  </mat-sidenav-content>
+					<button matButton (click)="sidenav.toggle()">
+						<div class="flex gap-2 items-center">
+							<span>Filters</span>
+							<span
+								class="icon-[octicon--settings]"
+								role="img"
+								aria-hidden="true"
+							></span>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div
+				class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5"
+			>
+				@for (wig of wigs().data; track wig.id) {
+				<web-wig-card [wig]="wig"/>}
+			</div>
+			<mat-paginator
+				class="mt-8"
+				[pageIndex]="wigs().meta.current_page - 1"
+				[pageSize]="wigs().meta.per_page"
+				[length]="wigs().meta.total"
+				[pageSizeOptions]="[10, 20, 30, 40, 50]"
+				(page)="form.controls.filters.patchValue({ page: $event.pageIndex + 1 })"
+			></mat-paginator>
+		</div>
+	</mat-sidenav-content>
 </mat-sidenav-container>

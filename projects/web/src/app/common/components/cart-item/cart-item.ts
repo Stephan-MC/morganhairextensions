@@ -29,7 +29,7 @@ export class CartItem {
 		this.#remove
 			.pipe(
 				takeUntilDestroyed(),
-				switchMap(() => this.cart.remove(this.item().id)),
+				switchMap(() => this.cart.remove(this.item().length.id)),
 			)
 			.subscribe();
 

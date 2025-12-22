@@ -90,13 +90,13 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/web/src/environments/environment.ts",
-                  "with": "projects/web/src/environments/environment.development.ts"
-                }
-              ]
+							"sourceMap": true,
+							"fileReplacements": [
+								{
+									"replace": "projects/web/src/environments/environment.ts",
+									"with": "projects/web/src/environments/environment.development.ts"
+								}
+							]
 						}
 					},
 					"defaultConfiguration": "production"
@@ -130,7 +130,10 @@
 								"input": "projects/web/public"
 							}
 						],
-						"styles": ["projects/web/src/styles.scss"]
+						"styles": [
+							"projects/web/src/material.scss",
+							"projects/web/src/styles.scss"
+						]
 					}
 				}
 			}
@@ -158,7 +161,10 @@
 								"input": "projects/admin/public"
 							}
 						],
-						"styles": ["projects/admin/src/styles.scss"],
+						"styles": [
+							"projects/web/src/material.scss",
+							"projects/admin/src/styles.scss"
+						],
 						"server": "projects/admin/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
@@ -184,7 +190,13 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin/src/environments/environment.ts",
+                  "with": "projects/admin/src/environments/environment.development.ts"
+                }
+              ]
 						}
 					},
 					"defaultConfiguration": "production"
@@ -218,7 +230,10 @@
 								"input": "projects/admin/public"
 							}
 						],
-						"styles": ["projects/admin/src/styles.scss"]
+						"styles": [
+							"projects/web/src/material.scss",
+							"projects/admin/src/styles.scss"
+						]
 					}
 				}
 			}
