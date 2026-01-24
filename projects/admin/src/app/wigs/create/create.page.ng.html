@@ -1,0 +1,118 @@
+<form
+	(submit)="[$event.preventDefault(), save()]"
+	class="flex flex-col gap-4 p-4"
+>
+	<mat-form-field>
+		<mat-label>Name</mat-label>
+		<input matInput [formField]="form.name">
+		@for (error of form.name().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<textarea
+			matInput
+			[formField]="form.description"
+			class="min-h-30"
+		></textarea>
+		@for (error of form.description().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
+	</mat-form-field>
+
+	<mat-slide-toggle [formField]="form.featured">Featured</mat-slide-toggle>
+
+	<mat-form-field>
+		<mat-label>Texture</mat-label>
+		<mat-select [formField]="form.texture_id">
+			@for (texture of textures(); track texture.id) {
+			<mat-option [value]="texture.id">{{ texture.name }}</mat-option>}
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Hair Type</mat-label>
+		<mat-select [formField]="form.hair_type_id">
+			@for (hairType of hairTypes(); track hairType.id) {
+			<mat-option [value]="hairType.id">{{ hairType.name }}</mat-option>}
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Source</mat-label>
+		<mat-select [formField]="form.source_id">
+			@for (source of sources(); track source.id) {
+			<mat-option [value]="source.id">{{ source.name }}</mat-option>}
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Lace</mat-label>
+		<mat-select [formField]="form.lace_id">
+			@for (lace of laces(); track lace.id) {
+			<mat-option [value]="lace.id">{{ lace.name }}</mat-option>}
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Color</mat-label>
+		<mat-select [formField]="form.color_id">
+			@for (color of colors(); track color.id) {
+			<mat-option [value]="color.id">
+				<div class="flex gap-2">
+					<span
+						class="rounded size-10"
+						[style.backgroundColor]="color.code"
+					></span>
+					<span>
+              {{ color.name }}
+            </span>
+				</div>
+			</mat-option>
+			}
+		</mat-select>
+		@for (error of form.color_id().errors(); track error.kind) {
+		<mat-error>{{ error.message }}</mat-error>}
+	</mat-form-field>
+
+	<button
+		mat-raised-button
+		color="primary"
+		type="submit"
+		[disabled]="form().invalid()"
+	>
+		Save
+	</button>
+</form>
+
+<ng-template #lengthDeleteConfirmation let-length>
+	<h2 mat-dialog-title>Confirm Deletion</h2>
+	<mat-dialog-content>
+		Are you sure you want to delete {{ length.value }} inches variation of this wig ??
+		<!-- check if wig is valid -->
+		<!-- <div class="flex gap-2 items-stretch"> -->
+		<!-- 	<img -->
+		<!-- 		[src]="length.thumbnail?.url" -->
+		<!-- 		alt="" -->
+		<!-- 		class="rounded-lg aspect-square shrink-0" -->
+		<!-- 	> -->
+		<!-- 	<div class="flex flex-col"> -->
+		<!--         <span>{{wig.name}}</span> -->
+		<!--         @for (length of wig.lengths; track length.id) { -->
+		<!--           {{length.value}} -->
+		<!--           @if (!$last) { -->
+		<!--             <span>, </span> -->
+		<!--           } -->
+		<!--         } -->
+		<!--         <span>{{wig.color.name}}</span> -->
+		<!--       </div> -->
+		<!-- </div> -->
+		This action cannot be undone.
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<button mat-button [mat-dialog-close]="false">Cancel</button>
+		<button mat-flat-button color="warn" [mat-dialog-close]="true">
+			Delete
+		</button>
+	</mat-dialog-actions>
+</ng-template>

@@ -26,6 +26,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Prefer Reactive forms instead of Template-driven ones
 - Do NOT use `ngClass`, use `class` bindings instead
 - Do NOT use `ngStyle`, use `style` bindings instead
+- Prefer reusing angular material components over creating custom components
 
 ## State Management
 

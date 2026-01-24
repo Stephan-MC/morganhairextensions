@@ -1,1 +1,126 @@
-<p>app works!</p>
+<mat-sidenav-container>
+	<mat-sidenav #sidenav [fixedInViewport]="true">
+		<aside class="hidden z-20 flex-col flex-shrink-0 w-64 h-full lg:flex">
+			<div class="flex gap-3 items-center p-6">
+				<div
+					class="flex justify-center items-center bg-center bg-no-repeat bg-cover rounded bg-primary/10 size-10 text-primary"
+					data-alt="Admin logo placeholder"
+				>
+					<span
+						class="text-4xl icon-[material-symbols--admin-panel-settings-outline]"
+						role="img"
+						aria-hidden="true"
+					></span>
+				</div>
+				<div class="flex flex-col">
+					<h1 class="text-base font-bold leading-none text-text-main">
+						Morgan Hair
+					</h1>
+					<p class="mt-1 text-xs font-medium text-text-secondary">
+						Admin Panel
+					</p>
+				</div>
+			</div>
+			<nav class="overflow-y-auto flex-1 py-2 px-4 space-y-1">
+				<a
+					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					routerLink="/"
+				>
+					<span
+						class="icon-[material-symbols--dashboard]"
+						role="img"
+						aria-hidden="true"
+					></span>
+					<span class="text-sm font-medium">Dashboard</span>
+				</a>
+				<a
+					class="flex gap-3 items-center py-2.5 px-3 rounded bg-primary/10 text-primary"
+					href="#"
+				>
+					<span
+						class="icon-[material-symbols--shopping-bag]"
+						role="img"
+						aria-hidden="true"
+					></span>
+					<span class="text-sm font-bold">Products</span>
+				</a>
+				<div class="pr-3 pl-11 space-y-1">
+					<a
+						class="block py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
+						routerLink="/wigs"
+						>All Products</a
+					>
+					<a class="block py-1.5 text-sm font-bold text-primary" href="#"
+						>Attributes</a
+					>
+					<a
+						class="block py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
+						href="#"
+						>Inventory</a
+					>
+				</div>
+				<a
+					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					routerLink="/orders"
+				>
+					<span
+						class="icon-[material-symbols--shopping-cart]"
+						role="img"
+						aria-hidden="true"
+					></span>
+					<span class="text-sm font-medium">Orders</span>
+				</a>
+				<a
+					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					href="#"
+				>
+					<span
+						class="icon-[material-symbols--group]"
+						role="img"
+						aria-hidden="true"
+					></span>
+					<span class="text-sm font-medium">Customers</span>
+				</a>
+				<a
+					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					href="#"
+				>
+					<span
+						class="icon-[material-symbols--settings]"
+						role="img"
+						aria-hidden="true"
+					></span>
+					<span class="text-sm font-medium">Settings</span>
+				</a>
+			</nav>
+			<div class="p-4 border-t border-gray-200 dark:border-gray-800">
+				<div
+					class="flex gap-3 items-center p-2 rounded cursor-pointer dark:hover:bg-white/5 hover:bg-background-light"
+				>
+					<div
+						class="bg-gray-200 bg-center bg-cover rounded-full size-8"
+						data-alt="User profile avatar"
+						style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDs8FynlCrK2vabgsZKXCW9ka7EBJUTpQWPRS4C3n0BdAVUi6IlYfg3_bH-5S-hd9B3ORNeOGxYJgQgszg0df7fAKZ92Wi776LJy733we-jitQzaicHJ9csH_hM6jAhVF9xm8KGzEKhNzs8yPQU-rMK_gQhYVGjipGepjcllzrquafGDNifdzraA-8_FZb-JvlCyPNJn2v3aQcc9YA5knrT24wcto2CmZGTB4vaAdkUKfv8SUq8vwLhnMM0O-j5uwHcylJ6eSFxMQA');"
+					></div>
+					<div class="flex-1 min-w-0">
+						<p class="text-sm font-bold text-text-main truncate">Jane Admin</p>
+						<p class="text-xs text-text-secondary truncate">
+							jane@wigstore.com
+						</p>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<main class="flex overflow-hidden relative flex-col flex-1 h-full">
+			<div class="overflow-y-auto flex-1 p-6 lg:p-8">
+				<span
+					class="text-2xl icon-[material-symbols--menu]"
+					(click)="sidenav.toggle()"
+				></span>
+				<router-outlet/>
+			</div>
+		</main>
+	</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,232 @@
+<div class="flex flex-col gap-6 mx-auto max-w-7xl">
+	<!-- Page Heading -->
+	<div class="flex flex-col gap-4 justify-between md:flex-row md:items-center">
+		<div class="flex flex-col gap-1">
+			<h1
+				class="text-3xl font-black tracking-tight md:text-4xl text-text-main-light dark:text-text-main-dark"
+			>
+				Manage Wigs
+			</h1>
+			<p class="text-base text-text-muted-light dark:text-text-muted-dark">
+				Manage your inventory, prices, and product details.
+			</p>
+		</div>
+		<a matFab="filled" extended routerLink="/wigs/create">
+			<mat-icon>
+				<span
+					class="icon-[material-symbols--add]"
+					role="img"
+					aria-hidden="true"
+				></span>
+			</mat-icon>
+			<span>Add New Wig</span>
+		</a>
+	</div>
+	<!-- Filters and Search -->
+	<div
+		class="flex flex-col gap-4 p-4 w-full rounded border shadow-sm lg:flex-row bg-surface-light border-[#dbcfe7]/40 dark:bg-surface-dark"
+	>
+		<!-- Search -->
+		<mat-form-field>
+			<mat-label>Search</mat-label>
+			<input matInput>
+			<mat-icon matPrefix>
+				<span
+					class="icon-[material-symbols--search]"
+					role="img"
+					aria-hidden="true"
+				></span>
+			</mat-icon>
+		</mat-form-field>
+	</div>
+	<div
+		class="flex overflow-hidden flex-col rounded border shadow-sm bg-surface-light border-[#dbcfe7]/40 dark:bg-surface-dark"
+	>
+		<div class="overflow-x-auto">
+			<table class="w-full text-left border-collapse">
+				<thead
+					class="border-b bg-background-light border-[#dbcfe7]/40 dark:bg-[#1e1629]"
+				>
+					<tr>
+						<th class="p-4 w-12 text-center">
+							<input
+								class="bg-transparent rounded border-[#dbcfe7] text-primary focus:ring-primary/20"
+								type="checkbox"
+							>
+						</th>
+						<th
+							class="p-4 w-20 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							Image
+						</th>
+						<th
+							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light min-w-[200px] dark:text-text-muted-dark"
+						>
+							Product Name
+						</th>
+						<th
+							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							SKU
+						</th>
+						<th
+							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							Hair type
+						</th>
+						<th
+							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							Price
+						</th>
+						<th
+							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							Status
+						</th>
+						<th
+							class="p-4 w-24 text-xs font-bold tracking-wider text-right uppercase text-text-muted-light dark:text-text-muted-dark"
+						>
+							Actions
+						</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-[#dbcfe7]/30">
+					@for (wig of wigs(); track wig.id) {
+					<tr
+						class="transition-colors group dark:hover:bg-[#2a2235]/50 hover:bg-background-light/50"
+					>
+						<td class="p-4 text-center">
+							<input
+								class="bg-transparent rounded border-[#dbcfe7] text-primary focus:ring-primary/20"
+								type="checkbox"
+							>
+						</td>
+						<td class="p-4">
+							<div
+								class="bg-gray-200 bg-center bg-cover rounded border border-gray-100 dark:border-gray-700 size-10"
+								data-alt="Short platinum blonde pixie cut wig on mannequin"
+								[style.backgroundImage]="`url('${wig.length.thumbnail.url}')`"
+							></div>
+						</td>
+						<td class="p-4">
+							<p
+								class="text-sm font-bold text-text-main-light dark:text-text-main-dark"
+							>
+                  {{wig.name}}
+							</p>
+						</td>
+						<td class="p-4">
+							<p
+								class="font-mono text-sm text-text-muted-light dark:text-text-muted-dark"
+							>
+								WG-BL-004
+							</p>
+						</td>
+						<td class="p-4">
+							<span
+								class="text-sm text-text-main-light dark:text-text-main-dark"
+								>{{wig.hair_type.name}}</span
+							>
+						</td>
+						<td class="p-4">
+							<p
+								class="text-sm font-bold text-text-main-light dark:text-text-main-dark"
+							>
+                  {{wig.length.price | currency}}
+							</p>
+						</td>
+						<td class="p-4">
+							@let stock = computedStock(wig);
+							<span
+								class="inline-flex items-center py-0.5 px-2.5 text-xs font-bold rounded max-md:text-2xs"
+								[class.bg-green-100]="stock >= 5"
+								[class.text-green-800]="stock >= 5"
+								[class.dark:bg-green-900/40]="stock >= 5"
+								[class.dark:text-green-300]="stock >= 5"
+								[class.bg-red-100]="stock < 1"
+								[class.text-red-800]="stock > 0 && stock < 5"
+								[class.dark:bg-red-900/40]="stock < 1"
+								[class.dark:text-red-300]="stock > 0 && stock < 5"
+								[class.bg-yellow-100]="stock > 0 && stock < 5"
+								[class.text-yellow-800]="stock > 0 && stock < 5"
+								[class.dark:bg-yellow-900/40]="stock > 0 && stock < 5"
+								[class.dark:text-yellow-300]="stock > 0 && stock < 5"
+							>
+								@if (stock < 1) { out of stock } @else if (stock > 0 && stock <
+								5) { Low in stock } @else { in stock }
+							</span>
+						</td>
+						<td class="p-4 text-right">
+							<div class="flex gap-2 justify-end items-center *:cursor-pointer">
+								<button
+									class="p-1 transition-colors text-text-muted-light dark:text-text-muted-dark hover:text-(--mat-sys-primary)"
+									title="Edit"
+									[routerLink]="['/wigs', wig.slug, 'edit']"
+								>
+									<span
+										class="icon-[material-symbols--edit] text-inherit"
+										role="img"
+										aria-hidden="true"
+									></span>
+								</button>
+								<button
+									class="p-1 transition-colors hover:text-red-500 text-(--mat-sys-outline)"
+									title="Delete"
+									(click)="deleteSubject.next(wig)"
+								>
+									<span
+										class="icon-[material-symbols--delete]"
+										role="img"
+										aria-hidden="true"
+									></span>
+								</button>
+							</div>
+						</td>
+					</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+		<!-- Pagination -->
+		<mat-paginator
+			[pageIndex]="(meta()?.current_page || 1) - 1"
+			[pageSize]="meta()?.per_page"
+			[length]="meta()?.total"
+			[pageSizeOptions]="[10, 20, 30, 40, 50]"
+			(page)="router.navigate(['/wigs'], {queryParams: { page: $event.pageIndex + 1 }})"
+		/>
+	</div>
+</div>
+
+<ng-template #confirmationDialog let-wig>
+	<h2 mat-dialog-title>Confirm Deletion</h2>
+	<mat-dialog-content>
+		Are you sure you want to delete the wig below ??
+		<!-- check if wig is valid -->
+		<div class="flex gap-2 items-stretch">
+			<img
+				[src]="wig.thumbnail?.url"
+				alt=""
+				class="rounded-lg aspect-square shrink-0"
+			>
+			<div class="flex flex-col">
+          <span>{{wig.name}}</span>
+          @for (length of wig.lengths; track length.id) {
+            {{length.value}}
+            @if (!$last) {
+              <span>, </span>
+            }
+          }
+          <span>{{wig.color.name}}</span>
+        </div>
+		</div>
+		This action cannot be undone.
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<button mat-button [mat-dialog-close]="false">Cancel</button>
+		<button mat-flat-button color="warn" [mat-dialog-close]="true">
+			Delete
+		</button>
+	</mat-dialog-actions>
+</ng-template>

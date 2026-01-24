@@ -11,11 +11,13 @@ export const wigResolver: ResolveFn<Model.Wig | undefined> = (route, state) => {
 	const http = inject(HttpClient);
 	const platformId = inject(PLATFORM_ID);
 	const router = inject(Router);
+	const wigService = inject(Wig);
 
 	if (isPlatformServer(platformId)) {
 		return undefined;
 	}
 
+	// return wigService.wig$;
 	return http
 		.get<Model.Wig>(`${environment.url.api}/wig/${route.params["wig"]}`)
 		.pipe(
