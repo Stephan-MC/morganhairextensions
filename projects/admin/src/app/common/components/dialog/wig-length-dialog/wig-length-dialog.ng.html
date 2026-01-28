@@ -61,7 +61,7 @@
 		@if (!isUpdating()) {
 		<mat-form-field>
 			<mat-label>Length</mat-label>
-			<mat-select [field]="form.length_id">
+			<mat-select [formField]="form.length_id">
 				@for (length of lengths(); track length.id) {
 				<mat-option [value]="length.id">{{ length.value }} inches</mat-option>}
 			</mat-select>
@@ -69,13 +69,13 @@
 		}
 		<mat-form-field>
 			<mat-label>Price ($)</mat-label>
-			<input matInput type="number" [field]="form.price">
+			<input matInput type="number" [formField]="form.price">
 			@if (form.price().value() > 0) {
 			<mat-hint>Estimated Seling price</mat-hint>}
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>Stock</mat-label>
-			<input matInput [field]="form.stock" type="number">
+			<input matInput [formField]="form.stock" type="number">
 		</mat-form-field>
 
 		<button type="submit" class="hidden" #submitRef></button>

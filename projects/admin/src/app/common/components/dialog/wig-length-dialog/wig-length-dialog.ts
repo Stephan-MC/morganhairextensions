@@ -1,48 +1,39 @@
+import { HttpClient, type HttpErrorResponse } from "@angular/common/http";
 import { Component, DestroyRef, inject, signal } from "@angular/core";
-import { MatInputModule } from "@angular/material/input";
 import {
-	Field,
+	FormField,
 	form,
 	min,
 	minLength,
 	submit,
 	validate,
 } from "@angular/forms/signals";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import {
 	MAT_DIALOG_DATA,
 	MatDialogModule,
 	MatDialogRef,
 } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
-import {
-	HttpClient,
-	HttpErrorResponse,
-	httpResource,
-} from "@angular/common/http";
-import { environment } from "../../../../../environments/environment";
+import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import {
 	catchError,
 	firstValueFrom,
 	map,
-	merge,
-	shareReplay,
+	of,
 	Subject,
-	switchMap,
-	take,
 	tap,
 	throwError,
 } from "rxjs";
-import { Model, Thumbnail, Wig } from "shared";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { MatCardModule } from "@angular/material/card";
+import { type Model, Thumbnail, Wig } from "shared";
 
 @Component({
 	selector: "admin-wig-length-dialog",
 	imports: [
 		MatInputModule,
 		MatDialogModule,
-		Field,
+		FormField,
 		MatButtonModule,
 		MatSelectModule,
 		MatCardModule,
@@ -60,15 +51,11 @@ export class WigLengthDialog {
 		lengths: Array<Model.Wig.Length>;
 	}>(MAT_DIALOG_DATA);
 	#length = this.#data.length;
-	#http = inject(HttpClient);
-	#destroyRef = inject(DestroyRef);
 	#wigService = inject(Wig);
 
 	wigId = this.#data.id;
 	cover = this.#length?.thumbnail || null;
 	thumbnails = this.#length?.gallery || [];
-	#update = new Subject<void>();
-	#save = new Subject<void>();
 	isUpdating = signal(!!this.#length?.id, {
 		debugName: "LenthUpdateOrCreate",
 	});
@@ -118,8 +105,6 @@ export class WigLengthDialog {
 		event?.preventDefault();
 
 		submit(this.form, async () => {
-			this.isUpdating() ? this.#update.next() : this.#save.next();
-
 			const request$ = this.isUpdating()
 				? this.#wigService.updateLength(
 						this.wigId,
@@ -133,8 +118,19 @@ export class WigLengthDialog {
 					map(() => undefined),
 					tap((wig) => this.dialogRef.close(wig)),
 					catchError((error: HttpErrorResponse) => {
-						console.log("error", error);
-						return throwError(() => error);
+						const data = this.form().value();
+
+						return of(
+							Object.entries(
+								error.error.errors as { [k: string]: Array<string> },
+							).flatMap(([key, value]) =>
+								value.map((message, k) => ({
+									fieldTree: this.form[key as keyof typeof data],
+									kind: String(k),
+									message,
+								})),
+							),
+						);
 					}),
 				),
 			);

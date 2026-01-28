@@ -1,23 +1,29 @@
+import type { HttpErrorResponse } from "@angular/common/http";
 import { Component, inject, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { Color, HairType, Lace, Source, Texture } from "shared";
 import {
-	form,
 	FormField,
+	form,
 	maxLength,
 	minLength,
 	required,
+	submit,
 } from "@angular/forms/signals";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { Router } from "@angular/router";
+import { catchError, firstValueFrom, map, of } from "rxjs";
+import { Color, HairType, Lace, Source, Texture, Wig } from "shared";
 
 @Component({
 	selector: "admin-create",
 	imports: [
 		FormField,
+		MatButtonModule,
 		MatDialogModule,
 		MatInputModule,
 		MatFormFieldModule,
@@ -28,6 +34,8 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 	styleUrl: "./create.page.scss",
 })
 export class CreatePage {
+	#wigService = inject(Wig);
+	#router = inject(Router);
 	// Services for select options
 	textures = toSignal(inject(Texture).textures$, { initialValue: [] });
 	hairTypes = toSignal(inject(HairType).hairTypes$, { initialValue: [] });
@@ -89,5 +97,30 @@ export class CreatePage {
 		},
 	);
 
-	save() {}
+	save(event?: Event) {
+		event?.preventDefault();
+
+		submit(this.form, async () => {
+			return await firstValueFrom(
+				this.#wigService.store(this.form().value()).pipe(
+					map(() => undefined),
+					catchError((error: HttpErrorResponse) => {
+						return of(
+							Object.entries(
+								error.error.errors as {
+									[k in keyof typeof form]: Array<string>;
+								},
+							).flatMap(([key, value]: [string, any]) =>
+								(value as Array<string>).map((message, k) => ({
+									fieldTree: this.form[key as keyof typeof form],
+									kind: String(k),
+									message,
+								})),
+							),
+						);
+					}),
+				),
+			);
+		});
+	}
 }

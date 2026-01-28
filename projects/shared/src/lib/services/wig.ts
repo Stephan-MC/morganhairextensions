@@ -75,6 +75,13 @@ export class Wig {
 		);
 	}
 
+	/**
+	 * Save wig data to the database
+	 */
+	store(data: any) {
+		return this.#http.post(`${this.#environment.url.api}/wig`, data);
+	}
+
 	delete(slug: Model.Wig["slug"]) {
 		return this.#http
 			.delete(`${this.#environment.url.api}/wig/${slug.toLowerCase()}`)

@@ -28,6 +28,8 @@
 			@for (texture of textures(); track texture.id) {
 			<mat-option [value]="texture.id">{{ texture.name }}</mat-option>}
 		</mat-select>
+		@for (error of form.texture_id().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
 	</mat-form-field>
 
 	<mat-form-field>
@@ -36,6 +38,8 @@
 			@for (hairType of hairTypes(); track hairType.id) {
 			<mat-option [value]="hairType.id">{{ hairType.name }}</mat-option>}
 		</mat-select>
+		@for (error of form.hair_type_id().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
 	</mat-form-field>
 
 	<mat-form-field>
@@ -44,14 +48,18 @@
 			@for (source of sources(); track source.id) {
 			<mat-option [value]="source.id">{{ source.name }}</mat-option>}
 		</mat-select>
+		@for (error of form.source_id().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
 	</mat-form-field>
 
 	<mat-form-field>
-		<mat-label>Lace</mat-label>
+		<mat-label>Lace type</mat-label>
 		<mat-select [formField]="form.lace_id">
 			@for (lace of laces(); track lace.id) {
 			<mat-option [value]="lace.id">{{ lace.name }}</mat-option>}
 		</mat-select>
+		@for (error of form.lace_id().errors(); track error.kind) {
+		<mat-error>{{error.message}}</mat-error>}
 	</mat-form-field>
 
 	<mat-form-field>
@@ -59,9 +67,9 @@
 		<mat-select [formField]="form.color_id">
 			@for (color of colors(); track color.id) {
 			<mat-option [value]="color.id">
-				<div class="flex gap-2">
+				<div class="flex gap-2 items-ceter">
 					<span
-						class="rounded size-10"
+						class="rounded size-4"
 						[style.backgroundColor]="color.code"
 					></span>
 					<span>
@@ -79,9 +87,9 @@
 		mat-raised-button
 		color="primary"
 		type="submit"
-		[disabled]="form().invalid()"
+		[disabled]="form().invalid() || form().submitting()"
 	>
-		Save
+		@if (form().submitting()) { saving... } @else { Save }
 	</button>
 </form>
 
