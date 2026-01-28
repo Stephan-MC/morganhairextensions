@@ -8,10 +8,6 @@
 	"rewrites": [
 		{
 			"source": "/(.*)",
-			"destination": "/api"
-		},
-		{
-			"source": "/(.*)",
 			"has": [
 				{
 					"type": "host",
@@ -19,6 +15,10 @@
 				}
 			],
 			"destination": "/api/admin.js"
+		},
+		{
+			"source": "/(.*)",
+			"destination": "/api"
 		}
 	],
 	"functions": {
