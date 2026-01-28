@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, inject, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { Field, form, required } from "@angular/forms/signals";
+import { FormField, form, required } from "@angular/forms/signals";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -28,7 +28,7 @@ import { Location } from "@angular/common";
 		MatSelectModule,
 		MatFormFieldModule,
 		MatTabsModule,
-		Field,
+		FormField,
 	],
 	templateUrl: "./checkout.page.ng.html",
 	styleUrl: "./checkout.page.scss",

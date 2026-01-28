@@ -36,7 +36,7 @@
 				>
 					<mat-form-field>
 						<mat-label>Full Name</mat-label>
-						<input matInput [field]="form.name">
+						<input matInput [formField]="form.name">
 						@if (form.name().invalid()) { @for (error of form.name().errors();
 						track error.kind) {
 						<mat-error>
@@ -46,39 +46,39 @@
 					</mat-form-field>
 					<!-- <mat-form-field> -->
 					<!-- 	<mat-label>Email</mat-label> -->
-					<!-- 	<input matInput [field]="email"> -->
+					<!-- 	<input matInput [FormFormField]="email"> -->
 					<!-- </mat-form-field> -->
 					<mat-form-field>
 						<mat-label>Adress line 1</mat-label>
-						<input matInput [field]="form.address.line1">
+						<input matInput [formField]="form.address.line1">
 					</mat-form-field>
 					<mat-form-field>
 						<mat-label>Adress line 2</mat-label>
-						<input matInput [field]="form.address.line2">
+						<input matInput [formField]="form.address.line2">
 					</mat-form-field>
 					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 						<mat-form-field>
 							<mat-label>Country</mat-label>
-							<input matInput [field]="form.address.country">
+							<input matInput [formField]="form.address.country">
 						</mat-form-field>
 						<mat-form-field>
 							<mat-label>Postal code</mat-label>
-							<input matInput [field]="form.address.zip">
+							<input matInput [formField]="form.address.zip">
 						</mat-form-field>
 					</div>
 					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 						<mat-form-field>
 							<mat-label>City</mat-label>
-							<input matInput [field]="form.address.city">
+							<input matInput [formField]="form.address.city">
 						</mat-form-field>
 						<mat-form-field>
 							<mat-label>State/Province</mat-label>
-							<input matInput [field]="form.address.state">
+							<input matInput [formField]="form.address.state">
 						</mat-form-field>
 					</div>
 					<mat-form-field>
 						<mat-label>Notification Channel</mat-label>
-						<mat-select [field]="form.notification_channel">
+						<mat-select [formField]="form.notification_channel">
 							@for (channel of notification_channels; track channel.name) {
 							<mat-option [value]="channel.value">
 								<div class="flex gap-2">
@@ -99,7 +99,7 @@
 							{ Contact } @case ('imessage') { Email or Phone } @default { Email
 							} }
 						</mat-label>
-						<input matInput [field]="form.contact">
+						<input matInput [formField]="form.contact">
 						@if (form.contact().invalid()) { @for (error of
 						form.contact().errors(); track error) {
 						<mat-error>{{error.message}}</mat-error>} }
