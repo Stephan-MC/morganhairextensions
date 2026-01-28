@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>{{isUpdating() ? 'Edit' : 'Add'}} Length</h2>
+<mat-dialog-content>
+	<form class="flex flex-col gap-4 p-4" (submit)="onSubmit($event)" #formRef>
+		<input
+			type="file"
+			class="hidden"
+			(change)="form.thumbnail().value.set($event.target.files?.[0] || null)"
+			#thumbnail
+		>
+		<div class="grid gap-3">
+			<div
+				class="overflow-hidden relative col-span-full w-full rounded-lg aspect-[3/5]"
+				(click)="thumbnail.click()"
+			>
+				<morgan-thumbnail
+					[src]="form.thumbnail().value() || cover"
+					class="*:object-cover *:object-center size-full"
+				/>
+			</div>
+
+			<input
+				type="file"
+				class="hidden"
+				#gallery
+				(change)="handleGalleryUpload($event)"
+				[multiple]="true"
+			>
+			<div
+				class="grid grid-cols-2 gap-2 *:not-last:aspect-[3/5] *:not-last:w-full"
+			>
+				@for (img of thumbnails; track img.id) {
+				<morgan-thumbnail
+					[src]="img"
+					class="*:object-cover *:object-center *:size-full aspect-video"
+				/>
+				} @for (img of form.gallery().value(); track $index) {
+				<morgan-thumbnail
+					[src]="img"
+					class="*:object-cover *:object-center *:size-full rounded"
+				/>
+				}
+				<button
+					class="cursor-pointer focus:outline-none"
+					type="button"
+					(click)="gallery.click()"
+				>
+					<mat-card>
+						<mat-card-content>
+							<div class="flex justify-center items-center size-full">
+								<span
+									class="icon-[material-symbols--add]"
+									aria-hidden="true"
+									role="img"
+								></span>
+							</div>
+						</mat-card-content>
+					</mat-card>
+				</button>
+			</div>
+		</div>
+		@if (!isUpdating()) {
+		<mat-form-field>
+			<mat-label>Length</mat-label>
+			<mat-select [formField]="form.length_id">
+				@for (length of lengths(); track length.id) {
+				<mat-option [value]="length.id">{{ length.value }} inches</mat-option>}
+			</mat-select>
+		</mat-form-field>
+		}
+		<mat-form-field>
+			<mat-label>Price ($)</mat-label>
+			<input matInput type="number" [formField]="form.price">
+			@if (form.price().value() > 0) {
+			<mat-hint>Estimated Seling price</mat-hint>}
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Stock</mat-label>
+			<input matInput [formField]="form.stock" type="number">
+		</mat-form-field>
+
+		<button type="submit" class="hidden" #submitRef></button>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button
+		mat-button="filled"
+		(click)="[onSubmit()]"
+		[disabled]="form().invalid() || form().submitting()"
+	>
+		@if (isUpdating()) { Update } @else { Save }
+	</button>
+	<button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

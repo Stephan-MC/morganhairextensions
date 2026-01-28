@@ -81,13 +81,26 @@ export namespace Model {
 		slug: string;
 		description: string;
 		featured: string;
-		stock: number;
 
 		discount: Discount;
 		liked: boolean;
-		length: Wig.Length & { price: number; default: boolean };
+		length: Wig.Length & {
+			/** This represents the id of the length at which this pivot length is attached to. Whereas the ID represents the that of the pivot model. */
+			length_id: string;
 
-		lengths: Array<Wig.Length & { price: number; default: boolean }>;
+			/** Selling price of the current length of this wig */
+			price: number;
+		};
+
+		lengths: Array<
+			Wig.Length & {
+				/** This represents the id of the length at which this pivot length is attached to. Whereas the ID represents the that of the pivot model. */
+				length_id: string;
+
+				/** Selling price of the current length of this wig */
+				price: number;
+			}
+		>;
 		reviews: Array<Review>;
 		rating: {
 			/** The total number of clients who rated the product */
@@ -153,4 +166,8 @@ export namespace Model {
 			zip: string;
 		};
 	}
+
+	export interface Parting {}
+
+	export interface Cap {}
 }

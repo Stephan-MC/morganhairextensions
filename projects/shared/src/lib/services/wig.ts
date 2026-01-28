@@ -2,16 +2,35 @@ import { inject, Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ENVIRONMENT } from "../types/environments";
 import type { Model, Paginated } from "../types";
-import { BehaviorSubject, map, shareReplay, switchMap, tap } from "rxjs";
+import {
+	BehaviorSubject,
+	filter,
+	map,
+	shareReplay,
+	switchMap,
+	tap,
+} from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { toFormData } from "../utils";
 
 @Injectable({
 	providedIn: "root",
 })
 export class Wig {
-	private _http = inject(HttpClient);
-	private _environment = inject(ENVIRONMENT);
+	#http = inject(HttpClient);
+	#environment = inject(ENVIRONMENT);
+	#route = inject(ActivatedRoute);
 
 	params$ = new BehaviorSubject<{ [k: string]: any }>({ page: 1 });
+
+	wig$ = this.#route.params.pipe(
+		filter((params) => !!params["wig"]),
+		map((params) => params["wig"] as string),
+		switchMap((slug) =>
+			this.#http.get<Model.Wig>(`${this.#environment.url.api}/wig/${slug}`),
+		),
+		shareReplay(1),
+	);
 
 	wigs$ = this.params$.asObservable().pipe(
 		map(
@@ -28,8 +47,8 @@ export class Wig {
 				) as { [k: string]: string | number },
 		),
 		switchMap((params) =>
-			this._http
-				.get<Paginated<Model.Wig>>(`${this._environment.url.api}/wigs`, {
+			this.#http
+				.get<Paginated<Model.Wig>>(`${this.#environment.url.api}/wigs`, {
 					params: new HttpParams({ fromObject: { page: 1, ...params } }),
 				})
 				.pipe(),
@@ -39,8 +58,8 @@ export class Wig {
 	total$ = this.wigs$.pipe(map((response) => response.meta.total));
 
 	featuredWigs(params: Record<string, number | string> = {}) {
-		return this._http.get<Array<Model.Wig>>(
-			`${this._environment.url.api}/wigs/featured`,
+		return this.#http.get<Array<Model.Wig>>(
+			`${this.#environment.url.api}/wigs/featured`,
 			{
 				params: { limit: 4, new: "", ...params },
 			},
@@ -48,17 +67,55 @@ export class Wig {
 	}
 
 	popularWigs(params: Record<string, string | number> = {}) {
-		return this._http.get<Array<Model.Wig>>(
-			`${this._environment.url.api}/wigs`,
+		return this.#http.get<Array<Model.Wig>>(
+			`${this.#environment.url.api}/wigs`,
 			{
 				params: { limit: 4, popular: "", ...params },
 			},
 		);
 	}
 
+	/**
+	 * Save wig data to the database
+	 */
+	store(data: any) {
+		return this.#http.post(`${this.#environment.url.api}/wig`, data);
+	}
+
 	delete(slug: Model.Wig["slug"]) {
-		return this._http
-			.delete(`${this._environment.url.api}/wig/${slug.toLowerCase()}`)
+		return this.#http
+			.delete(`${this.#environment.url.api}/wig/${slug.toLowerCase()}`)
 			.pipe(tap(() => this.params$.next({ ...this.params$.value, page: 1 })));
+	}
+
+	addLength(wig: Model.Wig["id"], data: any) {
+		return this.#http
+			.post(
+				`${this.#environment.url.api}/wig/${wig.toLowerCase()}/length`,
+				toFormData(data),
+			)
+			.pipe();
+	}
+
+	updateLength(
+		wig: Model.Wig["id"],
+		/** The ID of the length associated to the model  */
+		length: Model.Wig.Length["id"],
+		data: any,
+	) {
+		return this.#http
+			.patch(
+				`${this.#environment.url.api}/wig/${wig.toLowerCase()}/length/${length}`,
+				toFormData(data),
+			)
+			.pipe();
+	}
+
+	removeLength(wig: Model.Wig["id"], length: Model.Wig["length"]["id"]) {
+		return this.#http
+			.delete(
+				`${this.#environment.url.api}/wig/${wig.toLowerCase()}/length/${length.toLowerCase()}`,
+			)
+			.pipe();
 	}
 }

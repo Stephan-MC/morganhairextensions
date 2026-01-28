@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 @Component({
-  selector: 'admin-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+	selector: "admin-root",
+	imports: [RouterOutlet, MatSidenavModule, RouterLink],
+	templateUrl: "./app.ng.html",
+	styleUrl: "./app.scss",
 })
 export class App {
-  protected readonly title = signal('admin');
+	protected readonly title = signal("admin");
 }

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "angular-cli": {
+      "command": "bunx",
+      "args": [
+        "-y",
+        "@angular/cli",
+        "mcp"
+      ]
+    }
+  },
+  "general": {
+    "vimMode": true
+  }
+}

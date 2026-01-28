@@ -1,0 +1,445 @@
+<main class="flex overflow-hidden relative flex-col flex-1 h-full">
+	<!-- Scrollable Content Area -->
+	<div class="overflow-y-auto flex-1 p-4 md:p-8">
+		<div class="flex flex-col gap-6 mx-auto max-w-[1200px]">
+			<!-- Stats Row -->
+			<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 max-lg:grid-cols-2">
+				<mat-card class="p-5">
+					<mat-card-title>
+						<span> Total Sales </span>
+						<span
+							class="icon-[material-symbols--payments] text-(--mat-sys-primary)/60"
+							role="img"
+							aria-hidden="true"
+						></span>
+					</mat-card-title>
+					<mat-card-content>
+						<p
+							class="text-3xl font-bold leading-tight dark:text-white text-[#140d1b]"
+						>
+							$12,450
+							<span
+								class="inline-flex items-center py-0.5 px-1.5 text-xs font-bold text-green-600 bg-green-100 rounded dark:bg-green-900/30"
+							>
+								+5%
+							</span>
+						</p>
+					</mat-card-content>
+					<mat-card-footer class="text-xs text-gray-500 dark:text-gray-400">
+						vs. last month
+					</mat-card-footer>
+				</mat-card>
+				<mat-card class="p-5 w-full">
+					<mat-card-title>
+						<span>Total Orders</span>
+						<span
+							class="icon-[material-symbols--payments] text-(--mat-sys-primary)/60"
+							role="img"
+							aria-hidden="true"
+						></span>
+					</mat-card-title>
+					<mat-card-content>
+						<p
+							class="text-3xl font-bold leading-tight dark:text-white text-[#140d1b]"
+						>
+							142
+							<span
+								class="inline-flex items-center py-0.5 px-1.5 text-xs font-bold text-green-600 bg-green-100 rounded dark:bg-green-900/30"
+							>
+								+5%
+							</span>
+						</p>
+					</mat-card-content>
+					<mat-card-footer class="text-xs text-gray-500 dark:text-gray-400">
+						vs. last month
+					</mat-card-footer>
+				</mat-card>
+				<mat-card class="p-5">
+					<mat-card-title>
+						<span> New Customers </span>
+						<span
+							class="icon-[material-symbols--payments] text-(--mat-sys-primary)/60"
+							role="img"
+							aria-hidden="true"
+						></span>
+					</mat-card-title>
+					<mat-card-content>
+						<p
+							class="text-3xl font-bold leading-tight dark:text-white text-[#140d1b]"
+						>
+							<span>{{35 | number}}</span>
+							<span
+								class="inline-flex items-center py-0.5 px-1.5 text-xs font-bold text-green-600 bg-green-100 rounded dark:bg-green-900/30"
+							>
+								+5%
+							</span>
+						</p>
+					</mat-card-content>
+					<mat-card-footer class="text-xs text-gray-500 dark:text-gray-400">
+						vs. last month
+					</mat-card-footer>
+				</mat-card>
+				<mat-card class="p-5">
+					<mat-card-title>
+						<span>Inventory Count</span>
+						<span
+							class="icon-[material-symbols--payments] text-(--mat-sys-primary)/60"
+							role="img"
+							aria-hidden="true"
+						></span>
+					</mat-card-title>
+					<mat-card-content>
+						<p
+								class="text-3xl font-bold leading-tight dark:text-white text-[#140d1b]"
+							>
+								{{1204 | number}}
+								<span
+									class="inline-flex items-center py-0.5 px-1.5 text-xs font-bold text-green-600 bg-green-100 rounded dark:bg-green-900/30"
+								>
+									+5%
+								</span>
+							</p>
+					</mat-card-content>
+					<mat-card-footer class="text-xs text-gray-500 dark:text-gray-400">
+						vs. last month
+					</mat-card-footer>
+				</mat-card>
+			</div>
+			<!-- Split Section: Chart & Quick Actions -->
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+				<!-- Chart Section -->
+				<div
+					class="flex flex-col p-6 rounded border shadow-sm lg:col-span-2 bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark"
+				>
+					<div class="flex justify-between items-center mb-6">
+						<div>
+							<h3 class="text-lg font-bold dark:text-white text-[#140d1b]">
+								Revenue Overview
+							</h3>
+							<p class="text-sm text-[#734c9a] dark:text-[#a88bc4]">
+								Sales performance over the last 30 days
+							</p>
+						</div>
+						<select
+							class="py-1 px-3 text-sm rounded border dark:text-white bg-background-light border-border-light text-[#140d1b] dark:bg-white/5 dark:border-border-dark focus:ring-primary focus:border-primary"
+						>
+							<option>Last 30 Days</option>
+							<option>Last 7 Days</option>
+							<option>Last 90 Days</option>
+						</select>
+					</div>
+					<div class="relative w-full h-64">
+						<div
+							class="flex absolute inset-0 gap-2 justify-between items-end px-2 pb-6"
+						>
+							<!-- Fake bars for chart visualization -->
+							<div
+								class="w-full bg-primary/10 hover:bg-primary/20 rounded-t h-[40%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$1200
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary/20 hover:bg-primary/30 rounded-t h-[65%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$2400
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary/10 hover:bg-primary/20 rounded-t h-[45%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$1450
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary/30 hover:bg-primary/40 rounded-t h-[80%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$3100
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary/10 hover:bg-primary/20 rounded-t h-[55%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$1800
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary/50 hover:bg-primary/60 rounded-t h-[90%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$3800
+								</div>
+							</div>
+							<div
+								class="w-full bg-primary hover:bg-primary/90 rounded-t h-[70%] transition-all relative group"
+							>
+								<div
+									class="absolute -top-8 left-1/2 py-1 px-2 text-xs text-white bg-gray-800 rounded opacity-0 transition-opacity -translate-x-1/2 pointer-events-none group-hover:opacity-100"
+								>
+									$2600
+								</div>
+							</div>
+						</div>
+						<!-- X Axis Labels -->
+						<div
+							class="flex absolute right-0 bottom-0 left-0 justify-between px-2 text-xs font-medium text-gray-500"
+						>
+							<span>Mon</span>
+							<span>Tue</span>
+							<span>Wed</span>
+							<span>Thu</span>
+							<span>Fri</span>
+							<span>Sat</span>
+							<span>Sun</span>
+						</div>
+					</div>
+				</div>
+				<!-- Quick Actions Grid -->
+				<div class="flex flex-col gap-4 lg:col-span-1">
+					<div class="grid grid-cols-2 gap-4 h-full">
+						<a
+							class="flex flex-col gap-3 justify-center items-center p-4 rounded border transition-all hover:shadow-md group bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark hover:border-primary/50"
+							href="#"
+						>
+							<div
+								class="flex justify-center items-center bg-purple-100 rounded-full transition-transform group-hover:scale-110 size-12 text-primary dark:bg-purple-900/20"
+							>
+								<span
+									class="text-lg icon-[material-symbols--styler-outline] text-(--mat-sys-primary)/60"
+									role="img"
+									aria-hidden="true"
+								></span>
+							</div>
+							<p
+								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+							>
+								Manage Wigs
+							</p>
+						</a>
+						<a
+							class="flex flex-col gap-3 justify-center items-center p-4 rounded border transition-all hover:shadow-md group bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark hover:border-primary/50"
+							href="#"
+						>
+							<div
+								class="flex justify-center items-center text-blue-600 bg-blue-100 rounded-full transition-transform dark:text-blue-400 group-hover:scale-110 size-12 dark:bg-blue-900/20"
+							>
+								<span
+									class="text-lg icon-[material-symbols--straighten-outline] text-(--mat-sys-primary)/60"
+									role="img"
+									aria-hidden="true"
+								></span>
+							</div>
+							<p
+								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+							>
+								Manage Lengths
+							</p>
+						</a>
+						<mat-card class="transition-all hover:shadow-md group" href="#">
+							<mat-card-content>
+								<div
+									class="flex justify-center items-center text-pink-600 bg-pink-100 rounded-full transition-transform dark:text-pink-400 group-hover:scale-110 size-12 dark:bg-pink-900/20"
+								>
+									<span
+										class="text-lg icon-[material-symbols--palette-outline] text-(--mat-sys-primary)/60"
+										role="img"
+										aria-hidden="true"
+									></span>
+								</div>
+								<p
+									class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+								>
+									Manage Colors
+								</p>
+							</mat-card-content>
+						</mat-card>
+						<mat-card
+							class="transition-all hover:shadow-md group"
+							routerLink="./"
+						>
+							<div
+								class="flex justify-center items-center text-green-600 bg-green-100 rounded-full transition-transform dark:text-green-400 group-hover:scale-110 size-12 dark:bg-green-900/20"
+							>
+								<span
+									class="text-lg icon-[material-symbols--percent] text-(--mat-sys-primary)/60"
+									role="img"
+									aria-hidden="true"
+								></span>
+							</div>
+							<p
+								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+							>
+								Manage Discounts
+							</p>
+						</mat-card>
+					</div>
+				</div>
+			</div>
+			<!-- Top Selling Wigs Table -->
+			<div
+				class="flex flex-col rounded border shadow-sm bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark"
+			>
+				<div
+					class="flex justify-between items-center p-6 border-b border-border-light dark:border-border-dark"
+				>
+					<h3 class="text-lg font-bold dark:text-white text-[#140d1b]">
+						Top-Selling Wigs
+					</h3>
+					<a class="text-sm font-bold hover:underline text-primary" href="#"
+						>View All Inventory</a
+					>
+				</div>
+				<div class="overflow-x-auto">
+					<table
+						class="w-full text-sm text-left dark:text-gray-200 text-[#140d1b]"
+					>
+						<thead
+							class="text-xs font-semibold uppercase border-b bg-[#fcfafc] border-border-light text-[#734c9a] dark:bg-white/5 dark:border-border-dark dark:text-[#cdb4db]"
+						>
+							<tr>
+								<th class="py-4 px-6">Product Name</th>
+								<th class="py-4 px-6">Price</th>
+								<th class="py-4 px-6">Orders</th>
+								<th class="py-4 px-6">Revenue</th>
+								<th class="py-4 px-6 text-right">Status</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-border-light dark:divide-border-dark">
+							<tr
+								class="transition-colors hover:bg-gray-50 dark:hover:bg-white/5"
+							>
+								<td class="py-4 px-6">
+									<div class="flex gap-4 items-center">
+										<div
+											class="bg-gray-200 bg-center bg-cover rounded border size-12 shrink-0 border-border-light"
+											data-alt="Thumbnail of a long black silky straight wig on a mannequin head"
+											style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_Srd8OME9MSOHUtG055tGW3ZtgCfpIFsTSLCMtxITa_M_sH99Ix5fDKNKKWjdZo-ubWwQo8DmAK10qJ5I6T__Q-o4evK7zKuZJ_OV4g7hATMeL7yPrZYZ_BEPoPMsgrLongciKFBC4Yf53Odb6mqcC0Zm9cGSPcI_HMEdhAjSIPLCVyE2AGVuLOXVpxPwPGGqAcZeMOIgGErfzcoDrTm66D7jAFvanCK-Vmm-bOwKmMhxOtV5afv0WqFxo8jdJykmWc_b4Awdp7M");'
+										></div>
+										<div>
+											<p class="font-bold dark:text-white text-[#140d1b]">
+												Silky Straight 24"
+											</p>
+											<p class="text-xs text-gray-500">
+												Black, 13x4 Lace Front
+											</p>
+										</div>
+									</div>
+								</td>
+								<td class="py-4 px-6 font-medium">$280.00</td>
+								<td class="py-4 px-6 text-gray-600 dark:text-gray-400">45</td>
+								<td class="py-4 px-6 font-bold">$12,600</td>
+								<td class="py-4 px-6 text-right">
+									<span
+										class="inline-flex items-center py-1 px-2 text-xs font-bold text-green-700 bg-green-100 rounded dark:text-green-300 dark:bg-green-900/40"
+										>In Stock</span
+									>
+								</td>
+							</tr>
+							<tr
+								class="transition-colors hover:bg-gray-50 dark:hover:bg-white/5"
+							>
+								<td class="py-4 px-6">
+									<div class="flex gap-4 items-center">
+										<div
+											class="bg-gray-200 bg-center bg-cover rounded border size-12 shrink-0 border-border-light"
+											data-alt="Thumbnail of a blonde body wave wig"
+											style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCV7nlRwLcwhUKEpFxwj-J4lI2dPJ-G-DLfg3TLbmWn-fXZh8oQ1NWO0JaTXoYe_MLxi8SHZYtLQLAcuZRGphdyFKX7Z25u1fc368MOLblsOFnRfYxwiw4hNGeH9LRUQj-aGxyMIYQGdstOH6oQet9u_8x7rysJT9IKPioUUEJ83bEBhTBEO2LOZ5NzkN3teMOymWfyNncCqJvGcrCCr2sV4YUXhlKKEVtikwKGx16pgfeiVFGddbHa9m6mNJYqjfYKz7JSgyTqTrs");'
+										></div>
+										<div>
+											<p class="font-bold dark:text-white text-[#140d1b]">
+												Honey Blonde Wave 18"
+											</p>
+											<p class="text-xs text-gray-500">#27/613, 4x4 Closure</p>
+										</div>
+									</div>
+								</td>
+								<td class="py-4 px-6 font-medium">$210.00</td>
+								<td class="py-4 px-6 text-gray-600 dark:text-gray-400">32</td>
+								<td class="py-4 px-6 font-bold">$6,720</td>
+								<td class="py-4 px-6 text-right">
+									<span
+										class="inline-flex items-center py-1 px-2 text-xs font-bold text-orange-700 bg-orange-100 rounded dark:text-orange-300 dark:bg-orange-900/40"
+										>Low Stock</span
+									>
+								</td>
+							</tr>
+							<tr
+								class="transition-colors hover:bg-gray-50 dark:hover:bg-white/5"
+							>
+								<td class="py-4 px-6">
+									<div class="flex gap-4 items-center">
+										<div
+											class="bg-gray-200 bg-center bg-cover rounded border size-12 shrink-0 border-border-light"
+											data-alt="Thumbnail of a curly red wig"
+											style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeKlaa8kzyL-Stmb6HJtWW2ifz_e5aK5e0VMrnJQJdNQ-jgxFcTB9s_9rBsijOPdX-qyc7mda-daX_tfTfSBnRdjoV_zLX_CDdNaC-9X2kwosp5IZWiutQWw-Da8jD7rZb-O2qbNRFbFd9UD7lOPPH3oEM9rdQmTzVVhNb5ktRhv2uaPcYpJ0pGMST4CtKr5ds1Cpw6X8BrYG9fePfqFPojSYgJFeFvDcnB7lm116tDdMJpD1PnTW-muVh6JG43gzm3b2osgnrSnY");'
+										></div>
+										<div>
+											<p class="font-bold dark:text-white text-[#140d1b]">
+												Burgundy Deep Curly 20"
+											</p>
+											<p class="text-xs text-gray-500">99J, 13x6 Lace Front</p>
+										</div>
+									</div>
+								</td>
+								<td class="py-4 px-6 font-medium">$245.00</td>
+								<td class="py-4 px-6 text-gray-600 dark:text-gray-400">28</td>
+								<td class="py-4 px-6 font-bold">$6,860</td>
+								<td class="py-4 px-6 text-right">
+									<span
+										class="inline-flex items-center py-1 px-2 text-xs font-bold text-green-700 bg-green-100 rounded dark:text-green-300 dark:bg-green-900/40"
+										>In Stock</span
+									>
+								</td>
+							</tr>
+							<tr
+								class="transition-colors hover:bg-gray-50 dark:hover:bg-white/5"
+							>
+								<td class="py-4 px-6">
+									<div class="flex gap-4 items-center">
+										<div
+											class="bg-gray-200 bg-center bg-cover rounded border size-12 shrink-0 border-border-light"
+											data-alt="Thumbnail of a short bob wig in black"
+											style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVGOys0HyGanPJTfzHXNVv1zsmJC3qyQgI8H74l95XgrLl9Rj6ePBcocMYYtWIU_sghwBYDWi8-2L5QUzRWxT3-ZT5m79bNHAcdpA4alpGIaGYDa-e0hSPrvUGXiZWKgkW5Y_miaX1qGyZAQO_WvEMlQpaVRpc2TSM4Pwmn8rs0U1JnDlaPeL78HeIG8sR0x7mpUacikqlNzuuBTX01y5qrRLPfrWvAbAq6CppQTIz8GPEsgIP2ckdng_DaGmosvcuRxikmLmBq-E");'
+										></div>
+										<div>
+											<p class="font-bold dark:text-white text-[#140d1b]">
+												Classic Bob 10"
+											</p>
+											<p class="text-xs text-gray-500">Natural Black, T-Part</p>
+										</div>
+									</div>
+								</td>
+								<td class="py-4 px-6 font-medium">$120.00</td>
+								<td class="py-4 px-6 text-gray-600 dark:text-gray-400">24</td>
+								<td class="py-4 px-6 font-bold">$2,880</td>
+								<td class="py-4 px-6 text-right">
+									<span
+										class="inline-flex items-center py-1 px-2 text-xs font-bold text-green-700 bg-green-100 rounded dark:text-green-300 dark:bg-green-900/40"
+										>In Stock</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

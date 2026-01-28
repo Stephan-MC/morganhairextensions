@@ -38,41 +38,13 @@
 			<div
 				class="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
 			>
+				@for (thumbnail of length().gallery; track thumbnail.id) {
 				<div
-					class="w-full bg-center bg-no-repeat bg-cover border-2 aspect-square border-primary"
+					class="w-full bg-center bg-no-repeat bg-cover aspect-square"
 					data-alt="Front view of the wig"
-					style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhY6kZxSKI092_9lFfrYd28mRq0vafvMGd0Lue8fNnVqjjkDY2ivex6jKrzTrrQRIdiTzmNXpcQHBGjuQfSZA1xMoaTgNzNIP_tr7QqY3cHQbpBaeq6C58pQf07HGNGexFSng8lgTjfQ241YIZM0_Uc2aq3KuUJsfiEjoz_dC33cM_ANbpWBlZ_SP-rP1sy7SW3Ay2M65zM4be1F4iaProAJs1FISscwxP2eEqgnE3gN_C9Fdv1QHAvUfj8_7EFxqPuzCPxmCoWrc');
-            "
+					[style.backgroundImage]="`url('${thumbnail.url}')`"
 				></div>
-				<div
-					class="w-full bg-center bg-no-repeat bg-cover opacity-70 cursor-pointer hover:opacity-100 aspect-square"
-					data-alt="Side view of the wig"
-					style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCezSlnFzlQG2g9ACe18MBbaVQ02IfYeTjEhnYQZwItiMLLmx4UKAvcAhuk-Nd11G6pCRv44yfqjUU0W3NprYhxB7UyHOdJ-toRpKHKiQ-NjopsfAJtvYXPYswchUjGYFT0pl4reLKqswspdZUhRqKi9T3Ry91RSr5qkyuyt91r5zRrK23iYqEfVk6_GGjnBtzliOnA-NTtqWogTpYRoVVOeZIgBBljkfNizUjkATrIf3CF28bKxKO00eQX1ih8szK7mifPmXRGu04');
-            "
-				></div>
-				<div
-					class="w-full bg-center bg-no-repeat bg-cover opacity-70 cursor-pointer hover:opacity-100 aspect-square"
-					data-alt="Back view of the wig"
-					style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhPzXrhGYu5UIS2Pv0BvArJip-ERo58kmeEMQQ8zo_fsR2ZlSCFeQnEBoGPBbTN8zcrdUjsr-iXup90tp0_RzjDtQVdy5elNgfycmn4tXYNdTdzsNHM8H4WnjybT2RUsSB8xV11k03yLi-J1kog3PNB0ClqP418JNc_SrzUP6EJlSUC8CroDNjtclB7PkHeMRh2uw45p7EDh2d8mqQRXQgPvOnX89XTnREfzZIkcyBkjzOeP37z30tL2OlRnHmRwbVng6XAqESsH0');
-            "
-				></div>
-				<div
-					class="w-full bg-center bg-no-repeat bg-cover opacity-70 cursor-pointer hover:opacity-100 aspect-square"
-					data-alt="Close-up of the wig's lace front"
-					style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNk1be1SZ-Sbalt8CDCtI8zO2qFs8mI_y4vh2okiHsZt6Pcz34GWSbXuV6VEhjsnwH5KLwTyXsWc25fMI95oAGY0Kc-arwSUkS7nsprt-L40wVLd2lShyRCe1EmKURiWdyanXPGC4e4nn2pZgYMe7ZjU7yAfJghtdpG2B8mhZHbSEj_zRy4K-e9m7yNc6Yq9Qx7P9C8dLNfQbEFpVz8jasAoGxDWeyFFH8eR0Sd58TVlXpCsHIh6ifMmt63DnEOSS8gyTf6ZggBb8');
-            "
-				></div>
-				<div
-					class="w-full bg-center bg-no-repeat bg-cover opacity-70 cursor-pointer hover:opacity-100 aspect-square"
-					data-alt="Wig shown in a different color"
-					style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt2EQqEFvlyFBScEaM5EaHAi4s7dnkJK9tt_TSRzkmcIJLcJwV_MvX1Oe4FGCFnS85is68YAHxL0A5tzqaWPxnFxXdASHYGQVURNvzGz7dqGaronCJyUKY9OUnXciqh4xpdgLvJs5ySkGC9sop0V_doUGyn_oUPY1Mu5-8cXQEWEdt8oS033OYA_GQivmb-lEBboCTg8RNotvvRHUPmUg9j30u4uX3_xhXpGGwHsBAbTJQaXnad1Kkyw6K9n9oKeRu5VS0RIHmEKI');
-            "
-				></div>
+				}
 			</div>
 		</div>
 		<!-- Right Column: Product Info -->
@@ -121,10 +93,7 @@
 				</div>
 				<mat-form-field>
 					<mat-label>LENGTH</mat-label>
-					<mat-select
-						(selectionChange)="length.set($event.value)"
-						[value]="length"
-					>
+					<mat-select (selectionChange)="length.set($event.value)">
 						@for (length of wig().lengths; track length.id) {
 						<mat-option [disabled]="length.stock < 0" [value]="length">
                 {{ length.value }} inches
