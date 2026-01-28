@@ -1,5 +1,101 @@
 # Changelog
 
+## [1.5.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.4.0...v1.5.0) (2025-12-22)
+
+
+### Features
+
+* Added about page ([2bc139b](https://github.com/Stephan-MC/morganhairextensions/commit/2bc139bc11d6d6f7e2f574c5e99efcd57425ecf9))
+* Added contact page ([bb0d389](https://github.com/Stephan-MC/morganhairextensions/commit/bb0d389ee6732b8db38cb4b7719c4dbf16ae2400))
+* Added contact page ([62ab713](https://github.com/Stephan-MC/morganhairextensions/commit/62ab713cf5dbea446b61a58498101223b8974973))
+* Added DB and cart services ([8e08ee8](https://github.com/Stephan-MC/morganhairextensions/commit/8e08ee8a249ba46f5b765dc68a93ff51cfa4552a))
+* Added wig related services ([4ac47d8](https://github.com/Stephan-MC/morganhairextensions/commit/4ac47d8c8e2e89680ee1598654a3e65bddabfe8e))
+
+
+### Bug Fixes
+
+* ... ([afb7b73](https://github.com/Stephan-MC/morganhairextensions/commit/afb7b73943a204ae46a5f99850324d66f02d10ef))
+* Added required interceptor ([9cb2b8b](https://github.com/Stephan-MC/morganhairextensions/commit/9cb2b8b68d2406587642e728b98ae136f58300ac))
+* Added yarn.lock for firebase app hosting ([f103ea3](https://github.com/Stephan-MC/morganhairextensions/commit/f103ea3ca6214c53a4569280b1c5303af964c32a))
+* Adjusted environment files ([94d564f](https://github.com/Stephan-MC/morganhairextensions/commit/94d564fcd91a6ae85f825db43dc89b223aab3392))
+* Cart not more redundant ([a670eb5](https://github.com/Stephan-MC/morganhairextensions/commit/a670eb53f3fcb43f80aa3368b5a99c13c2a7fe5b))
+* Checkout button now redirects to payments page ([d35ed15](https://github.com/Stephan-MC/morganhairextensions/commit/d35ed152d5c8fe9e0731db5018b756f7fb2bc584))
+* enhanced filtering on the shop page ([298d857](https://github.com/Stephan-MC/morganhairextensions/commit/298d857d2655840154aafc78e9c2580abbd2d21b))
+* Fixed filters from shop page ([e5a0014](https://github.com/Stephan-MC/morganhairextensions/commit/e5a0014fb080e796b9405aae0bc5a6b61a2e0392))
+* Fixed issue with requireSync ([1ff1485](https://github.com/Stephan-MC/morganhairextensions/commit/1ff1485eb07e65ef71b06b04e3a507a1c3a13184))
+* Fixed issue with requireSync failing ([2bdc7d5](https://github.com/Stephan-MC/morganhairextensions/commit/2bdc7d5e3821e52b80d29cf03b2ebe3065e34075))
+* Fixed issue with sidenav when page shrinks or has no content ([d880711](https://github.com/Stephan-MC/morganhairextensions/commit/d8807112a38ca57c3253a04e57cbbc8562b2f46c))
+* Increased thumbnails sizes ([b28109b](https://github.com/Stephan-MC/morganhairextensions/commit/b28109ba713acb835462a8c6fae0a649343018e9))
+* Migrated home page to use wig card componet ([3b2ce15](https://github.com/Stephan-MC/morganhairextensions/commit/3b2ce15e5c08ed30bd4f6f67a2d6f45fa66a86c9))
+* Refactored methods of the cart service ([ea8c282](https://github.com/Stephan-MC/morganhairextensions/commit/ea8c282df67d9c4c726a5bc8029f2762395168c6))
+* Resover now works in SSR mode ([108edad](https://github.com/Stephan-MC/morganhairextensions/commit/108edadf04458a35b8202778194fa098cf7b5a57))
+* Revamped some missing services ([3076689](https://github.com/Stephan-MC/morganhairextensions/commit/30766899f108ee0b7fac82206affde6f8eb35d46))
+* Updated the about page ([bb45011](https://github.com/Stephan-MC/morganhairextensions/commit/bb45011ab8c459c522e1d619e59551c6a8921353))
+* **web:** Home page now renders using SSR ([79961e2](https://github.com/Stephan-MC/morganhairextensions/commit/79961e20d2eafdb004383b1d00249994871210d7))
+
+## [1.4.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.3.0...v1.4.0) (2025-11-04)
+
+
+### Features
+
+* Added a hairType Service ([cf8894b](https://github.com/Stephan-MC/morganhairextensions/commit/cf8894b5bb4239ae6d27f37f6153d5c164863095))
+* Added an og:image for the site ([d35782c](https://github.com/Stephan-MC/morganhairextensions/commit/d35782c6166a7b57acf190bf7cca79e2c6f3fdbe))
+* Added another filter for `lace` in the wig resolver ([bd2ceff](https://github.com/Stephan-MC/morganhairextensions/commit/bd2ceffb5fee62ed145b67b7a3c36f6a0a63b77e))
+* The shop page now filters wig results based on route queryParams ([06e0b3b](https://github.com/Stephan-MC/morganhairextensions/commit/06e0b3bafc08eb9cff73504874328c1e0180595f))
+* The wig page is now partially dynamic ([567b964](https://github.com/Stephan-MC/morganhairextensions/commit/567b964e4128c28f6d488c02f91a61ce292ad104))
+* Wig service now fetches popular and featured wigs ([48adc57](https://github.com/Stephan-MC/morganhairextensions/commit/48adc57a77a0ea3647a715219b6074b9018e8152))
+
+
+### Bug Fixes
+
+* Added routes titles ([d15b667](https://github.com/Stephan-MC/morganhairextensions/commit/d15b66721fe2dec4058e672190d3830bdadfe89f))
+* Adjusted wrongly formed cannonical URLs ([38ad584](https://github.com/Stephan-MC/morganhairextensions/commit/38ad5846398abfb409ce6c3365f81a9e0fdc4dc3))
+* Fixed input labels not showing ([3364dac](https://github.com/Stephan-MC/morganhairextensions/commit/3364dacf05109e429dc21d32d2ae05ef02a36e38))
+* Fixed paginated data counts on the shop page ([3035f84](https://github.com/Stephan-MC/morganhairextensions/commit/3035f848f008b7fb9354267ebb3dbe344dda4ec7))
+* HairType models now has slugs ([6c13e09](https://github.com/Stephan-MC/morganhairextensions/commit/6c13e09407e9e07aacfc7f84f0df5598b32e0f85))
+
+## [1.3.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.2.0...v1.3.0) (2025-11-03)
+
+
+### Features
+
+* Added models to the system ([b4e3eb8](https://github.com/Stephan-MC/morganhairextensions/commit/b4e3eb82846610463986247555c4455f7d4ccab0))
+* Added resolvers for wigs ([9b176cf](https://github.com/Stephan-MC/morganhairextensions/commit/9b176cff359a05c1f50c2f547774515f10cd3f96))
+* Created a wig services ([ef96862](https://github.com/Stephan-MC/morganhairextensions/commit/ef96862e73d525be2d5a8a80b6885ec1d5897f8c))
+* Enabled componentInputBinding to get resolved datas in to components as input ([f4b202c](https://github.com/Stephan-MC/morganhairextensions/commit/f4b202cd652e378061c0c6a987e685b908646ed1))
+* Revamped the shop page ([170a22b](https://github.com/Stephan-MC/morganhairextensions/commit/170a22bf8a956403b2d8399224ebeb11ce55e9d5))
+* **web:** Added environments ([2756673](https://github.com/Stephan-MC/morganhairextensions/commit/275667382fb1107357091771e5c307730f8f7959))
+
+## [1.2.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.1.1...v1.2.0) (2025-11-02)
+
+
+### Features
+
+* Added checkout page ([5c4d7cd](https://github.com/Stephan-MC/morganhairextensions/commit/5c4d7cdb031b94ddaef45933f30b0e19a7514e73))
+* Added CI/CD for creating releases ([ac13087](https://github.com/Stephan-MC/morganhairextensions/commit/ac130875a9121aef71275349798084c1abda797d))
+* Added material theme ([bc03ee4](https://github.com/Stephan-MC/morganhairextensions/commit/bc03ee47639d7de83aabf3b338ee5b9a2795a9a6))
+* Added schematics to generate all components templates as .ng.html ([5ad7016](https://github.com/Stephan-MC/morganhairextensions/commit/5ad70166f9a613ec19ada309fd7c61e5fd77e93c))
+* Added shared environments ([f06fb1f](https://github.com/Stephan-MC/morganhairextensions/commit/f06fb1f5a0ead1e31132f3e7405766518bfe2bbc))
+* Added tailwindcss page for icons ([3de60d7](https://github.com/Stephan-MC/morganhairextensions/commit/3de60d7ded3e7db0874fad25ad5bd79e84f2602a))
+* Added the cart and the landing page ([dbda5eb](https://github.com/Stephan-MC/morganhairextensions/commit/dbda5ebaa06d96422f964f1b5ab90d628f309667))
+* Added vercel configs and serverless functions ([f4251c6](https://github.com/Stephan-MC/morganhairextensions/commit/f4251c654a51e2ea617d2b36f86ee4ba217e1f01))
+* Configured tailwindcss for the web app ([4153ee4](https://github.com/Stephan-MC/morganhairextensions/commit/4153ee432a5c9abbbbd7869119bfeff938d640c9))
+* Configured tailwindcss for the web app ([ea74ee5](https://github.com/Stephan-MC/morganhairextensions/commit/ea74ee5442ce391645de2920e18ac192a4da9f28))
+* Created the shop page ([b4e6c3e](https://github.com/Stephan-MC/morganhairextensions/commit/b4e6c3ef4b94e1a97a624b520d561f0166719d77))
+* Enabled light/dark mode ([c3db3b8](https://github.com/Stephan-MC/morganhairextensions/commit/c3db3b82102181f6e904ac77c8aa924b2d8c7d03))
+* Generated the admin app ([7cc3635](https://github.com/Stephan-MC/morganhairextensions/commit/7cc36355d41df76d8c8956f35abd8648e219ff40))
+* Generated the web app. ([5c05499](https://github.com/Stephan-MC/morganhairextensions/commit/5c05499f8e1911b4ec9c59670795bfd22496a579))
+* Updated routes ([05f3219](https://github.com/Stephan-MC/morganhairextensions/commit/05f321919e188114f885fbe750d4fca646e2e688))
+
+
+### Bug Fixes
+
+* Adjusted github workflow ([26e8cae](https://github.com/Stephan-MC/morganhairextensions/commit/26e8caeae895d967de66d9e6a0bf4fb93abd7a8b))
+* Adjusted tailwindcss issue ([c23443d](https://github.com/Stephan-MC/morganhairextensions/commit/c23443d3d4dc2ec5b300450b4adc4189720f60b8))
+* Cart page now has link to checkout page ([4d41ebe](https://github.com/Stephan-MC/morganhairextensions/commit/4d41ebec40f26515da4e0edd0fea90436a7d56ac))
+* Changed applications default ports ([bea9524](https://github.com/Stephan-MC/morganhairextensions/commit/bea9524a13fee32e8d63c971015fcd844da0993b))
+* Revamped the UI of the shop page and adjusted loading spinner ([7ee586a](https://github.com/Stephan-MC/morganhairextensions/commit/7ee586a0d044c3bae2614e00c7a6792cca0a2d52))
+
 ## [1.1.1](https://github.com/Stephan-MC/morganhairextensions/compare/v1.1.0...v1.1.1) (2025-11-01)
 
 
