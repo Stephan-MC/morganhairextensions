@@ -49,11 +49,13 @@ export const routes: Routes = [
 
 	{
 		path: "contact",
+		title: "Need more assistance, Get in touch with me",
 		loadComponent: () =>
 			import("./contact/contact.page").then((m) => m.ContactPage),
 	},
 	{
 		path: "about",
+		title: "The story behind every hair strand",
 		loadComponent: () => import("./about/about.page").then((m) => m.AboutPage),
 	},
 ];
