@@ -113,23 +113,28 @@
 				</mat-form-field>
 			</div>
 			<!-- Action Buttons -->
-			<div class="flex gap-4 items-stretch mt-4">
-				<button
-					matButton="filled"
-					class="rounded-none! grow h-full!"
-					(click)="addToCart()"
-					[disabled]="inCart()"
-				>
-					@if (inCart()) { Already in cart }@else { Add to Cart }
-				</button>
-				<button class="rounded-none!" matFab>
-					<mat-icon>
-						<span
-							class="text-xl icon-[material-symbols--favorite-outline]"
-						></span>
-					</mat-icon>
-				</button>
-			</div>
+      <div class="flex flex-col">
+        @if (length().stock < 1) {
+          <p class="text-center text-red-400">This length is currently out of stock</p>
+          }
+          <div class="flex gap-4 items-stretch mt-4">
+            <button
+              matButton="filled"
+              class="rounded-none! grow h-full!"
+              (click)="addToCart()"
+              [disabled]="inCart() || length().stock < 1"
+            >
+              @if (inCart()) { Already in cart }@else { Add to Cart }
+            </button>
+            <button class="rounded-none!" matFab>
+              <mat-icon>
+                <span
+                  class="text-xl icon-[material-symbols--favorite-outline]"
+                ></span>
+              </mat-icon>
+            </button>
+          </div>
+      </div>
 		</div>
 	</div>
 	<!-- Customer Reviews -->

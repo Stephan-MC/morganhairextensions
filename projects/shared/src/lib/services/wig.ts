@@ -1,9 +1,10 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ENVIRONMENT } from "../types/environments";
 import type { Model, Paginated } from "../types";
 import {
 	BehaviorSubject,
+	debounceTime,
 	filter,
 	map,
 	shareReplay,
@@ -12,6 +13,7 @@ import {
 } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { toFormData } from "../utils";
+import { toObservable } from "@angular/core/rxjs-interop";
 
 @Injectable({
 	providedIn: "root",
@@ -21,7 +23,8 @@ export class Wig {
 	#environment = inject(ENVIRONMENT);
 	#route = inject(ActivatedRoute);
 
-	params$ = new BehaviorSubject<{ [k: string]: any }>({ page: 1 });
+	params = signal<{ [k: string]: any }>({ page: 1 });
+	params$ = toObservable(this.params);
 
 	wig$ = this.#route.params.pipe(
 		filter((params) => !!params["wig"]),
@@ -32,7 +35,8 @@ export class Wig {
 		shareReplay(1),
 	);
 
-	wigs$ = this.params$.asObservable().pipe(
+	wigs$ = this.params$.pipe(
+		debounceTime(400),
 		map(
 			(params) =>
 				Object.fromEntries(
@@ -85,7 +89,7 @@ export class Wig {
 	delete(slug: Model.Wig["slug"]) {
 		return this.#http
 			.delete(`${this.#environment.url.api}/wig/${slug.toLowerCase()}`)
-			.pipe(tap(() => this.params$.next({ ...this.params$.value, page: 1 })));
+			.pipe(tap(() => this.params.update((value) => ({ ...value, page: 1 }))));
 	}
 
 	addLength(wig: Model.Wig["id"], data: any) {

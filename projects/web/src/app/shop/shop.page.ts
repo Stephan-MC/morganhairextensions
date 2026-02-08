@@ -81,7 +81,7 @@ export class ShopPage {
 		this.#route.queryParams
 			.pipe(
 				takeUntilDestroyed(),
-				tap((queryParams) => this.wigService.params$.next(queryParams)),
+				tap((queryParams) => this.wigService.params.set(queryParams)),
 			)
 			.subscribe();
 

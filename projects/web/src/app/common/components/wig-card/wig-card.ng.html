@@ -5,25 +5,31 @@
 		style=" background-image: url({{ wig().length.thumbnail.url }});"
 	></a>
 	<div class="flex flex-col gap-2">
-		<a [routerLink]="['/wig', wig().slug]" class="text-base font-medium">{{ wig().name }}</a>
+		<a [routerLink]="['/wig', wig().slug]" class="text-base font-medium"
+			>{{ wig().name }}</a
+		>
 		<div class="flex justify-between mt-auto">
-			<p class="text-sm font-normal text-primary">{{ wig().length.price | currency: 'USD' }}</p>
-			@if (cart.has(wig().length.id) | async) {
-			<span
-				class="icon-[solar--cart-check-bold]"
-				animate.enter="enter"
-				role="img"
-				aria-hidden="true"
-			></span>
-			} @else {
-			<span
-				class="text-lg cursor-pointer icon-[solar--cart-large-2-line-duotone]"
-				role="button"
-				aria-hidden="true"
-				animate.leave="leave"
-				(click)="addToCart()"
-			></span>
-			}
+			<p class="text-sm font-normal text-primary">
+				{{ wig().length.price | currency: 'USD' }}
+			</p>
+			<div class="relative *:absolute *:right-2">
+				@if (cart.has(wig().length.id) | async) {
+				<span
+					class="icon-[solar--cart-check-bold]"
+					animate.enter="enter"
+					role="img"
+					aria-hidden="true"
+				></span>
+				} @else {
+				<span
+					class="text-lg cursor-pointer icon-[solar--cart-large-2-line-duotone]"
+					role="button"
+					aria-hidden="true"
+					animate.leave="leave"
+					(click)="addToCart()"
+				></span>
+				}
+			</div>
 		</div>
 	</div>
 </div>

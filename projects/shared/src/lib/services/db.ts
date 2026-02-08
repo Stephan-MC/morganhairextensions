@@ -46,7 +46,6 @@ export class DB {
 		};
 
 		request.onsuccess = (event: Event) => {
-			console.log("Hellow World");
 			this.#db.next((event.target as IDBOpenDBRequest).result);
 		};
 

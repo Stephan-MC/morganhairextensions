@@ -214,81 +214,88 @@
 				<!-- Quick Actions Grid -->
 				<div class="flex flex-col gap-4 lg:col-span-1">
 					<div class="grid grid-cols-2 gap-4 h-full">
-						<a
-							class="flex flex-col gap-3 justify-center items-center p-4 rounded border transition-all hover:shadow-md group bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark hover:border-primary/50"
-							href="#"
-						>
-							<div
-								class="flex justify-center items-center bg-purple-100 rounded-full transition-transform group-hover:scale-110 size-12 text-primary dark:bg-purple-900/20"
-							>
-								<span
-									class="text-lg icon-[material-symbols--styler-outline] text-(--mat-sys-primary)/60"
-									role="img"
-									aria-hidden="true"
-								></span>
-							</div>
-							<p
-								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
-							>
-								Manage Wigs
-							</p>
+						<a routerLink="/wigs">
+							<mat-card>
+								<mat-card-content class="flex! flex-col gap-2 items-center">
+									<div
+										class="flex justify-center items-center bg-purple-100 rounded-full transition-transform group-hover:scale-110 size-12 text-primary dark:bg-purple-900/20"
+									>
+										<span
+											class="text-lg icon-[material-symbols--styler-outline] text-(--mat-sys-primary)/60"
+											role="img"
+											aria-hidden="true"
+										></span>
+									</div>
+									<p
+										class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+									>
+										Manage Wigs
+									</p>
+								</mat-card-content>
+							</mat-card>
 						</a>
-						<a
-							class="flex flex-col gap-3 justify-center items-center p-4 rounded border transition-all hover:shadow-md group bg-surface-light border-border-light dark:bg-surface-dark dark:border-border-dark hover:border-primary/50"
-							href="#"
-						>
-							<div
-								class="flex justify-center items-center text-blue-600 bg-blue-100 rounded-full transition-transform dark:text-blue-400 group-hover:scale-110 size-12 dark:bg-blue-900/20"
-							>
-								<span
-									class="text-lg icon-[material-symbols--straighten-outline] text-(--mat-sys-primary)/60"
-									role="img"
-									aria-hidden="true"
-								></span>
-							</div>
-							<p
-								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
-							>
-								Manage Lengths
-							</p>
+						<a routerLink="/lengths">
+							<mat-card routerLink="/lengths">
+								<mat-card-content class="flex! flex-col gap-2 items-center">
+									<div
+										class="flex justify-center items-center text-blue-600 bg-blue-100 rounded-full transition-transform dark:text-blue-400 group-hover:scale-110 size-12 dark:bg-blue-900/20"
+									>
+										<span
+											class="text-lg icon-[material-symbols--straighten-outline] text-(--mat-sys-primary)/60"
+											role="img"
+											aria-hidden="true"
+										></span>
+									</div>
+									<p
+										class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+									>
+										Manage Lengths
+									</p>
+								</mat-card-content>
+							</mat-card>
 						</a>
-						<mat-card class="transition-all hover:shadow-md group" href="#">
-							<mat-card-content>
-								<div
-									class="flex justify-center items-center text-pink-600 bg-pink-100 rounded-full transition-transform dark:text-pink-400 group-hover:scale-110 size-12 dark:bg-pink-900/20"
-								>
-									<span
-										class="text-lg icon-[material-symbols--palette-outline] text-(--mat-sys-primary)/60"
-										role="img"
-										aria-hidden="true"
-									></span>
-								</div>
-								<p
-									class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
-								>
-									Manage Colors
-								</p>
-							</mat-card-content>
-						</mat-card>
-						<mat-card
-							class="transition-all hover:shadow-md group"
-							routerLink="./"
-						>
-							<div
-								class="flex justify-center items-center text-green-600 bg-green-100 rounded-full transition-transform dark:text-green-400 group-hover:scale-110 size-12 dark:bg-green-900/20"
-							>
-								<span
-									class="text-lg icon-[material-symbols--percent] text-(--mat-sys-primary)/60"
-									role="img"
-									aria-hidden="true"
-								></span>
-							</div>
-							<p
-								class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
-							>
-								Manage Discounts
-							</p>
-						</mat-card>
+						<a routerLink="/colors">
+							<mat-card>
+								<mat-card-content class="flex! flex-col gap-2 items-center">
+									<div class="flex flex-col gap-2">
+										<div
+											class="flex justify-center items-center text-pink-600 bg-pink-100 rounded-full transition-transform dark:text-pink-400 group-hover:scale-110 size-12 dark:bg-pink-900/20"
+										>
+											<span
+												class="text-lg icon-[material-symbols--palette-outline] text-(--mat-sys-primary)/60"
+												role="img"
+												aria-hidden="true"
+											></span>
+										</div>
+										<p
+											class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+										>
+											Manage Colors
+										</p>
+									</div>
+								</mat-card-content>
+							</mat-card>
+						</a>
+						<a routerLink="./">
+							<mat-card>
+								<mat-card-content class="flex! flex-col gap-2 items-center">
+									<div
+										class="flex justify-center items-center text-green-600 bg-green-100 rounded-full transition-transform dark:text-green-400 group-hover:scale-110 size-12 dark:bg-green-900/20"
+									>
+										<span
+											class="text-lg icon-[material-symbols--percent] text-(--mat-sys-primary)/60"
+											role="img"
+											aria-hidden="true"
+										></span>
+									</div>
+									<p
+										class="text-sm font-bold text-center dark:text-white text-[#140d1b]"
+									>
+										Manage Discounts
+									</p>
+								</mat-card-content>
+							</mat-card>
+						</a>
 					</div>
 				</div>
 			</div>
