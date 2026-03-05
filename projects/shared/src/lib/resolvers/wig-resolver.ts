@@ -34,7 +34,7 @@ export const wigResolver: ResolveFn<Model.Wig | undefined> = (route, state) => {
 export const wigsResolver: ResolveFn<Paginated<Model.Wig>> = (route, state) => {
 	const wigService = inject(Wig);
 
-	wigService.params$.next(
+	wigService.params.set(
 		Object.fromEntries(
 			Object.entries(route.queryParams).filter(([key]) =>
 				[

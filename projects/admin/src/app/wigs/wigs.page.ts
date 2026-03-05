@@ -1,4 +1,11 @@
-import { Component, inject, viewChild, type TemplateRef } from "@angular/core";
+import {
+	Component,
+	effect,
+	inject,
+	signal,
+	viewChild,
+	type TemplateRef,
+} from "@angular/core";
 import { type Model, Wig } from "shared";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, shareReplay, Subject, switchMap, tap } from "rxjs";
@@ -9,6 +16,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { form, FormField } from "@angular/forms/signals";
 
 @Component({
 	selector: "admin-wigs",
@@ -20,6 +28,7 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 		MatInputModule,
 		MatDialogModule,
 		RouterLink,
+		FormField,
 	],
 	templateUrl: "./wigs.page.ng.html",
 	styleUrl: "./wigs.page.scss",
@@ -32,6 +41,8 @@ export class WigsPage {
 	deleteSubject = new Subject<Model.Wig>();
 	delete$ = this.deleteSubject.asObservable().pipe(shareReplay());
 	template = viewChild.required<TemplateRef<unknown>>("confirmationDialog");
+
+	form = form(signal({ q: "" }), (schema) => {});
 
 	wigs = toSignal(
 		this.#wigService.wigs$.pipe(map((response) => response.data)),
@@ -48,10 +59,13 @@ export class WigsPage {
 	}
 
 	constructor() {
+		effect(() => {
+			this.#wigService.params.set({ ...this.form().value() });
+		});
 		this.#route.queryParams
 			.pipe(
 				takeUntilDestroyed(),
-				tap((params) => this.#wigService.params$.next(params)),
+				tap((params) => this.#wigService.params.set(params)),
 			)
 			.subscribe();
 

@@ -1,17 +1,43 @@
 {
-	"$schema": "/home/minister/.local/share/nvim/mason/packages/biome/node_modules/@biomejs/biome/configuration_schema.json",
-	"formatter": {
-		"enabled": true,
-		"formatWithErrors": true
-	},
-	"html": {
-		"formatter": {
-			"enabled": true
-		}
-	},
+	"$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
+	},
+	"files": {
+		"includes": ["**", "!!**/dist"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"html": {
+		"assist": { "enabled": true },
+		"formatter": {
+			"enabled": true
+		},
+		"parser": {
+			"interpolation": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	}
 }

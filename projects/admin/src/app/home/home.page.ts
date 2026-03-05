@@ -10,6 +10,7 @@ import { Wig, Order } from "shared";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { DecimalPipe } from "@angular/common";
+import { RouterLink } from "@angular/router";
 
 @Component({
 	selector: "admin-home",
@@ -23,6 +24,7 @@ import { DecimalPipe } from "@angular/common";
 		MatButtonModule,
 		MatCardModule,
 		MatSidenavModule,
+		RouterLink,
 	],
 })
 export class HomePage {

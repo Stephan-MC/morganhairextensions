@@ -22,23 +22,18 @@
 			<span>Add New Wig</span>
 		</a>
 	</div>
-	<!-- Filters and Search -->
-	<div
-		class="flex flex-col gap-4 p-4 w-full rounded border shadow-sm lg:flex-row bg-surface-light border-[#dbcfe7]/40 dark:bg-surface-dark"
-	>
-		<!-- Search -->
-		<mat-form-field>
-			<mat-label>Search</mat-label>
-			<input matInput>
-			<mat-icon matPrefix>
-				<span
-					class="icon-[material-symbols--search]"
-					role="img"
-					aria-hidden="true"
-				></span>
-			</mat-icon>
-		</mat-form-field>
-	</div>
+	<!-- Search -->
+	<mat-form-field>
+		<mat-label>Search</mat-label>
+		<input matInput [formField]="form.q">
+		<mat-icon matPrefix>
+			<span
+				class="icon-[material-symbols--search]"
+				role="img"
+				aria-hidden="true"
+			></span>
+		</mat-icon>
+	</mat-form-field>
 	<div
 		class="flex overflow-hidden flex-col rounded border shadow-sm bg-surface-light border-[#dbcfe7]/40 dark:bg-surface-dark"
 	>
