@@ -10,7 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
-import { Meta, Title } from "@angular/platform-browser";
+import { Meta, type Title } from "@angular/platform-browser";
 import { Subject, switchMap } from "rxjs";
 import type { Model } from "shared";
 import { Cart } from "../common/services/cart";
@@ -29,7 +29,7 @@ import { Cart } from "../common/services/cart";
 	styleUrl: "./wig.page.scss",
 })
 export class WigPage {
-	private _meta = inject(Meta);
+	#meta = inject(Meta);
 	wig = input.required<Model.Wig>();
 
 	length = linkedSignal(() => this.wig()?.length);
@@ -60,7 +60,7 @@ export class WigPage {
 
 	ngOnInit() {
 		if (this.wig()) {
-			this._meta.addTags(
+			this.#meta.addTags(
 				[
 					{
 						id: "description",
@@ -82,7 +82,10 @@ export class WigPage {
 					{
 						id: "og:image",
 						property: "og:image",
-						content: this.wig()?.length?.thumbnail.url,
+						content: this.wig()?.length?.thumbnail.url.replace(
+							/^http:/,
+							"https:",
+						),
 					},
 				],
 				false,
