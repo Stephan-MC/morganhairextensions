@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.5.1](https://github.com/Stephan-MC/morganhairextensions/compare/v1.5.0...v1.5.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* ... ([331335e](https://github.com/Stephan-MC/morganhairextensions/commit/331335e745adff10b2bad11cd155b6c906a7d9fc))
+* ... ([abd0f91](https://github.com/Stephan-MC/morganhairextensions/commit/abd0f9177a93e5a040f868210a96d94969faa18d))
+* Added missing module from shared library ([546a00f](https://github.com/Stephan-MC/morganhairextensions/commit/546a00fe90696377eb2090bb2bc2bff0c7bad248))
+* Added missing module from shared library ([18de2a6](https://github.com/Stephan-MC/morganhairextensions/commit/18de2a66df7b988416de4b9dc966778d7e6dc13b))
+* **checkout:** Migrated checkout page form Field to FormField ([539469f](https://github.com/Stephan-MC/morganhairextensions/commit/539469f9f9b255f4df53d6f31bc4045fe15fa5a6))
+* Minor patches ([cda43fd](https://github.com/Stephan-MC/morganhairextensions/commit/cda43fd7f3e729c40a37accd9e4ec517bb02064c))
+* Switched wig/* routes to server render mode ([ca87854](https://github.com/Stephan-MC/morganhairextensions/commit/ca87854b5b7783e71565f0ed89f431e93303afe0))
+* Updated image urls to use https ([7cf1186](https://github.com/Stephan-MC/morganhairextensions/commit/7cf1186df42fb9210d9624a4204b3b338e76b466))
+* Updated pages title in contact and about page ([38b2150](https://github.com/Stephan-MC/morganhairextensions/commit/38b215033b1a3ff0d98fb2b48d97ec126eb9f80f))
+* **vercel:** Update admin app route forwarding ([cf89023](https://github.com/Stephan-MC/morganhairextensions/commit/cf89023805bca3b9206438f949c75d5ca0a90a2d))
+
 ## [1.5.0](https://github.com/Stephan-MC/morganhairextensions/compare/v1.4.0...v1.5.0) (2025-12-22)
 
 
