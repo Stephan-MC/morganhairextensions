@@ -10,7 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
-import { Meta, type Title } from "@angular/platform-browser";
+import { Meta, Title } from "@angular/platform-browser";
 import { Subject, switchMap } from "rxjs";
 import type { Model } from "shared";
 import { Cart } from "../common/services/cart";
@@ -30,6 +30,7 @@ import { Cart } from "../common/services/cart";
 })
 export class WigPage {
 	#meta = inject(Meta);
+	#title = inject(Title);
 	wig = input.required<Model.Wig>();
 
 	length = linkedSignal(() => this.wig()?.length);
@@ -42,7 +43,7 @@ export class WigPage {
 		{ initialValue: false },
 	);
 
-	constructor(title: Title) {
+	constructor() {
 		this.#toCart
 			.asObservable()
 			.pipe(
@@ -54,7 +55,7 @@ export class WigPage {
 			.subscribe();
 
 		effect(() => {
-			title.setTitle(this.wig()?.name || "Morgan Hair Wig");
+			this.#title.setTitle(this.wig()?.name || "Morgan Hair Wig");
 		});
 	}
 
