@@ -1,22 +1,25 @@
+import { CurrencyPipe, NgOptimizedImage } from "@angular/common";
 import {
 	Component,
 	effect,
 	inject,
 	signal,
-	viewChild,
 	type TemplateRef,
+	viewChild,
 } from "@angular/core";
-import { type Model, Wig } from "shared";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
-import { filter, map, shareReplay, Subject, switchMap, tap } from "rxjs";
-import { CurrencyPipe } from "@angular/common";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { FormField, form } from "@angular/forms/signals";
 import { MatButtonModule } from "@angular/material/button";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import {
+	MatPaginatorModule,
+	type PageEvent,
+} from "@angular/material/paginator";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { form, FormField } from "@angular/forms/signals";
+import { filter, map, Subject, shareReplay, switchMap, tap } from "rxjs";
+import { type Model, Wig } from "shared";
 
 @Component({
 	selector: "admin-wigs",
@@ -29,6 +32,7 @@ import { form, FormField } from "@angular/forms/signals";
 		MatDialogModule,
 		RouterLink,
 		FormField,
+		NgOptimizedImage,
 	],
 	templateUrl: "./wigs.page.ng.html",
 	styleUrl: "./wigs.page.scss",
@@ -87,5 +91,14 @@ export class WigsPage {
 				),
 			)
 			.subscribe();
+	}
+
+	handlePaginationEvent(event: PageEvent) {
+		if (this.meta()?.current_page !== event.pageIndex) {
+			this.#wigService.params.update((value) => ({
+				...value,
+				page: event.pageIndex + 1,
+			}));
+		}
 	}
 }

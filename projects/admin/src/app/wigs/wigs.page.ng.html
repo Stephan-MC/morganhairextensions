@@ -1,227 +1,214 @@
-<div class="flex flex-col gap-6 mx-auto max-w-7xl">
-	<!-- Page Heading -->
-	<div class="flex flex-col gap-4 justify-between md:flex-row md:items-center">
-		<div class="flex flex-col gap-1">
-			<h1
-				class="text-3xl font-black tracking-tight md:text-4xl text-text-main-light dark:text-text-main-dark"
-			>
-				Manage Wigs
-			</h1>
-			<p class="text-base text-text-muted-light dark:text-text-muted-dark">
-				Manage your inventory, prices, and product details.
-			</p>
-		</div>
-		<a matFab="filled" extended routerLink="/wigs/create">
-			<mat-icon>
-				<span
-					class="icon-[material-symbols--add]"
-					role="img"
-					aria-hidden="true"
-				></span>
-			</mat-icon>
-			<span>Add New Wig</span>
-		</a>
-	</div>
-	<!-- Search -->
-	<mat-form-field>
-		<mat-label>Search</mat-label>
-		<input matInput [formField]="form.q">
-		<mat-icon matPrefix>
-			<span
-				class="icon-[material-symbols--search]"
-				role="img"
-				aria-hidden="true"
-			></span>
-		</mat-icon>
-	</mat-form-field>
-	<div
-		class="flex overflow-hidden flex-col rounded border shadow-sm bg-surface-light border-[#dbcfe7]/40 dark:bg-surface-dark"
-	>
-		<div class="overflow-x-auto">
-			<table class="w-full text-left border-collapse">
-				<thead
-					class="border-b bg-background-light border-[#dbcfe7]/40 dark:bg-[#1e1629]"
+<!-- SideNavBar -->
+<main class="min-h-screen">
+	<!-- Page Content -->
+	<div class="p-12">
+		<!-- Header Section -->
+		<div class="flex justify-between items-end mb-12">
+			<div>
+				<p
+					class="mb-2 text-xs font-bold uppercase font-label tracking-[0.2em] text-primary"
 				>
-					<tr>
-						<th class="p-4 w-12 text-center">
-							<input
-								class="bg-transparent rounded border-[#dbcfe7] text-primary focus:ring-primary/20"
-								type="checkbox"
-							>
-						</th>
+					Curated Catalog
+				</p>
+				<h1
+					class="text-5xl font-bold tracking-tight font-headline text-on-surface"
+				>
+					Products
+				</h1>
+			</div>
+			<a
+				matButton="filled"
+				class="py-3.5! px-8! text-sm  uppercase  hover:scale-102"
+				[routerLink]="['wigs', 'create']"
+			>
+				<mat-icon>
+					<span class="text-base icon-[material-symbols--add-outline]"
+						>add</span
+					>
+				</mat-icon>
+				Add New Product
+			</a>
+		</div>
+		<!-- Filters Section -->
+		<div class="flex flex-wrap gap-4 items-center mb-8">
+			<div
+				class="flex gap-2 items-center py-2 px-4 rounded-lg border-none bg-surface-container"
+			>
+				<span
+					class="font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
+					>Category:</span
+				>
+				<select
+					class="p-0 pr-8 text-sm font-semibold bg-transparent border-none cursor-pointer focus:ring-0 font-body text-on-surface"
+				>
+					<option>All Products</option>
+					<option>Clip-in Extensions</option>
+					<option>Tape-in Extensions</option>
+					<option>Keratin Bond</option>
+					<option>Hand-Tied Wefts</option>
+				</select>
+			</div>
+			<div
+				class="flex gap-2 items-center py-2 px-4 rounded-lg border-none bg-surface-container"
+			>
+				<span
+					class="font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
+					>Status:</span
+				>
+				<select
+					class="p-0 pr-8 text-sm font-semibold bg-transparent border-none cursor-pointer focus:ring-0 font-body text-on-surface"
+				>
+					<option>Active</option>
+					<option>Archived</option>
+					<option>Draft</option>
+					<option>Out of Stock</option>
+				</select>
+			</div>
+			<button
+				class="flex gap-2 items-center ml-auto transition-colors text-stone-500 hover:text-primary"
+			>
+				<span class="text-lg icon-[material-symbols--filter-list]"
+					>filter_list</span
+				>
+				<span class="font-bold tracking-widest uppercase font-label text-[10px]"
+					>Advanced Filters</span
+				>
+			</button>
+		</div>
+		<!-- Product Table -->
+		<div
+			class="overflow-hidden rounded-xl bg-surface-container-lowest shadow-[0_24px_48px_-12px_rgba(26,28,26,0.06)]"
+		>
+			<table class="w-full text-left border-collapse">
+				<thead>
+					<tr class="border-none bg-surface-container-low">
 						<th
-							class="p-4 w-20 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+							class="py-5 px-8 font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
 						>
-							Image
+							Product
 						</th>
 						<th
-							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light min-w-[200px] dark:text-text-muted-dark"
-						>
-							Product Name
-						</th>
-						<th
-							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+							class="py-5 px-6 font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
 						>
 							SKU
 						</th>
 						<th
-							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+							class="py-5 px-6 font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
 						>
-							Hair type
+							Category
 						</th>
 						<th
-							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
+							class="py-5 px-6 font-bold tracking-widest text-center uppercase font-label text-[10px] text-secondary"
+						>
+							Inventory
+						</th>
+						<th
+							class="py-5 px-6 font-bold tracking-widest uppercase font-label text-[10px] text-secondary"
 						>
 							Price
 						</th>
 						<th
-							class="p-4 text-xs font-bold tracking-wider uppercase text-text-muted-light dark:text-text-muted-dark"
-						>
-							Status
-						</th>
-						<th
-							class="p-4 w-24 text-xs font-bold tracking-wider text-right uppercase text-text-muted-light dark:text-text-muted-dark"
+							class="py-5 px-8 font-bold tracking-widest text-right uppercase font-label text-[10px] text-secondary"
 						>
 							Actions
 						</th>
 					</tr>
 				</thead>
-				<tbody class="divide-y divide-[#dbcfe7]/30">
+				<tbody class="divide-y divide-outline-variant/10">
 					@for (wig of wigs(); track wig.id) {
+					<!-- Row {{ $index }} -->
 					<tr
-						class="transition-colors group dark:hover:bg-[#2a2235]/50 hover:bg-background-light/50"
+						class="relative transition-colors group hover:bg-surface-container-low/50"
 					>
-						<td class="p-4 text-center">
-							<input
-								class="bg-transparent rounded border-[#dbcfe7] text-primary focus:ring-primary/20"
-								type="checkbox"
-							>
+						<td class="py-6 px-8">
+							<div class="flex gap-5 items-center">
+								<div
+									class="overflow-hidden relative w-14 h-14 rounded-lg bg-(--mat-sys-surface-container) shrink-0"
+								>
+									<img
+										[alt]="wig.name"
+										class="object-cover w-full h-full"
+										[attr.data-alt]="wig.name"
+										[ngSrc]="wig.length.thumbnail.url"
+										fill
+										[priority]="$first"
+									>
+								</div>
+								<div>
+									<p class="text-base font-bold font-headline text-on-surface">
+										<a [routerLink]="['/wigs', wig.slug, 'edit']">
+											{{ wig.name }} {{ wig.length.value }}"
+											<span class="absolute inset-0"></span>
+										</a>
+									</p>
+									<p
+										class="tracking-wider uppercase text-[10px] font-label text-secondary line-clamp-2"
+									>
+										{{ wig.hair_type.name }}
+										({{ wig.source.name }})
+									</p>
+								</div>
+							</div>
 						</td>
-						<td class="p-4">
-							<div
-								class="bg-gray-200 bg-center bg-cover rounded border border-gray-100 dark:border-gray-700 size-10"
-								data-alt="Short platinum blonde pixie cut wig on mannequin"
-								[style.backgroundImage]="`url('${wig.length.thumbnail.url}')`"
-							></div>
+						<td class="py-6 px-6 text-sm font-body text-secondary">
+							{{ wig.id.slice(-6) }}
 						</td>
-						<td class="p-4">
-							<p
-								class="text-sm font-bold text-text-main-light dark:text-text-main-dark"
-							>
-                  {{wig.name}}
-							</p>
-						</td>
-						<td class="p-4">
-							<p
-								class="font-mono text-sm text-text-muted-light dark:text-text-muted-dark"
-							>
-								WG-BL-004
-							</p>
-						</td>
-						<td class="p-4">
+						<td class="py-6 px-6">
 							<span
-								class="text-sm text-text-main-light dark:text-text-main-dark"
-								>{{wig.hair_type.name}}</span
+								class="py-1 px-3 font-bold tracking-widest uppercase rounded-full bg-surface-container text-[10px] font-label text-on-surface-variant"
+								>{{ wig.texture.name }}</span
 							>
 						</td>
-						<td class="p-4">
-							<p
-								class="text-sm font-bold text-text-main-light dark:text-text-main-dark"
-							>
-                  {{wig.length.price | currency}}
-							</p>
+						<td class="py-6 px-6 text-center">
+							<div class="inline-flex flex-col items-center">
+								<span class="text-sm font-bold font-body"
+									>{{ wig.length.stock }}</span
+								>
+								<span
+									class="font-bold tracking-widest text-emerald-600 uppercase text-[9px] font-label"
+									>Healthy Stock</span
+								>
+							</div>
 						</td>
-						<td class="p-4">
-							@let stock = computedStock(wig);
-							<span
-								class="inline-flex items-center py-0.5 px-2.5 text-xs font-bold rounded max-md:text-2xs"
-								[class.bg-green-100]="stock >= 5"
-								[class.text-green-800]="stock >= 5"
-								[class.dark:bg-green-900/40]="stock >= 5"
-								[class.dark:text-green-300]="stock >= 5"
-								[class.bg-red-100]="stock < 1"
-								[class.text-red-800]="stock > 0 && stock < 5"
-								[class.dark:bg-red-900/40]="stock < 1"
-								[class.dark:text-red-300]="stock > 0 && stock < 5"
-								[class.bg-yellow-100]="stock > 0 && stock < 5"
-								[class.text-yellow-800]="stock > 0 && stock < 5"
-								[class.dark:bg-yellow-900/40]="stock > 0 && stock < 5"
-								[class.dark:text-yellow-300]="stock > 0 && stock < 5"
-							>
-								@if (stock < 1) { out of stock } @else if (stock > 0 && stock <
-								5) { Low in stock } @else { in stock }
-							</span>
+						<td
+							class="py-6 px-6 text-base font-bold font-headline text-primary"
+						>
+							{{ wig.length.price | currency }}
 						</td>
-						<td class="p-4 text-right">
-							<div class="flex gap-2 justify-end items-center *:cursor-pointer">
+						<td class="py-6 px-8 text-right">
+							<div class="flex gap-3 justify-end *:cursor-pointer">
 								<button
-									class="p-1 transition-colors text-text-muted-light dark:text-text-muted-dark hover:text-(--mat-sys-primary)"
-									title="Edit"
+									class="relative p-2 rounded-full transition-colors hover:bg-white text-stone-400 hover:text-primary"
+								>
+									<span
+										class="text-xl icon-[material-symbols--visibility-outline]"
+										>visibility</span
+									>
+								</button>
+								<a
+									class="relative p-2 rounded-full transition-colors hover:bg-white text-stone-400 hover:text-primary"
 									[routerLink]="['/wigs', wig.slug, 'edit']"
 								>
-									<span
-										class="icon-[material-symbols--edit] text-inherit"
-										role="img"
-										aria-hidden="true"
-									></span>
-								</button>
-								<button
-									class="p-1 transition-colors hover:text-red-500 text-(--mat-sys-outline)"
-									title="Delete"
-									(click)="deleteSubject.next(wig)"
-								>
-									<span
-										class="icon-[material-symbols--delete]"
-										role="img"
-										aria-hidden="true"
-									></span>
-								</button>
+									<span class="text-xl icon-[material-symbols--edit-outline]"
+										>edit</span
+									>
+								</a>
 							</div>
 						</td>
 					</tr>
 					}
 				</tbody>
 			</table>
+			<!-- Pagination / Footer -->
+			<mat-paginator
+				(page)="handlePaginationEvent($event)"
+				[showFirstLastButtons]="true"
+				[length]="meta()?.total"
+				[pageIndex]="(meta()?.current_page || 1) - 1"
+				[pageSize]="meta()?.per_page"
+			/>
 		</div>
-		<!-- Pagination -->
-		<mat-paginator
-			[pageIndex]="(meta()?.current_page || 1) - 1"
-			[pageSize]="meta()?.per_page"
-			[length]="meta()?.total"
-			[pageSizeOptions]="[10, 20, 30, 40, 50]"
-			(page)="router.navigate(['/wigs'], {queryParams: { page: $event.pageIndex + 1 }})"
-		/>
+		<!-- Bottom Margin for Scroll Space -->
+		<div class="h-16"></div>
 	</div>
-</div>
-
-<ng-template #confirmationDialog let-wig>
-	<h2 mat-dialog-title>Confirm Deletion</h2>
-	<mat-dialog-content>
-		Are you sure you want to delete the wig below ??
-		<!-- check if wig is valid -->
-		<div class="flex gap-2 items-stretch">
-			<img
-				[src]="wig.thumbnail?.url"
-				alt=""
-				class="rounded-lg aspect-square shrink-0"
-			>
-			<div class="flex flex-col">
-          <span>{{wig.name}}</span>
-          @for (length of wig.lengths; track length.id) {
-            {{length.value}}
-            @if (!$last) {
-              <span>, </span>
-            }
-          }
-          <span>{{wig.color.name}}</span>
-        </div>
-		</div>
-		This action cannot be undone.
-	</mat-dialog-content>
-	<mat-dialog-actions align="end">
-		<button mat-button [mat-dialog-close]="false">Cancel</button>
-		<button mat-flat-button color="warn" [mat-dialog-close]="true">
-			Delete
-		</button>
-	</mat-dialog-actions>
-</ng-template>
+</main>

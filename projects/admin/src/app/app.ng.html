@@ -1,126 +1,152 @@
 <mat-sidenav-container>
 	<mat-sidenav #sidenav [fixedInViewport]="true">
-		<aside class="hidden z-20 flex-col flex-shrink-0 w-64 h-full lg:flex">
-			<div class="flex gap-3 items-center p-6">
-				<div
-					class="flex justify-center items-center bg-center bg-no-repeat bg-cover rounded bg-primary/10 size-10 text-primary"
-					data-alt="Admin logo placeholder"
+		<aside
+			class="flex z-50 flex-col py-8 space-y-2 h-full bg-[#faf9f6] dark:bg-stone-950"
+		>
+			<div class="px-8 mb-12">
+				<h1
+					class="font-serif text-2xl uppercase tracking-[0.2em] text-[#775a19] dark:text-[#c5a059]"
 				>
-					<span
-						class="text-4xl icon-[material-symbols--admin-panel-settings-outline]"
-						role="img"
-						aria-hidden="true"
-					></span>
-				</div>
-				<div class="flex flex-col">
-					<h1 class="text-base font-bold leading-none text-text-main">
-						Morgan Hair
-					</h1>
-					<p class="mt-1 text-xs font-medium text-text-secondary">
-						Admin Panel
-					</p>
-				</div>
+					Atelier
+				</h1>
+				<p
+					class="font-serif text-lg opacity-60 tracking-[0.02em] text-[#775a19]"
+				>
+					Management Portal
+				</p>
 			</div>
-			<nav class="overflow-y-auto flex-1 py-2 px-4 space-y-1">
+			<nav class="flex-1 space-y-1">
 				<a
-					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					class="flex items-center py-3 pl-4 ml-4 font-bold rounded-l-full transition-all duration-300 text-[#775a19] bg-[#ffffff] dark:text-[#c5a059] dark:bg-stone-900"
 					routerLink="/"
+					(click)="sidenav.close()"
 				>
 					<span
-						class="icon-[material-symbols--dashboard]"
-						role="img"
-						aria-hidden="true"
+						class="mr-4 icon-[material-symbols--dashboard-outline]"
+						data-icon="dashboard"
 					></span>
-					<span class="text-sm font-medium">Dashboard</span>
+					<span class="font-serif text-lg tracking-[0.02em]">Overview</span>
 				</a>
 				<a
-					class="flex gap-3 items-center py-2.5 px-3 rounded bg-primary/10 text-primary"
-					href="#"
+					class="flex items-center py-3 pl-8 transition-all duration-300 text-stone-500 dark:text-stone-400 dark:hover:text-[#c5a059] hover:text-[#775a19]"
+					routerLink="/wigs"
+					(click)="sidenav.close()"
 				>
 					<span
-						class="icon-[material-symbols--shopping-bag]"
-						role="img"
-						aria-hidden="true"
-					></span>
-					<span class="text-sm font-bold">Products</span>
+						class="mr-4 icon-[material-symbols--content-cut]"
+						data-icon="content_cut"
+						>content_cut</span
+					>
+					<span class="font-serif text-lg tracking-[0.02em]">Products</span>
 				</a>
-				<div class="pr-3 pl-11 space-y-1">
-					<a
-						class="block py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
-						routerLink="/wigs"
-						>All Products</a
-					>
-					<a class="block py-1.5 text-sm font-bold text-primary" href="#"
-						>Attributes</a
-					>
-					<a
-						class="block py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
-						href="#"
-						>Inventory</a
-					>
-				</div>
 				<a
-					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					class="flex items-center py-3 pl-8 transition-all duration-300 text-stone-500 dark:text-stone-400 dark:hover:text-[#c5a059] hover:text-[#775a19]"
 					routerLink="/orders"
+					(click)="sidenav.close()"
 				>
 					<span
-						class="icon-[material-symbols--shopping-cart]"
-						role="img"
-						aria-hidden="true"
-					></span>
-					<span class="text-sm font-medium">Orders</span>
+						class="mr-4 icon-[material-symbols--shopping-bag-outline]"
+						data-icon="shopping_bag"
+						>shopping_bag</span
+					>
+					<span class="font-serif text-lg tracking-[0.02em]">Orders</span>
 				</a>
 				<a
-					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
+					class="flex items-center py-3 pl-8 transition-all duration-300 text-stone-500 dark:text-stone-400 dark:hover:text-[#c5a059] hover:text-[#775a19]"
+					routerLink="/customers"
+					(click)="sidenav.close()"
+				>
+					<span
+						class="mr-4 icon-[material-symbols--group-outline]"
+						data-icon="group"
+						>group</span
+					>
+					<span class="font-serif text-lg tracking-[0.02em]">Customers</span>
+				</a>
+				<a
+					class="flex items-center py-3 pl-8 transition-all duration-300 text-stone-500 dark:text-stone-400 dark:hover:text-[#c5a059] hover:text-[#775a19]"
+					href="#"
+					(click)="sidenav.close()"
+				>
+					<span
+						class="mr-4 icon-[material-symbols--inventory-2-outline]"
+						data-icon="inventory_2"
+						>inventory_2</span
+					>
+					<span class="font-serif text-lg tracking-[0.02em]">Inventory</span>
+				</a>
+				<a
+					class="flex items-center py-3 pl-8 transition-all duration-300 text-stone-500 dark:text-stone-400 dark:hover:text-[#c5a059] hover:text-[#775a19]"
 					href="#"
 				>
 					<span
-						class="icon-[material-symbols--group]"
-						role="img"
-						aria-hidden="true"
-					></span>
-					<span class="text-sm font-medium">Customers</span>
-				</a>
-				<a
-					class="flex gap-3 items-center py-2.5 px-3 rounded transition-colors text-text-main group dark:hover:bg-white/5 hover:bg-background-light"
-					href="#"
-				>
-					<span
-						class="icon-[material-symbols--settings]"
-						role="img"
-						aria-hidden="true"
-					></span>
-					<span class="text-sm font-medium">Settings</span>
+						class="mr-4 icon-[material-symbols--settings-outline]"
+						data-icon="settings"
+						>settings</span
+					>
+					<span class="font-serif text-lg tracking-[0.02em]">Settings</span>
 				</a>
 			</nav>
-			<div class="p-4 border-t border-gray-200 dark:border-gray-800">
-				<div
-					class="flex gap-3 items-center p-2 rounded cursor-pointer dark:hover:bg-white/5 hover:bg-background-light"
+			<div class="px-8 mt-auto">
+				<button
+					class="py-4 w-full text-sm font-bold tracking-widest uppercase rounded-lg shadow-lg atelier-gradient text-on-primary font-label shadow-primary/20"
 				>
-					<div
-						class="bg-gray-200 bg-center bg-cover rounded-full size-8"
-						data-alt="User profile avatar"
-						style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDs8FynlCrK2vabgsZKXCW9ka7EBJUTpQWPRS4C3n0BdAVUi6IlYfg3_bH-5S-hd9B3ORNeOGxYJgQgszg0df7fAKZ92Wi776LJy733we-jitQzaicHJ9csH_hM6jAhVF9xm8KGzEKhNzs8yPQU-rMK_gQhYVGjipGepjcllzrquafGDNifdzraA-8_FZb-JvlCyPNJn2v3aQcc9YA5knrT24wcto2CmZGTB4vaAdkUKfv8SUq8vwLhnMM0O-j5uwHcylJ6eSFxMQA');"
-					></div>
-					<div class="flex-1 min-w-0">
-						<p class="text-sm font-bold text-text-main truncate">Jane Admin</p>
-						<p class="text-xs text-text-secondary truncate">
-							jane@wigstore.com
-						</p>
-					</div>
-				</div>
+					New Collection
+				</button>
 			</div>
 		</aside>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<main class="flex overflow-hidden relative flex-col flex-1 h-full">
-			<div class="overflow-y-auto flex-1 p-6 lg:p-8">
+		<main class="min-h-screen">
+			<header
+				class="flex sticky top-0 z-40 justify-between items-center py-6 px-12 w-full bg-[#faf9f6]/80 backdrop-blur-xl"
+			>
 				<span
-					class="text-2xl icon-[material-symbols--menu]"
+					class="text-2xl cursor-pointer icon-[material-symbols--menu]"
 					(click)="sidenav.toggle()"
 				></span>
-				<router-outlet/>
-			</div>
+				<div class="flex gap-8 items-center">
+					<div class="relative group">
+						<span
+							class="absolute left-4 top-1/2 -translate-y-1/2 icon-[material-symbols--search] text-outline"
+							data-icon="search"
+						></span>
+						<input
+							class="py-2.5 pr-6 pl-12 w-64 text-xs tracking-widest rounded-lg border-none transition-all focus:ring-1 bg-surface-container-high font-label focus:ring-primary"
+							placeholder="SEARCH ANALYTICS..."
+							type="text"
+						>
+					</div>
+					<h2 class="font-serif text-xl tracking-tight text-primary">
+						Atelier Dashboard
+					</h2>
+				</div>
+				<div class="flex gap-6 items-center">
+					<button class="transition-colors text-secondary hover:text-primary">
+						<span
+							class="icon-[material-symbols--notifications-outline]"
+							data-icon="notifications"
+						></span>
+					</button>
+					<button class="transition-colors text-secondary hover:text-primary">
+						<span
+							class="icon-[material-symbols--chat-bubble-outline]"
+							data-icon="chat_bubble"
+						></span>
+					</button>
+					<div
+						class="overflow-hidden w-10 h-10 rounded-full border border-outline-variant/30"
+					>
+						<img
+							alt="Manager Portrait"
+							class="object-cover w-full h-full"
+							data-alt="professional portrait of a high-end fashion brand manager with elegant lighting and soft background"
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUT1GU_otqlkVVFt9edg1zp1fFmK9d-TF8mS5aCSb4DNIJYveXGeaZyWTNawobngk6veU092zeqlKFFcY0SBoTYTEO4qHmo_-W28LUG8cVJDYNlZw4Fl7nl1dKQtN4lXR926zdivSBiuK0bdY8-4V41xY6OWzbrlmop-KHv6ZUJoiR2Lgqji90JBCoxLFhuCAym01OEBdlV2caUpqNjONurcGufD_FEDenOnVL6dwuCZECBmLm5xtBvcrjhPmqRl42dW0YdHjpU3gI"
+						>
+					</div>
+				</div>
+			</header>
+			<router-outlet />
 		</main>
 	</mat-sidenav-content>
 </mat-sidenav-container>
